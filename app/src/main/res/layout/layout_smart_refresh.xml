@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.scwang.smartrefresh.layout.SmartRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@id/smartRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlHeaderHeight="50dp"
+        app:srlFooterHeight="50dp"
+        app:srlEnableLoadMore="true"
+        app:srlEnableAutoLoadMore="false"
+        app:srlDisableContentWhenLoading="true"
+        app:srlDisableContentWhenRefresh="true"
+        app:srlEnableLoadMoreWhenContentNotFull="false"
+        app:srlEnableOverScrollBounce="false"
+        app:srlEnableOverScrollDrag="false">
+
+    <com.dev.zhaoys.widget.LottieHeader
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"/>
+
+    <com.dev.zhaoys.widget.LottieFooter
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>

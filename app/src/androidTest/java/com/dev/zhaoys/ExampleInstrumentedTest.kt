@@ -1,4 +1,4 @@
-package com.centa.zhaoys
+package com.dev.zhaoys
 
 import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">android-kotlin</string>
+    <string name="no_more_data">松手吧!没有了</string>
 </resources>
