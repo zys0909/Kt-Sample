@@ -50,3 +50,18 @@ fun SmartRefreshLayout.requestComplete(page: PageData?, recyclerView: RecyclerVi
         }
     }
 }
+
+internal fun RecyclerView.smoothToTop() {
+    val manager = this.layoutManager as? LinearLayoutManager ?: return
+    if (this.scrollState == RecyclerView.SCROLL_STATE_SETTLING) {
+        this.stopScroll()
+        return
+    }
+    val position = manager.findFirstCompletelyVisibleItemPosition()
+    if (position > -1) {
+        if (position > 10) {
+            this.scrollToPosition(5)
+        }
+        this.smoothScrollToPosition(0)
+    }
+}

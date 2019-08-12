@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">android-kotlin</string>
     <string name="no_more_data">松手吧!没有了</string>
+
+    <string name="behavior_content">com.dev.zhaoys.widget.behavior.UCViewContentBehavior</string>
+    <string name="behavior_header">com.dev.zhaoys.widget.behavior.UCViewHeaderBehavior</string>
+    <string name="behavior_header_normal">com.dev.zhaoys.widget.behavior.UCViewHeaderBehaviorNormal</string>
+    <string name="behavior_title">com.dev.zhaoys.widget.behavior.UCViewTitleBehavior</string>
+    <string name="behavior_tab">com.dev.zhaoys.widget.behavior.UCViewTabBehavior</string>
 </resources>

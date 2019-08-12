@@ -9,11 +9,14 @@ import android.app.Application
  * create by 2019/7/1 0001 10:39
  */
 class App : Application() {
-    companion object{
-        lateinit var instance:App
+    companion object {
+        @JvmStatic
+        lateinit var instance: App
     }
+
     override fun onCreate() {
         super.onCreate()
         instance = this
+
     }
 }

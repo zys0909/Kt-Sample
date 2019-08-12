@@ -4,4 +4,8 @@
     <item name="recyclerView" type="id"/>
     <item name="appbarLayout" type="id"/>
     <item name="toolbar" type="id"/>
+
+    <item name="id_uc_view_header_layout" type="id"/>
+    <item name="id_uc_view_title_layout" type="id"/>
+    <item name="id_uc_view_tab_layout" type="id"/>
 </resources>

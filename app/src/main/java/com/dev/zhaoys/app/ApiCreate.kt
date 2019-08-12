@@ -1,7 +1,6 @@
-package com.dev.zhaoys.http
+package com.dev.zhaoys.app
 
 import com.dev.zhaoys.BuildConfig
-import com.dev.zhaoys.app.App
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

@@ -1,4 +1,4 @@
-package com.dev.zhaoys.http
+package com.dev.zhaoys.other
 
 import android.util.Log
 import okhttp3.Interceptor

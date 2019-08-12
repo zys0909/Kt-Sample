@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,6 +10,38 @@
     <androidx.recyclerview.widget.RecyclerView
             android:id="@id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.appbar.AppBarLayout
+            android:id="@id/appbarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary">
+
+        <androidx.appcompat.widget.Toolbar
+                android:id="@id/toolbar"
+                app:layout_scrollFlags="scroll|enterAlways"
+                style="@style/ToolbarStyle"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:background="@android:color/white"
+            app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
+            android:layout_height="50dp">
+        <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_home"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="首页"
+                android:layout_height="match_parent"/>
+        <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_other"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="其它"
+                android:layout_height="match_parent"/>
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

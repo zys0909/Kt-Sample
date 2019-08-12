@@ -1,4 +1,4 @@
-package com.dev.zhaoys.http
+package com.dev.zhaoys.app
 
 import okhttp3.HttpUrl
 import okhttp3.Interceptor

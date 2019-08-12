@@ -1,70 +1,61 @@
-package com.dev.zhaoys.ui.articlelist
+package com.dev.zhaoys.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev.zhaoys.R
-import com.dev.zhaoys.app.ApiCreate
-import com.dev.zhaoys.app.ExtraConst
-import com.dev.zhaoys.app.TestApi
 import com.dev.zhaoys.base.BaseActivity
 import com.dev.zhaoys.base.OnItemClick
 import com.dev.zhaoys.data.PageData
 import com.dev.zhaoys.extend.error
 import com.dev.zhaoys.extend.requestComplete
+import com.dev.zhaoys.extend.smoothToTop
+import com.dev.zhaoys.app.ApiCreate
+import com.dev.zhaoys.app.TestApi
 import com.dev.zhaoys.imageLoad.StringGlideEngine
-import com.dev.zhaoys.ui.WebActivity
 import com.dev.zhaoys.ui.main.HomeArticle
 import com.dev.zhaoys.ui.main.HomeSupport
 import com.dev.zhaoys.ui.main.MainAdapter
 import com.dev.zhaoys.ui.main.MainVisitable
+import com.dev.zhaoys.widget.behavior.UCViewHeaderBehavior
+import com.dev.zhaoys.widget.behavior.UCViewHeaderBehaviorNormal
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
-import kotlinx.android.synthetic.main.activity_main.recyclerView
-import kotlinx.android.synthetic.main.layout_smart_refresh.*
+import com.tencent.mmkv.MMKV
+import kotlinx.android.synthetic.main.activity_new_home.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 /**
- * 描述:文章列表
+ * 描述:
  *
  * author zhaoys
- * create by 2019/7/23 0023
+ * create by 2019/7/29 0029
  */
-class ArticleListActivity : BaseActivity() {
+class TestHomeActivity : BaseActivity() {
 
     private lateinit var mainAdapter: MainAdapter
+    private lateinit var headerBehavior: UCViewHeaderBehaviorNormal
     private var index = 0
 
-    override fun layoutId(): Int = R.layout.activity_article_list
+    override fun layoutId(): Int = R.layout.activity_new_home
 
     override suspend fun init(savedInstanceState: Bundle?) {
-        initToolbar("最新博文")
-
+        MMKV.initialize(this)
         mainAdapter = MainAdapter(HomeSupport(object : OnItemClick {
             override fun itemClick(view: View, position: Int) {
-                val article = (mainAdapter.list[position] as HomeArticle.ArticleItem).article
-                when (view.id) {
-                    R.id.iv_follow -> {
-                        article.collect = !article.collect
-                        mainAdapter.notifyItemChanged(position, "collect")
-                    }
-                    R.id.item_article -> {
-                        startActivity(
-                            Intent(this@ArticleListActivity, WebActivity::class.java)
-                                .putExtra(ExtraConst.WEB_URL, article.link)
-                                .putExtra(ExtraConst.ACTIVITY_TITLE, article.chapterName)
-                        )
-                    }
-                }
+
             }
         }, StringGlideEngine(this)))
         recyclerView.apply {
-            layoutManager = LinearLayoutManager(this@ArticleListActivity)
+            layoutManager = LinearLayoutManager(this@TestHomeActivity)
             adapter = mainAdapter
         }
+        articleList(0)
+        val behavior = (id_uc_view_header_layout.layoutParams as CoordinatorLayout.LayoutParams).behavior
+        headerBehavior = behavior as UCViewHeaderBehaviorNormal
         smartRefreshLayout.setOnRefreshLoadMoreListener(object : OnRefreshLoadMoreListener {
             override fun onLoadMore(refreshLayout: RefreshLayout) {
                 index++
@@ -76,7 +67,6 @@ class ArticleListActivity : BaseActivity() {
                 articleList(0)
             }
         })
-        articleList(0)
     }
 
     private fun articleList(index: Int) {
@@ -104,6 +94,15 @@ class ArticleListActivity : BaseActivity() {
                 e.printStackTrace()
                 smartRefreshLayout.error(index + 1)
             }
+        }
+    }
+
+    override fun onBackPressed() {
+        if (headerBehavior.isClosed) {
+            headerBehavior.openPager()
+            recyclerView.smoothToTop()
+        } else {
+            super.onBackPressed()
         }
     }
 }

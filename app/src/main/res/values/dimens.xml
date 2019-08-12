@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="uc_news_header_pager_offset">250dp</dimen>
+    <dimen name="uc_news_tabs_height">40dp</dimen>
+    <dimen name="uc_news_header_title_height">50dp</dimen>
+</resources>

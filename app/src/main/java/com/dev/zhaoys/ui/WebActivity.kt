@@ -103,8 +103,6 @@ class WebActivity : BaseActivity() {
                 }
             }
         }
-        val title = intent.getStringExtra(ExtraConst.WEB_TITLE)
-        initToolbar(title)
         val url = intent.getStringExtra(ExtraConst.WEB_URL)
         webView.loadUrl(url)
     }

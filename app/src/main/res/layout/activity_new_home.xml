@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.main.MainActivity">
+
+
+    <androidx.core.widget.NestedScrollView
+            android:id="@id/id_uc_view_header_layout"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            app:layout_behavior="@string/behavior_header_normal"
+            android:background="@color/colorPrimary">
+        <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:text="Header"/>
+    </androidx.core.widget.NestedScrollView>
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@id/id_uc_view_tab_layout"
+            android:text="TAB"
+            android:background="@android:color/holo_orange_dark"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:layout_behavior="@string/behavior_tab"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@id/id_uc_view_title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@android:color/holo_red_dark"
+            android:text="标题"
+            app:layout_behavior="@string/behavior_title"/>
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@id/smartRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/holo_green_dark"
+            app:layout_behavior="@string/behavior_content"
+            app:srlHeaderHeight="50dp"
+            app:srlFooterHeight="50dp"
+            app:srlEnableLoadMore="true"
+            app:srlEnableAutoLoadMore="false"
+            app:srlDisableContentWhenLoading="true"
+            app:srlDisableContentWhenRefresh="true"
+            app:srlEnableLoadMoreWhenContentNotFull="false"
+            app:srlEnableOverScrollBounce="false"
+            app:srlEnableOverScrollDrag="false">
+
+        <com.dev.zhaoys.widget.LottieHeader
+                android:layout_width="match_parent"
+                android:layout_height="50dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"/>
+
+        <com.dev.zhaoys.widget.LottieFooter
+                android:layout_width="match_parent"
+                android:layout_height="50dp"/>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    <!--<androidx.recyclerview.widget.RecyclerView
+            android:id="@id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="2600dp"
+            app:layout_behavior="@string/behavior_content"
+            android:background="@android:color/holo_green_dark">
+    </androidx.recyclerview.widget.RecyclerView>-->
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

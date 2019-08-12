@@ -8,5 +8,5 @@ package com.dev.zhaoys.app
  */
 object ExtraConst {
     const val WEB_URL = "WEB_URL"
-    const val WEB_TITLE = "WEB_TITLE"
+    const val ACTIVITY_TITLE = "ACTIVITY_TITLE"
 }

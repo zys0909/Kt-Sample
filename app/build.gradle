@@ -18,6 +18,11 @@ android {
         buildConfigField('String', 'BASE_URL', '\"https://www.wanandroid.com\"')
         buildConfigField('Long', 'CONNECT_TIMEOUT', '60000L')
         buildConfigField('Long', 'READ_TIMEOUT', '60000L')
+
+        packagingOptions {
+            pickFirst 'META-INF/*'
+//            exclude 'META-INF/library_release.kotlin_module'
+        }
     }
     buildTypes {
         debug {
@@ -67,7 +72,7 @@ dependencies {
     def coroutines_version = '1.1.1'//协程
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
-    def life_coroutines = '2.2.0-alpha02' //lifecycle与协程适配
+    def life_coroutines = '2.2.0-alpha03' //lifecycle与协程适配
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$life_coroutines"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$life_coroutines"
 
@@ -79,5 +84,11 @@ dependencies {
     implementation "com.google.android.material:material:1.0.0"
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-andx-4'
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:5.1.6'
+
+//    implementation 'com.centanet.fangyouquan:common:0.1.2-SNAPSHOT'
+//    implementation 'com.centanet.fangyouquan:main:0.0.5-SNAPSHOT'
+
+    implementation 'com.tencent:mmkv:1.0.22'
+
 
 }

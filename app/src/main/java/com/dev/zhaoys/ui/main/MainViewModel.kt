@@ -3,8 +3,8 @@ package com.dev.zhaoys.ui.main
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.dev.zhaoys.http.ApiCreate
-import com.dev.zhaoys.http.TestApi
+import com.dev.zhaoys.app.ApiCreate
+import com.dev.zhaoys.app.TestApi
 import com.dev.zhaoys.base.BaseViewModel
 import com.dev.zhaoys.data.response.ArticleData
 import com.dev.zhaoys.data.response.HomeBannerData

@@ -9,8 +9,10 @@ import android.view.MenuItem
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.lifecycleScope
 import com.dev.zhaoys.R
+import com.dev.zhaoys.app.ExtraConst
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.*
@@ -21,6 +23,10 @@ abstract class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(layoutId())
         lifecycleScope.launch(context = Dispatchers.Main, block = {
+            val title = intent.getStringExtra(ExtraConst.ACTIVITY_TITLE)
+            title?.let {
+                initToolbar(it)
+            }
             init(savedInstanceState)
         })
     }
@@ -31,10 +37,12 @@ abstract class BaseActivity : AppCompatActivity() {
     protected abstract suspend fun init(savedInstanceState: Bundle?)
 
     protected fun initToolbar(title: CharSequence? = null, showHomeAsUp: Boolean = true) {
-        setSupportActionBar(findViewById(R.id.toolbar))
-        supportActionBar?.setDisplayHomeAsUpEnabled(showHomeAsUp)
-        supportActionBar?.title = title
-        supportActionBar?.setHomeButtonEnabled(true)
+        findViewById<Toolbar>(R.id.toolbar)?.let {
+            setSupportActionBar(it)
+            supportActionBar?.setDisplayHomeAsUpEnabled(showHomeAsUp)
+            supportActionBar?.title = title
+            supportActionBar?.setHomeButtonEnabled(true)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean = when {

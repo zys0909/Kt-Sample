@@ -8,15 +8,17 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev.zhaoys.R
-import com.dev.zhaoys.http.ApiCreate
+import com.dev.zhaoys.app.ApiCreate
 import com.dev.zhaoys.app.ExtraConst
-import com.dev.zhaoys.http.TestApi
+import com.dev.zhaoys.app.TestApi
 import com.dev.zhaoys.base.BaseActivity
 import com.dev.zhaoys.base.OnItemClick
-import com.dev.zhaoys.http.DynamicBaseUrl
 import com.dev.zhaoys.imageLoad.StringGlideEngine
+import com.dev.zhaoys.other.single.SingleTon4
+import com.dev.zhaoys.ui.TestHomeActivity
 import com.dev.zhaoys.ui.WebActivity
 import com.dev.zhaoys.ui.articlelist.ArticleListActivity
+import com.dev.zhaoys.ui.other.TouchActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -30,6 +32,7 @@ class MainActivity : BaseActivity() {
     override fun layoutId(): Int = R.layout.activity_main
 
     override suspend fun init(savedInstanceState: Bundle?) {
+        initToolbar("WanAndroid")
         mainAdapter = MainAdapter(HomeSupport(object : OnItemClick {
             override fun itemClick(view: View, position: Int) {
                 when (view.id) {
@@ -46,13 +49,14 @@ class MainActivity : BaseActivity() {
                         startActivity(
                             Intent(this@MainActivity, WebActivity::class.java)
                                 .putExtra(ExtraConst.WEB_URL, article.link)
-                                .putExtra(ExtraConst.WEB_TITLE, article.chapterName)
+                                .putExtra(ExtraConst.ACTIVITY_TITLE, article.chapterName)
                         )
                     }
                     R.id.atv_title -> {
-                        lifecycleScope.launch(context = Dispatchers.IO, block = {
-                            DynamicBaseUrl.test()
-                        })
+                        /* lifecycleScope.launch(context = Dispatchers.IO, block = {
+                             DynamicBaseUrl.test()
+                         })*/
+
                     }
                 }
             }
@@ -60,7 +64,14 @@ class MainActivity : BaseActivity() {
         recyclerView.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = mainAdapter
-        }/*.addItemDecoration(DividerItemDecoration(this, RecyclerView.VERTICAL))*/
+        }
+        btn_home.setOnClickListener {
+            startActivity(Intent(this@MainActivity, TestHomeActivity::class.java))
+        }
+        btn_other.setOnClickListener {
+            //            SingleTon4.SingleTonHolder.holder.doSomeWork()
+            startActivity(Intent(this@MainActivity, TouchActivity::class.java))
+        }
         model.banner().observe(this, Observer {
             if (!it.isNullOrEmpty()) {
                 mainAdapter.loadModule(HomeBanner.BannerItem(it))
@@ -87,13 +98,14 @@ class MainActivity : BaseActivity() {
     }
 
     private fun articleList() {
+        val total = 12
         lifecycleScope.launch {
             try {
                 val response = ApiCreate.build(TestApi::class.java).articleList(0)
                 if (response.errorCode == 0) {
                     val list = mutableListOf<MainVisitable>()
                     val temp = response.data?.datas ?: emptyList()
-                    val size = if (temp.size > 4) 4 else temp.size
+                    val size = if (temp.size > total) total else temp.size
                     for (i in 0 until size) {
                         list.add(HomeArticle.ArticleItem(HomeSupport.POSITION_ARTICLE_LIST + 1, temp[i]))
                     }

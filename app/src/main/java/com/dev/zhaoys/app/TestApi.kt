@@ -1,4 +1,4 @@
-package com.dev.zhaoys.http
+package com.dev.zhaoys.app
 
 import com.dev.zhaoys.data.response.ArticleData
 import com.dev.zhaoys.data.response.ArticleListData
