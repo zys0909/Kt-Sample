@@ -8,4 +8,6 @@
     <item name="id_uc_view_header_layout" type="id"/>
     <item name="id_uc_view_title_layout" type="id"/>
     <item name="id_uc_view_tab_layout" type="id"/>
+
+    <item name="fake_status_bar_view" type="id"/>
 </resources>

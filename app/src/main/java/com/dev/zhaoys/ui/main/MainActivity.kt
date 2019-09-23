@@ -14,11 +14,10 @@ import com.dev.zhaoys.app.TestApi
 import com.dev.zhaoys.base.BaseActivity
 import com.dev.zhaoys.base.OnItemClick
 import com.dev.zhaoys.imageLoad.StringGlideEngine
-import com.dev.zhaoys.other.single.SingleTon4
+import com.dev.zhaoys.other.DynamicBaseUrl
 import com.dev.zhaoys.ui.TestHomeActivity
 import com.dev.zhaoys.ui.WebActivity
 import com.dev.zhaoys.ui.articlelist.ArticleListActivity
-import com.dev.zhaoys.ui.other.TouchActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -32,12 +31,14 @@ class MainActivity : BaseActivity() {
     override fun layoutId(): Int = R.layout.activity_main
 
     override suspend fun init(savedInstanceState: Bundle?) {
+
         initToolbar("WanAndroid")
         mainAdapter = MainAdapter(HomeSupport(object : OnItemClick {
             override fun itemClick(view: View, position: Int) {
                 when (view.id) {
                     R.id.iv_follow -> {
-                        val article = (mainAdapter.list[position] as HomeArticle.ArticleItem).article
+                        val article =
+                            (mainAdapter.list[position] as HomeArticle.ArticleItem).article
                         article.collect = !article.collect
                         mainAdapter.notifyItemChanged(position, "collect")
                     }
@@ -45,7 +46,8 @@ class MainActivity : BaseActivity() {
                         startActivity(Intent(this@MainActivity, ArticleListActivity::class.java))
                     }
                     R.id.item_article -> {
-                        val article = (mainAdapter.list[position] as HomeArticle.ArticleItem).article
+                        val article =
+                            (mainAdapter.list[position] as HomeArticle.ArticleItem).article
                         startActivity(
                             Intent(this@MainActivity, WebActivity::class.java)
                                 .putExtra(ExtraConst.WEB_URL, article.link)
@@ -70,7 +72,11 @@ class MainActivity : BaseActivity() {
         }
         btn_other.setOnClickListener {
             //            SingleTon4.SingleTonHolder.holder.doSomeWork()
-            startActivity(Intent(this@MainActivity, TouchActivity::class.java))
+//            startActivity(Intent(this@MainActivity, TestImageActivity::class.java))
+//            Log.d("测试TAG",A11OSUtil.getRomType().name)
+            GlobalScope.launch {
+                DynamicBaseUrl.test()
+            }
         }
         model.banner().observe(this, Observer {
             if (!it.isNullOrEmpty()) {
@@ -107,7 +113,12 @@ class MainActivity : BaseActivity() {
                     val temp = response.data?.datas ?: emptyList()
                     val size = if (temp.size > total) total else temp.size
                     for (i in 0 until size) {
-                        list.add(HomeArticle.ArticleItem(HomeSupport.POSITION_ARTICLE_LIST + 1, temp[i]))
+                        list.add(
+                            HomeArticle.ArticleItem(
+                                HomeSupport.POSITION_ARTICLE_LIST + 1,
+                                temp[i]
+                            )
+                        )
                     }
                     GlobalScope.launch(context = Dispatchers.Main, block = {
                         mainAdapter.loadModules(list)

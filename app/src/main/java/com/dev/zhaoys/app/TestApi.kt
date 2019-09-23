@@ -4,6 +4,7 @@ import com.dev.zhaoys.data.response.ArticleData
 import com.dev.zhaoys.data.response.ArticleListData
 import com.dev.zhaoys.data.response.HomeBannerData
 import com.dev.zhaoys.data.response.Response
+import okhttp3.ResponseBody
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -25,6 +26,12 @@ interface TestApi {
      */
     @GET("article/top/json")
     suspend fun articleTop(): Response<List<ArticleData>>
+
+    /**
+     * 首页置顶文章
+     */
+    @GET("article/top/json")
+    suspend fun testTop(): ResponseBody
 
     /**
      * 首页banner

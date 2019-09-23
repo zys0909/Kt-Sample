@@ -1,6 +1,7 @@
 package com.dev.zhaoys.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +14,7 @@ import com.dev.zhaoys.extend.requestComplete
 import com.dev.zhaoys.extend.smoothToTop
 import com.dev.zhaoys.app.ApiCreate
 import com.dev.zhaoys.app.TestApi
+import com.dev.zhaoys.app.TestCreate
 import com.dev.zhaoys.imageLoad.StringGlideEngine
 import com.dev.zhaoys.ui.main.HomeArticle
 import com.dev.zhaoys.ui.main.HomeSupport
@@ -54,7 +56,8 @@ class TestHomeActivity : BaseActivity() {
             adapter = mainAdapter
         }
         articleList(0)
-        val behavior = (id_uc_view_header_layout.layoutParams as CoordinatorLayout.LayoutParams).behavior
+        val behavior =
+            (id_uc_view_header_layout.layoutParams as CoordinatorLayout.LayoutParams).behavior
         headerBehavior = behavior as UCViewHeaderBehaviorNormal
         smartRefreshLayout.setOnRefreshLoadMoreListener(object : OnRefreshLoadMoreListener {
             override fun onLoadMore(refreshLayout: RefreshLayout) {
@@ -67,6 +70,17 @@ class TestHomeActivity : BaseActivity() {
                 articleList(0)
             }
         })
+        test()
+    }
+
+    private fun test() {
+        GlobalScope.launch {
+            try {
+                val response = TestCreate.build(TestApi::class.java).testTop()
+                Log.d("测试TAG", response.bytes().toString())
+            } catch (e: java.lang.Exception) {
+            }
+        }
     }
 
     private fun articleList(index: Int) {

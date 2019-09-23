@@ -1,9 +1,7 @@
 package com.dev.zhaoys.other
 
 import android.util.Log
-import okhttp3.Interceptor
-import okhttp3.OkHttpClient
-import okhttp3.ResponseBody
+import okhttp3.*
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.http.GET
@@ -39,12 +37,32 @@ object DynamicBaseUrl {
                     .host(host)
                     .build()
                 request = request.newBuilder()
-                    .url(newUrl)
+                    .url(host)
                     .build()
             }
             return chain.proceed(request)
         }
     }
+
+
+    class CallFactoryProxy(private val httpClient: OkHttpClient) : okhttp3.Call.Factory {
+
+        @Volatile
+        private var baseUrl: String? = null
+
+        fun url(baseUrl: String?) {
+            this.baseUrl = baseUrl
+        }
+
+        override fun newCall(request: Request): okhttp3.Call {
+            val req: Request = if (baseUrl != null)
+                request.newBuilder().url(baseUrl!!).build()
+            else
+                request
+            return httpClient.newCall(req)
+        }
+    }
+
 
     @Throws(IOException::class)
     @JvmStatic
@@ -55,28 +73,25 @@ object DynamicBaseUrl {
             .addInterceptor(hostSelectionInterceptor)
             .build()
 
+        val porxy = CallFactoryProxy(okHttpClient)
+
         val retrofit = Retrofit.Builder()
             .baseUrl("http://www.github.com/")
-            .callFactory(okHttpClient)
+            .callFactory(porxy)
             .build()
 
-        val pop = retrofit.create(DynamicBaseUrl.Pop::class.java)
+        val pop = retrofit.create(Pop::class.java)
 
         val response1 = pop.robots().execute()
         Log.d("测试TAG", "Response1 from: " + response1.raw().request.url)
 
-        hostSelectionInterceptor.setHost("www.pepsi.com")
-
+       // hostSelectionInterceptor.setHost("http://www.github.com/")
+        porxy.url("http://www.github.com/")
         val response2 = pop.robots().execute()
         Log.d("测试TAG", "Response2 from: " + response2.raw().request.url)
 
-        hostSelectionInterceptor.setHost(null)
+        porxy.url(null)
         val response3 = pop.robots().execute()
         Log.d("测试TAG", "Response3 from: " + response3.raw().request.url)
-
-        val retrofit1 = retrofit.newBuilder().baseUrl("http://www.pepsi.com/").build()
-        val pop1 = retrofit1.create(DynamicBaseUrl.Pop::class.java)
-        val response4 = pop1.robots().execute()
-        Log.d("测试TAG", "Response4 from: " + response4.raw().request.url)
     }
 }
