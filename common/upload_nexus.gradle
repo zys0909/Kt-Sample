@@ -14,8 +14,8 @@ uploadArchives {
             }
             pom.project {
                 version = VERSION_NAME
-                groupId = 'com.centa.dev'
-                artifactId = 'common'
+                groupId = 'com.github.zys0909'
+                artifactId = 'ktx-common'
                 packaging = 'aar'
                 description = 'common library for dev'
             }

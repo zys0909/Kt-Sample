@@ -18,7 +18,8 @@ class TestImageActivity : BaseActivity() {
     override fun layoutId(): Int = R.layout.activity_test_image
 
     override suspend fun init(savedInstanceState: Bundle?) {
-        StringGlideEngine(this).load(icon_1, url,circleCrop = true)
-        TestGlideEngine(this).load(icon_2, url,circleCrop = true)
+        StringGlideEngine(this).load(icon_1, url, circleCrop = true)
+        TestGlideEngine(this).load(icon_2, url, circleCrop = true)
+        TestGlideEngine(this).load(icon_3, url, circleCrop = false)
     }
 }

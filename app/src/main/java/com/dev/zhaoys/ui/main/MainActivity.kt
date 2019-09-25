@@ -18,6 +18,7 @@ import com.dev.zhaoys.other.DynamicBaseUrl
 import com.dev.zhaoys.ui.TestHomeActivity
 import com.dev.zhaoys.ui.WebActivity
 import com.dev.zhaoys.ui.articlelist.ArticleListActivity
+import com.dev.zhaoys.ui.other.TestImageActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -71,12 +72,7 @@ class MainActivity : BaseActivity() {
             startActivity(Intent(this@MainActivity, TestHomeActivity::class.java))
         }
         btn_other.setOnClickListener {
-            //            SingleTon4.SingleTonHolder.holder.doSomeWork()
-//            startActivity(Intent(this@MainActivity, TestImageActivity::class.java))
-//            Log.d("测试TAG",A11OSUtil.getRomType().name)
-            GlobalScope.launch {
-                DynamicBaseUrl.test()
-            }
+            startActivity(Intent(this@MainActivity, TestImageActivity::class.java))
         }
         model.banner().observe(this, Observer {
             if (!it.isNullOrEmpty()) {

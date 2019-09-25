@@ -36,11 +36,13 @@ android {
 dependencies {
     kapt gilde_kapt
     kapt room_kapt
-    implementation navigation_fragment_ktx
-    implementation room_coroutines
-    implementation lifecycle_extensions
-    implementation lifecycle_viewmodel
-    implementation logging_interceptor
-    implementation glide_okhttp
-    implementation mmkv
+    api room_coroutines
+    api lifecycle_extensions
+    api lifecycle_viewmodel
+    api logging_interceptor
+    api glide_okhttp
+    api mmkv
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    api "com.google.android.material:material:1.1.0-alpha10"
+    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-andx-4'
 }
