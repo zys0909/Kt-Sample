@@ -1,0 +1,15 @@
+
+
+显示隐藏文件 defaults write com.apple.finder AppleShowAllFiles YES
+
+新建文件 touch 文件名
+
+jdk安装位置 /usr/libexec/java_home -V
+
+查看jdk可用版本 ls /Library/Java/JavaVirtualMachines/
+
+卸载jdk
+    sudo rm -fr /Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin
+    sudo rm -fr /Library/PreferencesPanes/JavaControlPanel.prefPane
+    sudo rm -fr ~/Library/Application\ Support/Java
+    sudo rm -rf /Library/Java/JavaVirtualMachines/jdk1.8.0_221.jdk

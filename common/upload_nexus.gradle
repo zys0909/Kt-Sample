@@ -5,11 +5,12 @@ uploadArchives {
         mavenDeployer {
             def userName = /*'admin'*/'zhaoys'
             def password = /*'admin123'*/'zx+123'
-            repository(url: URL_RELEASE) {
+
+            repository(url: "file:${new File(rootDir,URL_RELEASE).absolutePath}") {
                 authentication(userName: userName, password: password)
             }
             //快照版本
-            snapshotRepository(url: URL_SNAPSHOTS) {
+            snapshotRepository(url: "file:${new File(rootDir,URL_SNAPSHOTS).absolutePath}") {
                 authentication(userName: userName, password: password)
             }
             pom.project {
