@@ -11,7 +11,7 @@ import org.jetbrains.anko.toast
 class TouchActivity : BaseActivity() {
     override fun layoutId(): Int = R.layout.activity_touch
 
-    override suspend fun init(savedInstanceState: Bundle?) {
+    override fun init(savedInstanceState: Bundle?) {
         button.setOnClickListener {
             toast("点击")
         }

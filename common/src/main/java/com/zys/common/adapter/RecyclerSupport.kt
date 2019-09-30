@@ -1,8 +1,10 @@
 package com.zys.common.adapter
 
+import com.zys.common.imageload.ImageLoader
+
 class RecyclerSupport {
 
-//    lateinit var imageLoader: ImageLoader
+    lateinit var imageLoader: ImageLoader
 
     var onClickCallback: ((position: Int, type: Int) -> Unit)? = null
 

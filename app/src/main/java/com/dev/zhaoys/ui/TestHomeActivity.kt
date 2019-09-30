@@ -2,29 +2,26 @@ package com.dev.zhaoys.ui
 
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev.zhaoys.R
+import com.dev.zhaoys.app.ApiCreate
+import com.dev.zhaoys.app.TestApi
+import com.dev.zhaoys.app.TestCreate
 import com.dev.zhaoys.base.BaseActivity
-import com.dev.zhaoys.base.OnItemClick
 import com.dev.zhaoys.data.PageData
 import com.dev.zhaoys.extend.error
 import com.dev.zhaoys.extend.requestComplete
 import com.dev.zhaoys.extend.smoothToTop
-import com.dev.zhaoys.app.ApiCreate
-import com.dev.zhaoys.app.TestApi
-import com.dev.zhaoys.app.TestCreate
-import com.dev.zhaoys.imageLoad.StringGlideEngine
-import com.dev.zhaoys.ui.main.HomeArticle
-import com.dev.zhaoys.ui.main.HomeSupport
-import com.dev.zhaoys.ui.main.MainAdapter
-import com.dev.zhaoys.ui.main.MainVisitable
-import com.dev.zhaoys.widget.behavior.UCViewHeaderBehavior
+import com.dev.zhaoys.ui.main.ArticleItem
 import com.dev.zhaoys.widget.behavior.UCViewHeaderBehaviorNormal
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
 import com.tencent.mmkv.MMKV
+import com.zys.common.adapter.ItemCell
+import com.zys.common.adapter.RecyclerAdapter
+import com.zys.common.adapter.RecyclerSubmit
+import com.zys.common.adapter.RecyclerSupport
 import kotlinx.android.synthetic.main.activity_new_home.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -38,19 +35,16 @@ import kotlinx.coroutines.launch
  */
 class TestHomeActivity : BaseActivity() {
 
-    private lateinit var mainAdapter: MainAdapter
+    private lateinit var mainAdapter: RecyclerAdapter
+    private val support = RecyclerSupport()
     private lateinit var headerBehavior: UCViewHeaderBehaviorNormal
     private var index = 0
 
     override fun layoutId(): Int = R.layout.activity_new_home
 
-    override suspend fun init(savedInstanceState: Bundle?) {
+    override fun init(savedInstanceState: Bundle?) {
         MMKV.initialize(this)
-        mainAdapter = MainAdapter(HomeSupport(object : OnItemClick {
-            override fun itemClick(view: View, position: Int) {
-
-            }
-        }, StringGlideEngine(this)))
+        mainAdapter = RecyclerAdapter(support)
         recyclerView.apply {
             layoutManager = LinearLayoutManager(this@TestHomeActivity)
             adapter = mainAdapter
@@ -88,14 +82,17 @@ class TestHomeActivity : BaseActivity() {
             try {
                 val response = ApiCreate.build(TestApi::class.java).articleList(index)
                 if (response.errorCode == 0) {
-                    val list = mutableListOf<MainVisitable>()
+                    val list = mutableListOf<ItemCell>()
                     val temp = response.data?.datas ?: emptyList()
                     val size = temp.size
                     for (i in 0 until size) {
-                        list.add(HomeArticle.ArticleItem(0, temp[i]))
+                        list.add(ArticleItem(0, temp[i]))
                     }
                     GlobalScope.launch(context = Dispatchers.Main, block = {
-                        mainAdapter.refresh(list, index == 0)
+                        mainAdapter.submitList(
+                            list,
+                            RecyclerSubmit(index, 10, response.data?.size ?: 0)
+                        )
                         val pageData = response.data?.let {
                             PageData(it.curPage, it.size, it.total)
                         }

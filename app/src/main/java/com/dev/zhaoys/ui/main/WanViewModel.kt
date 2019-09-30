@@ -10,7 +10,7 @@ import com.dev.zhaoys.data.response.ArticleData
 import com.dev.zhaoys.data.response.HomeBannerData
 import kotlinx.coroutines.launch
 
-class MainViewModel : BaseViewModel() {
+class WanViewModel : BaseViewModel() {
     private val bannerLiveData by lazy {
         MutableLiveData<List<HomeBannerData>>()
     }

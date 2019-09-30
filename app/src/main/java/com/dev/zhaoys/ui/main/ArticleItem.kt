@@ -5,6 +5,9 @@ import android.view.View
 import com.dev.zhaoys.R
 import com.dev.zhaoys.data.response.ArticleData
 import com.dev.zhaoys.utils.TimeUtil
+import com.zys.common.adapter.ItemCell
+import com.zys.common.adapter.RecyclerSupport
+import com.zys.common.adapter.RecyclerVH
 import kotlinx.android.synthetic.main.item_home_article.view.*
 
 /**
@@ -13,41 +16,47 @@ import kotlinx.android.synthetic.main.item_home_article.view.*
  * author zhaoys
  * create by 2019/7/22 0022
  */
-class HomeArticle {
-    class ArticleItem(val position: Int, val article: ArticleData) : MainVisitable {
-        override fun uid(): String = article.id.toString()
+class ArticleItem(val position: Int, val article: ArticleData) : ItemCell {
+    override fun itemContent(): String = "article"
 
-        override fun position(): Int = position
+    override fun itemId(): String = article.id.toString()
 
-        override fun layoutId(): Int = HomeSupport.ARTICLE
-    }
+    override fun layoutResId(): Int = R.layout.item_home_article
 
-    class ArticleItemVh(itemView: View, support: HomeSupport) : HomeWrapper.BaseMainViewHolder(itemView, support) {
+    override fun onCreateViewHolder(itemView: View, support: RecyclerSupport): RecyclerVH =
+        ArticleItemVh(itemView, support)
+
+
+    class ArticleItemVh(itemView: View, support: RecyclerSupport) : RecyclerVH(itemView, support) {
         init {
             itemView.apply {
                 setOnClickListener {
-                    support.itemClick.itemClick(it, adapterPosition)
+                    support.onClickCallback?.invoke(adapterPosition, it.id)
                 }
                 iv_follow.setOnClickListener {
-                    support.itemClick.itemClick(it, adapterPosition)
+                    support.onClickCallback?.invoke(adapterPosition, it.id)
                 }
             }
         }
 
-        override fun bind(data: MainVisitable, payload: List<Any>) {
-            if (payload.isNotEmpty()) {
-                val article = (data as ArticleItem).article
+        override fun bind(itemCell: ItemCell, payloads: MutableList<Any>) {
+            if (payloads.isNotEmpty()) {
+                val article = (itemCell as ArticleItem).article
                 itemView.iv_follow.setImageResource(if (article.collect) R.drawable.ic_follow_selected else R.drawable.ic_follow_normal)
+            } else {
+                bind(itemCell)
             }
         }
 
+
         @SuppressLint("SetTextI18n")
-        override fun bind(data: MainVisitable) {
-            val article = (data as ArticleItem).article
+        fun bind(itemCell: ItemCell) {
+            val article = (itemCell as ArticleItem).article
             itemView.apply {
                 iv_follow.setImageResource(if (article.collect) R.drawable.ic_follow_selected else R.drawable.ic_follow_normal)
                 atv_title.text = article.title
-                atv_desc.text = "作者 : ${article.author}  分类 : ${article.superChapterName} 时间 : ${article.niceDate}"
+                atv_desc.text =
+                    "作者 : ${article.author}  分类 : ${article.superChapterName} 时间 : ${article.niceDate}"
                 when {
                     article.type == 1 -> {
                         iv_state.visibility = View.VISIBLE

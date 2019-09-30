@@ -2,26 +2,24 @@ package com.dev.zhaoys.ui.articlelist
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev.zhaoys.R
 import com.dev.zhaoys.app.ApiCreate
 import com.dev.zhaoys.app.ExtraConst
 import com.dev.zhaoys.app.TestApi
 import com.dev.zhaoys.base.BaseActivity
-import com.dev.zhaoys.base.OnItemClick
 import com.dev.zhaoys.data.PageData
 import com.dev.zhaoys.extend.error
 import com.dev.zhaoys.extend.requestComplete
-import com.dev.zhaoys.imageLoad.StringGlideEngine
 import com.dev.zhaoys.ui.WebActivity
-import com.dev.zhaoys.ui.main.HomeArticle
-import com.dev.zhaoys.ui.main.HomeSupport
-import com.dev.zhaoys.ui.main.MainAdapter
-import com.dev.zhaoys.ui.main.MainVisitable
+import com.dev.zhaoys.ui.main.ArticleItem
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
-import kotlinx.android.synthetic.main.activity_main.recyclerView
+import com.zys.common.adapter.ItemCell
+import com.zys.common.adapter.RecyclerAdapter
+import com.zys.common.adapter.RecyclerSubmit
+import com.zys.common.adapter.RecyclerSupport
+import kotlinx.android.synthetic.main.activity_wan_android_main.recyclerView
 import kotlinx.android.synthetic.main.layout_smart_refresh.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -35,35 +33,43 @@ import kotlinx.coroutines.launch
  */
 class ArticleListActivity : BaseActivity() {
 
-    private lateinit var mainAdapter: MainAdapter
+    private lateinit var adapter: RecyclerAdapter
+    private val support = RecyclerSupport()
     private var index = 0
 
     override fun layoutId(): Int = R.layout.activity_article_list
 
-    override suspend fun init(savedInstanceState: Bundle?) {
+    override  fun init(savedInstanceState: Bundle?) {
         initToolbar("最新博文")
 
-        mainAdapter = MainAdapter(HomeSupport(object : OnItemClick {
-            override fun itemClick(view: View, position: Int) {
-                val article = (mainAdapter.list[position] as HomeArticle.ArticleItem).article
-                when (view.id) {
-                    R.id.iv_follow -> {
-                        article.collect = !article.collect
-                        mainAdapter.notifyItemChanged(position, "collect")
-                    }
-                    R.id.item_article -> {
-                        startActivity(
-                            Intent(this@ArticleListActivity, WebActivity::class.java)
-                                .putExtra(ExtraConst.WEB_URL, article.link)
-                                .putExtra(ExtraConst.ACTIVITY_TITLE, article.chapterName)
-                        )
-                    }
+        support.onClickCallback = { position: Int, type: Int ->
+            when (type) {
+                R.id.iv_follow -> {
+                    val article =
+                        (adapter.currentList()[position] as ArticleItem).article
+                    article.collect = !article.collect
+                    adapter.notifyItemChanged(position, "collect")
+                }
+
+                R.id.item_article -> {
+                    val article =
+                        (adapter.currentList()[position] as ArticleItem).article
+                    startActivity(
+                        Intent(this, WebActivity::class.java)
+                            .putExtra(ExtraConst.WEB_URL, article.link)
+                            .putExtra(ExtraConst.ACTIVITY_TITLE, article.chapterName)
+                    )
+                }
+                R.id.atv_title -> {
+
                 }
             }
-        }, StringGlideEngine(this)))
+        }
+
+        adapter = RecyclerAdapter(support)
         recyclerView.apply {
             layoutManager = LinearLayoutManager(this@ArticleListActivity)
-            adapter = mainAdapter
+            adapter = adapter
         }
         smartRefreshLayout.setOnRefreshLoadMoreListener(object : OnRefreshLoadMoreListener {
             override fun onLoadMore(refreshLayout: RefreshLayout) {
@@ -84,14 +90,14 @@ class ArticleListActivity : BaseActivity() {
             try {
                 val response = ApiCreate.build(TestApi::class.java).articleList(index)
                 if (response.errorCode == 0) {
-                    val list = mutableListOf<MainVisitable>()
+                    val list = mutableListOf<ItemCell>()
                     val temp = response.data?.datas ?: emptyList()
                     val size = temp.size
                     for (i in 0 until size) {
-                        list.add(HomeArticle.ArticleItem(0, temp[i]))
+                        list.add(ArticleItem(0, temp[i]))
                     }
                     GlobalScope.launch(context = Dispatchers.Main, block = {
-                        mainAdapter.refresh(list, index == 0)
+                        adapter.submitList(list, RecyclerSubmit(index,10,response.data?.size?:0))
                         val pageData = response.data?.let {
                             PageData(it.curPage, it.size, it.total)
                         }

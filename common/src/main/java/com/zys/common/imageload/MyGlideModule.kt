@@ -1,4 +1,4 @@
-package com.dev.zhaoys.imageLoad
+package com.zys.common.imageload
 
 import android.content.Context
 import com.bumptech.glide.Glide
@@ -12,8 +12,8 @@ import com.bumptech.glide.load.engine.cache.ExternalPreferredCacheDiskCacheFacto
 import com.bumptech.glide.load.model.GlideUrl
 import com.bumptech.glide.module.AppGlideModule
 import com.bumptech.glide.request.RequestOptions
-import com.dev.zhaoys.BuildConfig.CONNECT_TIMEOUT
-import com.dev.zhaoys.BuildConfig.READ_TIMEOUT
+import com.zys.common.imageload.MyGlideModule.Companion.CONNECT_TIMEOUT
+import com.zys.common.imageload.MyGlideModule.Companion.READ_TIMEOUT
 import okhttp3.OkHttpClient
 import java.io.InputStream
 import java.util.concurrent.TimeUnit
@@ -24,6 +24,11 @@ import java.util.concurrent.TimeUnit
  */
 @GlideModule
 class MyGlideModule : AppGlideModule() {
+
+    companion object {
+        const val CONNECT_TIMEOUT = 30000L
+        const val READ_TIMEOUT = 30000L
+    }
 
     override fun isManifestParsingEnabled(): Boolean {
         return false
@@ -46,6 +51,7 @@ class MyGlideModule : AppGlideModule() {
         )
     }
 }
+
 class OkHttpClient4Glide private constructor() {
 
     companion object {
