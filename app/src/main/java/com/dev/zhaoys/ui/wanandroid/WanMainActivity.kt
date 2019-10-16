@@ -1,9 +1,8 @@
-package com.dev.zhaoys.ui.main
+package com.dev.zhaoys.ui.wanandroid
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev.zhaoys.R
@@ -11,8 +10,8 @@ import com.dev.zhaoys.app.ApiCreate
 import com.dev.zhaoys.app.ExtraConst
 import com.dev.zhaoys.app.TestApi
 import com.dev.zhaoys.base.BaseActivity
-import com.dev.zhaoys.ui.WebActivity
 import com.dev.zhaoys.ui.articlelist.ArticleListActivity
+import com.dev.zhaoys.ui.other.WebActivity
 import com.zys.common.adapter.ItemCell
 import com.zys.common.adapter.RecyclerAdapter
 import com.zys.common.adapter.RecyclerSubmit
@@ -31,8 +30,8 @@ class WanMainActivity : BaseActivity() {
         const val POSITION_ARTICLE_LIST = 10
     }
 
-    private val model by lazy { ViewModelProviders.of(this).get(WanViewModel::class.java) }
-    //    private val model by lazy { defaultViewModelProviderFactory.create(WanViewModel::class.java) }
+//    private val model by lazy { ViewModelProviders.of(this).get(WanViewModel::class.java) }
+        private val model by lazy { defaultViewModelProviderFactory.create(WanViewModel::class.java) }
     private val support = RecyclerSupport()
     private lateinit var adapter: RecyclerAdapter
     override fun layoutId(): Int = R.layout.activity_wan_android_main

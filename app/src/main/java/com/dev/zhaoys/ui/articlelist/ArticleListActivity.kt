@@ -11,8 +11,8 @@ import com.dev.zhaoys.base.BaseActivity
 import com.dev.zhaoys.data.PageData
 import com.dev.zhaoys.extend.error
 import com.dev.zhaoys.extend.requestComplete
-import com.dev.zhaoys.ui.WebActivity
-import com.dev.zhaoys.ui.main.ArticleItem
+import com.dev.zhaoys.ui.wanandroid.ArticleItem
+import com.dev.zhaoys.ui.other.WebActivity
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
 import com.zys.common.adapter.ItemCell

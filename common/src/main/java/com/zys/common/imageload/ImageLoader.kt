@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 
@@ -15,6 +16,9 @@ class ImageLoader {
         RequestOptions()
     }
     private val circleRequestOptions by lazy {
+        RequestOptions().transform(CircleCrop())
+    }
+    private val topCircleRequestOptions by lazy {
         RequestOptions().transform(TopCircleCrop())
     }
 
@@ -58,6 +62,22 @@ class ImageLoader {
             .load(url)
             .apply(
                 circleRequestOptions.autoClone()
+                    .placeholder(placeholder)
+                    .error(error)
+            )
+            .into(view)
+    }
+
+    fun loadTopCircle(
+        view: ImageView,
+        url: String?,
+        placeholder: Int = 0,
+        error: Int = 0
+    ) {
+        requestManager
+            .load(url)
+            .apply(
+                topCircleRequestOptions.autoClone()
                     .placeholder(placeholder)
                     .error(error)
             )

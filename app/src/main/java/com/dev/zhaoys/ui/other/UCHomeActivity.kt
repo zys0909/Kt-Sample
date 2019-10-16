@@ -1,4 +1,4 @@
-package com.dev.zhaoys.ui
+package com.dev.zhaoys.ui.other
 
 import android.os.Bundle
 import android.util.Log
@@ -13,7 +13,7 @@ import com.dev.zhaoys.data.PageData
 import com.dev.zhaoys.extend.error
 import com.dev.zhaoys.extend.requestComplete
 import com.dev.zhaoys.extend.smoothToTop
-import com.dev.zhaoys.ui.main.ArticleItem
+import com.dev.zhaoys.ui.wanandroid.ArticleItem
 import com.dev.zhaoys.widget.behavior.UCViewHeaderBehaviorNormal
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
@@ -28,12 +28,12 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 /**
- * 描述:
+ * 描述:仿uc首页
  *
  * author zhaoys
  * create by 2019/7/29 0029
  */
-class TestHomeActivity : BaseActivity() {
+class UCHomeActivity : BaseActivity() {
 
     private lateinit var mainAdapter: RecyclerAdapter
     private val support = RecyclerSupport()
@@ -46,7 +46,7 @@ class TestHomeActivity : BaseActivity() {
         MMKV.initialize(this)
         mainAdapter = RecyclerAdapter(support)
         recyclerView.apply {
-            layoutManager = LinearLayoutManager(this@TestHomeActivity)
+            layoutManager = LinearLayoutManager(this@UCHomeActivity)
             adapter = mainAdapter
         }
         articleList(0)

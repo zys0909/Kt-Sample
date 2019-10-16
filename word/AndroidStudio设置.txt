@@ -2,8 +2,8 @@
 	Editor->General->auto-import ->
 	
 2.忽略大小写 
-	Editor->General->Code-completion --设置为None;
-	
+	Editor->General->Code-completion --设置为None;Match cas
+
 3.永久显示行号 
 	Editor->General->Appearance->show line numbers;
 	

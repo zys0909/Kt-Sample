@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.*
 
 @Suppress("unused")
-class RecyclerAdapter(
+open class RecyclerAdapter(
     private val support: RecyclerSupport,
     config: AsyncDifferConfig<ItemCell> = AsyncDifferConfig.Builder(object :
         DiffUtil.ItemCallback<ItemCell>() {

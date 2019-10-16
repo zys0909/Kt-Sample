@@ -1,4 +1,4 @@
-package com.dev.zhaoys.ui.main
+package com.dev.zhaoys.ui.wanandroid
 
 import android.annotation.SuppressLint
 import android.view.View

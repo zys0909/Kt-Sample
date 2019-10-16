@@ -26,12 +26,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.main.WanMainActivity"/>
+        <activity android:name=".ui.wanandroid.WanMainActivity"/>
         <activity android:name=".ui.articlelist.ArticleListActivity" />
-        <activity android:name=".ui.WebActivity" />
-        <activity android:name=".ui.TestHomeActivity" />
-        <activity android:name=".ui.other.TouchActivity" />
+        <activity android:name=".ui.other.WebActivity" />
+        <activity android:name=".ui.other.UCHomeActivity" />
+        <activity android:name=".ui.sticky.StickyRecyclerViewActivity" />
         <activity android:name=".ui.other.TestImageActivity" />
+        <activity android:name=".ui.other.TestActivity"/>
     </application>
 
 </manifest>

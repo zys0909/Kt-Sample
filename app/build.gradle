@@ -4,11 +4,13 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion rootProject.ext.compileSdk
+    buildToolsVersion rootProject.ext.buildTools
+
     defaultConfig {
         applicationId "com.centa.zhaoys"
-        minSdkVersion 21
-        targetSdkVersion 29
+        minSdkVersion rootProject.ext.minSdk
+        targetSdkVersion rootProject.ext.targetSdk
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -18,7 +20,6 @@ android {
 
         packagingOptions {
             pickFirst 'META-INF/*'
-//            exclude 'META-INF/library_release.kotlin_module'
         }
     }
     buildTypes {
@@ -45,6 +46,8 @@ dependencies {
     } else {
         implementation 'com.github.zys0909:ktx-common:0.0.1'
     }
+
+    implementation 'com.google.code.gson:gson:2.8.6'
     implementation anko
     implementation lottie
     implementation tencent_x5

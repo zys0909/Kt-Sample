@@ -1,4 +1,4 @@
-package com.dev.zhaoys.ui
+package com.dev.zhaoys.ui.other
 
 import android.app.Activity
 import android.content.Intent
