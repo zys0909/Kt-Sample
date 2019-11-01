@@ -10,6 +10,7 @@ import com.dev.zhaoys.extend.openActivity
 import com.dev.zhaoys.ui.other.TestImageActivity
 import com.dev.zhaoys.ui.other.UCHomeActivity
 import com.dev.zhaoys.ui.sticky.StickyRecyclerViewActivity
+import com.dev.zhaoys.ui.testview.TestViewActivity
 import com.dev.zhaoys.ui.wanandroid.WanMainActivity
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -33,7 +34,7 @@ class HomeActivity : BaseActivity() {
     override fun init(savedInstanceState: Bundle?) {
         initToolbar("Home", false)
         val support = RecyclerSupport()
-        support.onClickCallback = { position: Int, type: Int ->
+        support.onClickCallback = { position: Int, _: Int ->
             when (adapter.currentList()[position].itemId()) {
                 "0" -> openActivity(WanMainActivity::class.java)
                 "1" -> openActivity(UCHomeActivity::class.java)
@@ -42,6 +43,7 @@ class HomeActivity : BaseActivity() {
                 "4" -> {
                     test()
                 }
+                "5" -> openActivity(TestViewActivity::class.java)
                 else -> {
                     toast("未指定页面")
                 }
@@ -57,6 +59,7 @@ class HomeActivity : BaseActivity() {
         list.add(HomeItem("2", "图片顶部裁剪"))
         list.add(HomeItem("3", "StickyRecycler"))
         list.add(HomeItem("4", "测试"))
+        list.add(HomeItem("5", "TestView"))
         adapter.submitList(list, RecyclerSubmit(0, 10, list.size))
     }
 

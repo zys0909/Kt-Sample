@@ -1,4 +1,4 @@
-package com.dev.zhaoys.ui.articlelist
+package com.dev.zhaoys.ui.wanandroid
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,8 +11,7 @@ import com.dev.zhaoys.base.BaseActivity
 import com.dev.zhaoys.data.PageData
 import com.dev.zhaoys.extend.error
 import com.dev.zhaoys.extend.requestComplete
-import com.dev.zhaoys.ui.wanandroid.ArticleItem
-import com.dev.zhaoys.ui.other.WebActivity
+import com.dev.zhaoys.ui.WebActivity
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
 import com.zys.common.adapter.ItemCell

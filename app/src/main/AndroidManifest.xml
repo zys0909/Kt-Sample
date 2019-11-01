@@ -19,6 +19,11 @@
         android:theme="@style/NoActionBar"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning"
         tools:targetApi="n">
+
+        <activity-alias
+            android:name=".app.App"
+            android:icon="@color/colorAccent"
+            android:targetActivity=".ui.home.HomeActivity"/>
         <activity android:name=".ui.home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,12 +32,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.wanandroid.WanMainActivity"/>
-        <activity android:name=".ui.articlelist.ArticleListActivity" />
-        <activity android:name=".ui.other.WebActivity" />
+        <activity android:name=".ui.wanandroid.ArticleListActivity" />
+        <activity android:name=".ui.WebActivity" />
         <activity android:name=".ui.other.UCHomeActivity" />
         <activity android:name=".ui.sticky.StickyRecyclerViewActivity" />
         <activity android:name=".ui.other.TestImageActivity" />
-        <activity android:name=".ui.other.TestActivity"/>
+        <activity android:name=".ui.testview.TestViewActivity"/>
     </application>
 
 </manifest>

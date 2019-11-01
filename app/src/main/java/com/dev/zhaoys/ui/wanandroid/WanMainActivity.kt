@@ -10,8 +10,7 @@ import com.dev.zhaoys.app.ApiCreate
 import com.dev.zhaoys.app.ExtraConst
 import com.dev.zhaoys.app.TestApi
 import com.dev.zhaoys.base.BaseActivity
-import com.dev.zhaoys.ui.articlelist.ArticleListActivity
-import com.dev.zhaoys.ui.other.WebActivity
+import com.dev.zhaoys.ui.WebActivity
 import com.zys.common.adapter.ItemCell
 import com.zys.common.adapter.RecyclerAdapter
 import com.zys.common.adapter.RecyclerSubmit

@@ -9,13 +9,13 @@ import com.zys.common.adapter.ItemCell
 import com.zys.common.adapter.RecyclerAdapter
 import com.zys.common.adapter.RecyclerSubmit
 import com.zys.common.adapter.RecyclerSupport
-import kotlinx.android.synthetic.main.activity_touch.*
+import kotlinx.android.synthetic.main.activity_sticky_recyclerview.*
 import org.jetbrains.anko.toast
 
 class StickyRecyclerViewActivity : BaseActivity() {
     private lateinit var adapter: RecyclerAdapter
     private lateinit var manager: LinearLayoutManager
-    override fun layoutId(): Int = R.layout.activity_touch
+    override fun layoutId(): Int = R.layout.activity_sticky_recyclerview
 
     override fun init(savedInstanceState: Bundle?) {
         initToolbar("StickyRecycler")
