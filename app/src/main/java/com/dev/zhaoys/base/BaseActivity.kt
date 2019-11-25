@@ -1,6 +1,7 @@
 package com.dev.zhaoys.base
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -10,34 +11,32 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.lifecycle.lifecycleScope
 import com.dev.zhaoys.R
 import com.dev.zhaoys.app.ExtraConst
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.zys.common.util.StatusBarUtils
 import java.util.*
 
 abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        StatusBarUtils.setTransparent(this)
         setContentView(layoutId())
-        lifecycleScope.launch(context = Dispatchers.Main, block = {
-            val title = intent.getStringExtra(ExtraConst.ACTIVITY_TITLE)
-            title?.let {
-                initToolbar(it)
-            }
-            init(savedInstanceState)
-        })
+        val title = intent.getStringExtra(ExtraConst.ACTIVITY_TITLE)
+        title?.let {
+            initToolbar(it)
+        }
+        init(savedInstanceState)
     }
 
     @LayoutRes
     protected abstract fun layoutId(): Int
 
-    protected abstract suspend fun init(savedInstanceState: Bundle?)
+    protected abstract fun init(savedInstanceState: Bundle?)
 
     protected fun initToolbar(title: CharSequence? = null, showHomeAsUp: Boolean = true) {
         findViewById<Toolbar>(R.id.toolbar)?.let {
+            it.setPadding(0, StatusBarUtils.getHeight(this), 0, 0)
             setSupportActionBar(it)
             supportActionBar?.setDisplayHomeAsUpEnabled(showHomeAsUp)
             supportActionBar?.title = title
@@ -45,8 +44,8 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean = when {
-        item?.itemId == android.R.id.home -> {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = when {
+        item.itemId == android.R.id.home -> {
             finish()
             true
         }
@@ -69,6 +68,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     private var phone = ""
 
+    @SuppressLint("MissingPermission")
     private fun dialing(phone: String) {
         if (Build.VERSION.SDK_INT >= 23) {
             this.phone = phone
@@ -78,7 +78,12 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    @SuppressLint("MissingPermission")
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == 999 && phone.isNotEmpty())
             startActivity(Intent(Intent.ACTION_CALL, Uri.parse("tel:$phone")))

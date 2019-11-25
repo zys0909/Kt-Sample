@@ -3,7 +3,7 @@ package com.dev.zhaoys.widget.behavior;
 import android.view.View;
 import androidx.core.view.ViewCompat;
 
-class ViewOffsetHelper {
+public class ViewOffsetHelper {
     private final View view;
     private int layoutTop;
     private int layoutLeft;

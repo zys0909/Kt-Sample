@@ -1,0 +1,55 @@
+1.自动导包 
+	Editor->General->auto-import ->
+	
+2.忽略大小写 
+	Editor->General->Code-completion --设置为None;Match cas
+
+3.永久显示行号 
+	Editor->General->Appearance->show line numbers;
+	
+4.显示方法间隔线
+	Editor->General->Appearance->show method separators
+	
+5.抽取变量加前缀
+	Editor->CodeStyle->Java->Code Generation
+	
+6.制表符缩进提示
+	Editor->CodeStyle->Java->Tabs
+	
+7.悬浮提示
+	Editor->General->右侧other->show quick..
+	
+8.改变代码编辑区的字体大小
+	Eidor->Color&Fonts->Font
+	
+9.修改代码编辑区的背景色
+	建议颜色,淡绿色,俗称豆沙绿(#BEEDBE)
+	Editor->Color&Fonts->General ->Text->Defeult text
+	
+10.改变LogCat输出的字体大小
+	Eidor>Color&Fonts>ConsleFont
+		
+11.修改关键字颜色
+	Editor->Colors&Fonts->Java，在右侧的界面中点击Keyword，在这里可以统一设置代码中所有关键字的颜色。
+	
+12.当前行高亮显示
+	Eidor->Color&Fonts->General->右侧editor->Caret row
+
+13.修改头条,即类前面的注释
+	Eidor->File and Code Templates->Includes
+	
+14、设置行宽
+就是那条右标准线的位置：Setting-->Editor-->Code Style，右侧找到Right margin (columns)，默认值是100
+
+15、设置格式化的时候自动断行到行宽位置
+这样就不用往右拖看代码了：Setting-->Editor-->Code Style-->Java，
+点击右侧标签Wrapping and Braces下勾选Line breaks和EnSure right margin is not exceeded
+
+16.设置文件名 分多行显示
+	Editor->General->Editor Tabs ->show tabs in one row
+
+17.启动时,自动打开上次关闭的项目
+	Appearance-->System Setting-->Reopen last project on startup
+
+18.设置窗口UI的字体大小
+	Appearance -->use custom font

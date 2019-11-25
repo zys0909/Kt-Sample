@@ -17,7 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.util.List;
 
-abstract class HeaderScrollingViewBehavior extends ViewOffsetBehavior<View> {
+public abstract class HeaderScrollingViewBehavior extends ViewOffsetBehavior<View> {
     final Rect tempRect1 = new Rect();
     final Rect tempRect2 = new Rect();
     private int verticalLayoutGap = 0;

@@ -31,7 +31,7 @@ class WebActivity : BaseActivity() {
     private var menuState = false
     override fun layoutId() = R.layout.activity_web
 
-    override suspend fun init(savedInstanceState: Bundle?) {
+    override fun init(savedInstanceState: Bundle?) {
         webView.settings.apply {
             loadWithOverviewMode = true
             layoutAlgorithm = WebSettings.LayoutAlgorithm.NARROW_COLUMNS
@@ -205,8 +205,8 @@ class WebActivity : BaseActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?) =
-        when (item?.itemId) {
+    override fun onOptionsItemSelected(item: MenuItem) =
+        when (item.itemId) {
 //            R.id.action_web -> {
 //                webView.loadUrl(webMenuParam?.url)
 //                true
