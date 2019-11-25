@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dev.zhaoys.base.BaseActivity
 import com.dev.zhaoys.extend.openActivity
+import com.dev.zhaoys.ui.other.RulerActivity
 import com.dev.zhaoys.ui.other.TestImageActivity
 import com.dev.zhaoys.ui.other.UCHomeActivity
 import com.dev.zhaoys.ui.sticky.StickyRecyclerViewActivity
@@ -44,6 +45,7 @@ class HomeActivity : BaseActivity() {
                     test()
                 }
                 "5" -> openActivity(TestViewActivity::class.java)
+                "6" -> openActivity(RulerActivity::class.java)
                 else -> {
                     toast("未指定页面")
                 }
@@ -60,6 +62,7 @@ class HomeActivity : BaseActivity() {
         list.add(HomeItem("3", "StickyRecycler"))
         list.add(HomeItem("4", "测试"))
         list.add(HomeItem("5", "TestView"))
+        list.add(HomeItem("6", "Ruler-View"))
         adapter.submitList(list, RecyclerSubmit(0, 10, list.size))
     }
 

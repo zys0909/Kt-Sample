@@ -39,6 +39,7 @@ class StickyRecyclerViewActivity : BaseActivity() {
         }
         adapter = RecyclerAdapter(support)
         manager = LinearLayoutManager(this)
+        manager.findFirstVisibleItemPosition()
         qm_recyclerView.setLayoutManager(manager)
         qm_recyclerView.addItemDecoration(
             StickyItemDecoration(qm_recyclerView.stickySectionWrapView, adapter, ITEM_HEADER)

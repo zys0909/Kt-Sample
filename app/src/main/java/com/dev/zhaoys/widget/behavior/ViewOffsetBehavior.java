@@ -7,7 +7,7 @@ import android.view.View;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout.Behavior;
 
-class ViewOffsetBehavior<V extends View> extends Behavior<V> {
+public class ViewOffsetBehavior<V extends View> extends Behavior<V> {
     private ViewOffsetHelper viewOffsetHelper;
     private int tempTopBottomOffset = 0;
     private int tempLeftRightOffset = 0;

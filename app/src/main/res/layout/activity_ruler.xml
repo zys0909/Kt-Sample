@@ -9,14 +9,13 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@id/toolbar"
         style="@style/ToolbarStyle" />
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_play"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="播报"/>
 
-    <com.dev.zhaoys.ui.testview.PathView
-        android:layout_width="200dp"
-        android:layout_height="200dp" />
+    <com.dev.zhaoys.widget.ruler.ScrollRulerLayout
+        android:id="@+id/ruler_view"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp" />
 
 </LinearLayout>
