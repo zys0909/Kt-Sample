@@ -1,6 +1,5 @@
 package com.dev.zhaoys.widget.ruler;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -8,7 +7,6 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.dev.zhaoys.R;
 
@@ -20,7 +18,7 @@ import com.dev.zhaoys.R;
  * @author WANG
  * @date 2019/3/21
  */
-public class ScrollRulerLayout extends ViewGroup implements ScrollSelected {
+public class ScrollRulerLayout extends ViewGroup{
 
     private RulerView mRulerView;
     private ImageView mCenterPointer;
@@ -102,14 +100,13 @@ public class ScrollRulerLayout extends ViewGroup implements ScrollSelected {
         layoutParams.width = dp2px(12);
         layoutParams.height = LayoutParams.MATCH_PARENT;
         mCenterPointer.setLayoutParams(layoutParams);
-        mRulerView.setScrollSelected(this);
         addView(mRulerView);
         addView(mCenterPointer);
     }
 
-    public void setScope(int start, int end, int offSet) {
+    public void setScope(int start, int end, int offSet,int minTipRuler) {
         if (null != mRulerView) {
-            mRulerView.setScope(start, end, offSet);
+            mRulerView.setScope(start, end, offSet,minTipRuler);
         }
     }
 
@@ -144,21 +141,7 @@ public class ScrollRulerLayout extends ViewGroup implements ScrollSelected {
         return (int) (getContext().getResources().getDisplayMetrics().density * dp + 0.5f);
     }
 
-
-    @Override
-    public void selected(String selected) {
-        showToast(getContext(), selected);
-    }
-
-    private Toast toast;
-
-    @SuppressLint("ShowToast")
-    private void showToast(Context context, String text) {
-        if (toast == null) {
-            toast = Toast.makeText(getContext(), text, Toast.LENGTH_SHORT);
-        } else {
-            toast.setText(text);
-        }
-        toast.show();
+    public void setScrollSelected(ScrollSelected scrollSelected ){
+        mRulerView.setScrollSelected(scrollSelected);
     }
 }

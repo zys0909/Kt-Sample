@@ -166,7 +166,7 @@ public class RulerView extends View implements ScrollChange {
 
     private void initDistanceForDp() {
         mLineWidth = dp2px(1);
-        mLineSpace = dp2px(25);
+        mLineSpace = dp2px(5);
         mSmallLineHeight = dp2px(4);
         mLongLineHeight = dp2px(9);
         dpFor05 = dp2px(0.5f);
@@ -179,8 +179,9 @@ public class RulerView extends View implements ScrollChange {
      * @param start
      * @param end
      */
-    public void setScope(int start, int end, int longOffSet) {
-        mRulerHelper.setScope(start, end, longOffSet);
+    public void setScope(int start, int end, int longOffSet, int minTipRuler) {
+        mRulerHelper.setScope(start, end, longOffSet, minTipRuler);
+        mLineSpace = dp2px(mRulerHelper.getMinRulerPx());
         int counts = mRulerHelper.getCounts();
         mCountWidth = counts * mLineSpace + counts * mLineWidth;
         invalidate();
@@ -256,15 +257,17 @@ public class RulerView extends View implements ScrollChange {
             mRect.top = getEndY();
             mRect.right = mRect.left + mLineWidth;
             mRect.bottom = getStartY(longLine);
-            if (longLine) {
-                String text = mRulerHelper.getTextByIndex(mTextIndex);
-                mTextIndex++;
-                canvas.drawText(text, mRect.centerX(), mLongLineHeight + dpFor14, mTextPaint);
-            }
             if (!mRulerHelper.isFull()) {
                 mRulerHelper.addPoint(mRect.left);
             }
-            canvas.drawRect(mRect, mLinePaint);
+            if (mRulerHelper.isShowRuler(index)) {
+                if (longLine) {
+                    String text = mRulerHelper.getTextByIndex(mTextIndex);
+                    mTextIndex++;
+                    canvas.drawText(text, mRect.centerX(), mLongLineHeight + dpFor14, mTextPaint);
+                }
+                canvas.drawRect(mRect, mLinePaint);
+            }
             mRect.setEmpty();
         }
     }

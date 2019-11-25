@@ -9,7 +9,7 @@ import java.util.List;
 public class RulerHelper {
 
     private int currentLine = -1;
-    private int offSet = 500;
+    private int offSet = 100;
     private List<Integer> mPoints;
     private int mCenterPointX;
     private ScrollChange scrollChange;
@@ -18,6 +18,8 @@ public class RulerHelper {
 
     private List<String> texts;
     private List<String> smallRulers;
+    private int minTipRuler = 50;
+    private float minRulerPx = 5;
 
     public RulerHelper(ScrollChange scrollChange) {
         texts = new ArrayList<>();
@@ -30,6 +32,10 @@ public class RulerHelper {
         return smallRulers.size();
     }
 
+    public float getMinRulerPx() {
+        return minRulerPx;
+    }
+
     public String getCurrentText() {
         return currentText;
     }
@@ -39,7 +45,7 @@ public class RulerHelper {
     }
 
     public boolean isLongLine(int index) {
-        int lineIndex = index / 2;
+        int lineIndex = index / (this.offSet / this.minTipRuler);
         if (currentLine != lineIndex) {
             currentLine = lineIndex;
             return true;
@@ -47,11 +53,21 @@ public class RulerHelper {
         return false;
     }
 
-    public void setScope(int start, int count, int offSet) {
+    public boolean isShowRuler(int index) {
+        // 默认一个大刻度下显示一个小刻度，就是两个刻度
+        return index % (this.offSet / 2 / this.minTipRuler) == 0;
+    }
+
+
+    public void setScope(int start, int count, int offSet, int minTipRuler) {
         if (offSet != 0) {
             this.offSet = offSet;
         }
-        for (int i = start; i <= count; i += (this.offSet / 2)) {
+        if (minTipRuler != 0) {
+            this.minTipRuler = minTipRuler;
+        }
+        this.minRulerPx = 50.0f * this.minTipRuler / this.offSet;
+        for (int i = start; i <= count; i += this.minTipRuler) {
             if (i % this.offSet == 0) {
                 texts.add(String.valueOf(i));
             }
@@ -142,7 +158,7 @@ public class RulerHelper {
         texts.clear();
         mPoints = null;
         texts = null;
-        smallRulers =null;
+        smallRulers = null;
         scrollChange = null;
     }
 }
