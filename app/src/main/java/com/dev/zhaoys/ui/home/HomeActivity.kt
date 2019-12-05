@@ -10,6 +10,7 @@ import com.dev.zhaoys.extend.openActivity
 import com.dev.zhaoys.ui.other.RulerActivity
 import com.dev.zhaoys.ui.other.TestImageActivity
 import com.dev.zhaoys.ui.other.UCHomeActivity
+import com.dev.zhaoys.ui.qmhome.QmHomeActivity
 import com.dev.zhaoys.ui.sticky.StickyRecyclerViewActivity
 import com.dev.zhaoys.ui.testview.TestViewActivity
 import com.dev.zhaoys.ui.wanandroid.WanMainActivity
@@ -46,6 +47,7 @@ class HomeActivity : BaseActivity() {
                 }
                 "5" -> openActivity(TestViewActivity::class.java)
                 "6" -> openActivity(RulerActivity::class.java)
+                "7" -> openActivity(QmHomeActivity::class.java)
                 else -> {
                     toast("未指定页面")
                 }
@@ -63,6 +65,7 @@ class HomeActivity : BaseActivity() {
         list.add(HomeItem("4", "测试"))
         list.add(HomeItem("5", "TestView"))
         list.add(HomeItem("6", "Ruler-View"))
+        list.add(HomeItem("7", "QMUI-Home"))
         adapter.submitList(list, RecyclerSubmit(0, 10, list.size))
     }
 

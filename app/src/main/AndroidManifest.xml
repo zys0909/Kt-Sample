@@ -19,11 +19,7 @@
         android:theme="@style/NoActionBar"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning"
         tools:targetApi="n">
-
-        <activity-alias
-            android:name=".app.App"
-            android:icon="@color/colorAccent"
-            android:targetActivity=".ui.home.HomeActivity"/>
+        <activity android:name=".ui.qmhome.QmHomeActivity"></activity>
         <activity android:name=".ui.home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,14 +27,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.wanandroid.WanMainActivity"/>
+
+        <activity-alias
+            android:name=".app.App"
+            android:icon="@color/colorAccent"
+            android:targetActivity=".ui.home.HomeActivity" />
+
+        <activity android:name=".ui.wanandroid.WanMainActivity" />
         <activity android:name=".ui.wanandroid.ArticleListActivity" />
         <activity android:name=".ui.WebActivity" />
         <activity android:name=".ui.other.UCHomeActivity" />
         <activity android:name=".ui.sticky.StickyRecyclerViewActivity" />
         <activity android:name=".ui.other.TestImageActivity" />
-        <activity android:name=".ui.testview.TestViewActivity"/>
-        <activity android:name=".ui.other.RulerActivity"/>
+        <activity android:name=".ui.testview.TestViewActivity" />
+        <activity android:name=".ui.other.RulerActivity" />
     </application>
 
 </manifest>
