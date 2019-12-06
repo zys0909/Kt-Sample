@@ -19,7 +19,6 @@ class RulerActivity : BaseActivity() {
 
     override fun init(savedInstanceState: Bundle?) {
         ruler_view.setScope(0, 1000, 100, 10)
-        ruler_view.setCurrentItem("0")
         ruler_view.setScrollSelected { selected -> showToast(this, selected) }
     }
 

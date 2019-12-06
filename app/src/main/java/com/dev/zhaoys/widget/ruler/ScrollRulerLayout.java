@@ -1,9 +1,11 @@
 package com.dev.zhaoys.widget.ruler;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -11,20 +13,24 @@ import android.widget.ImageView;
 import com.dev.zhaoys.R;
 
 /**
- * Created to : RulerView的载体.
- * GitHub -> https://github.com/WangcWj/AndroidScrollRuler
- * 提交issues联系作者.
- *
- * @author WANG
- * @date 2019/3/21
+ * 描述:RulerView的载体.
+ * <p>
+ * author zys
+ * create by 2019-12-01
  */
-public class ScrollRulerLayout extends ViewGroup{
+public class ScrollRulerLayout extends ViewGroup {
 
     private RulerView mRulerView;
     private ImageView mCenterPointer;
     private Paint mLinePaint;
+    private Paint mPointerPaint;
     private int mLineWidth;
     private int mPadding;
+    private int mPointerColor;//当前刻度标识
+    private int mRulerTextColor;//文本颜色
+    private int mRulerColor;//刻度颜色
+    private int mStrokeColor;//边框颜色
+    private Drawable mPointerDrawable;
 
     public ScrollRulerLayout(Context context) {
         this(context, null);
@@ -36,18 +42,30 @@ public class ScrollRulerLayout extends ViewGroup{
 
     public ScrollRulerLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context);
+        final TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ScrollRulerLayout, 0, 0);
+        //指针图片与指针颜色二者设置其一即可
+        mPointerDrawable = typedArray.getDrawable(R.styleable.ScrollRulerLayout_pointer);
+        mPointerColor = typedArray.getColor(R.styleable.ScrollRulerLayout_pointer_color,Color.RED);
+        mRulerColor = typedArray.getColor(R.styleable.ScrollRulerLayout_ruler_color,Color.GRAY);
+        mRulerTextColor = typedArray.getColor(R.styleable.ScrollRulerLayout_ruler_text_color,Color.BLACK);
+        mStrokeColor = typedArray.getColor(R.styleable.ScrollRulerLayout_stoker_color,Color.GRAY);
+        typedArray.recycle();
+        initPaint();
     }
 
-    private void init(Context context) {
+    private void initPaint() {
         mLinePaint = new Paint();
         mLinePaint.setAntiAlias(true);
         mLineWidth = dp2px(1);
         mLinePaint.setStrokeWidth(mLineWidth);
         mLinePaint.setStrokeWidth(mLineWidth);
         mLinePaint.setStyle(Paint.Style.STROKE);
-        mLinePaint.setColor(Color.parseColor("#666666"));
+        mLinePaint.setColor(mStrokeColor);
         mPadding = dp2px(10);
+
+        mPointerPaint = new Paint();
+        mPointerPaint.setStyle(Paint.Style.FILL);
+        mPointerPaint.setColor(mPointerColor);
     }
 
     @Override
@@ -85,14 +103,22 @@ public class ScrollRulerLayout extends ViewGroup{
     protected void dispatchDraw(Canvas canvas) {
         super.dispatchDraw(canvas);
         canvas.drawRect(0, 0, getWidth(), getHeight(), mLinePaint);
+        if (mPointerDrawable == null) {
+            int centerX = getWidth() / 2;
+            canvas.drawRect(centerX - dp2px(2), 0, centerX + dp2px(2), dp2px(16), mPointerPaint);
+            canvas.drawRect(centerX - dp2px(2), getHeight() - dp2px(16), centerX + dp2px(2), getHeight(), mPointerPaint);
+        }
     }
 
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
         mRulerView = new RulerView(getContext());
+        mRulerView.setRulerColor(mRulerColor);
+        mRulerView.setRulerTextColor(mRulerTextColor);
+
         mCenterPointer = new ImageView(getContext());
-        mCenterPointer.setImageResource(R.drawable.icon_center_pointer);
+        mCenterPointer.setImageDrawable(mPointerDrawable);
         MarginLayoutParams layoutParams = new MarginLayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         layoutParams.leftMargin = mPadding;
         layoutParams.rightMargin = mPadding;
@@ -104,9 +130,9 @@ public class ScrollRulerLayout extends ViewGroup{
         addView(mCenterPointer);
     }
 
-    public void setScope(int start, int end, int offSet,int minTipRuler) {
+    public void setScope(int start, int end, int offSet, int minTipRuler) {
         if (null != mRulerView) {
-            mRulerView.setScope(start, end, offSet,minTipRuler);
+            mRulerView.setScope(start, end, offSet, minTipRuler);
         }
     }
 
@@ -141,7 +167,7 @@ public class ScrollRulerLayout extends ViewGroup{
         return (int) (getContext().getResources().getDisplayMetrics().density * dp + 0.5f);
     }
 
-    public void setScrollSelected(ScrollSelected scrollSelected ){
+    public void setScrollSelected(ScrollSelected scrollSelected) {
         mRulerView.setScrollSelected(scrollSelected);
     }
 }

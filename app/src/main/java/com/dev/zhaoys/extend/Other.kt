@@ -22,6 +22,7 @@ internal fun <T> AppCompatActivity.openActivity(
     params: Array<out Pair<String, Any?>> = arrayOf()
 ) {
     this.startActivity(createIntent(this, clazz, params))
+    this.overridePendingTransition(0,0)
 }
 
 

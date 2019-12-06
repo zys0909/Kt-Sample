@@ -73,6 +73,7 @@ public class RulerHelper {
             }
             smallRulers.add(String.valueOf(i));
         }
+        setCurrentItem(String.valueOf(start));
     }
 
     public String getTextByIndex(int index) {

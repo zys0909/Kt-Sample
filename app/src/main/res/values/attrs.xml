@@ -2,4 +2,12 @@
 <resources>
     <attr name="qmui_alpha_pressed" format="float"/>
     <attr name="qmui_alpha_disabled" format="float"/>
+
+    <declare-styleable name="ScrollRulerLayout">
+        <attr name="pointer" format="reference" />
+        <attr name="pointer_color" format="color" />
+        <attr name="stoker_color" format="color"/>
+        <attr name="ruler_color" format="color"/>
+        <attr name="ruler_text_color" format="color"/>
+    </declare-styleable>
 </resources>

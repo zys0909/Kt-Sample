@@ -16,12 +16,10 @@ import android.widget.Scroller;
 import androidx.annotation.Nullable;
 
 /**
- * Created to :
- * 1.遇到的问题是怎么让他滚动?
- * 2.滚动的时候绘制的内容不会错乱掉?
- * 3.怎么判断滑动的边界?
- * 4.怎么让它Fling?
- * 5.fling之后怎么去判断中间坐标的位置?
+ * 描述:刻度尺
+ * <p>
+ * author zys
+ * create by 2019-12-01
  */
 public class RulerView extends View implements ScrollChange {
 
@@ -170,7 +168,7 @@ public class RulerView extends View implements ScrollChange {
         mSmallLineHeight = dp2px(4);
         mLongLineHeight = dp2px(9);
         dpFor05 = dp2px(0.5f);
-        dpFor14 = dp2px(14);
+        dpFor14 = dp2px(18);
     }
 
     /**
@@ -250,10 +248,11 @@ public class RulerView extends View implements ScrollChange {
      */
     private void drawRuler(Canvas canvas) {
         mTextIndex = 0;
+        final int centerX = mRulerHelper.getCenterPointX();
         for (int index = 0; index < mRulerHelper.getCounts(); index++) {
             boolean longLine = mRulerHelper.isLongLine(index);
             int lineCount = mLineWidth * index;
-            mRect.left = index * mLineSpace + lineCount + mMarginLeft;
+            mRect.left = centerX + index * mLineSpace + lineCount;
             mRect.top = getEndY();
             mRect.right = mRect.left + mLineWidth;
             mRect.bottom = getStartY(longLine);
@@ -383,6 +382,14 @@ public class RulerView extends View implements ScrollChange {
             invalidate();
         }
         super.computeScroll();
+    }
+
+    public void setRulerTextColor(int rulerTextColor) {
+        mTextPaint.setColor(rulerTextColor);
+    }
+
+    public void setRulerColor(int rulerColor) {
+        mLinePaint.setColor(rulerColor);
     }
 
     /**
