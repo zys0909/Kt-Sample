@@ -18,6 +18,7 @@ class RulerActivity : BaseActivity() {
     override fun layoutId(): Int = R.layout.activity_ruler
 
     override fun init(savedInstanceState: Bundle?) {
+        initToolbar("Ruler")
         ruler_view.setScope(0, 1000, 100, 10)
         ruler_view.setScrollSelected { selected -> showToast(this, selected) }
     }

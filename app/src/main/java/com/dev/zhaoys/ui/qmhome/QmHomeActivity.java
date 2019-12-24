@@ -3,9 +3,11 @@ package com.dev.zhaoys.ui.qmhome;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +21,7 @@ import com.dev.zhaoys.ui.qmhome.tools.RecyclerViewHolder;
 import com.dev.zhaoys.ui.qmhome.top.NestedTopAreaBehavior;
 import com.dev.zhaoys.ui.qmhome.top.NestedTopDelegateLayout;
 import com.dev.zhaoys.ui.qmhome.top.NestedTopRecyclerView;
+import com.scwang.smartrefresh.layout.util.DensityUtil;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -61,7 +64,7 @@ public class QmHomeActivity extends BaseActivity {
         headerView.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
         mTopDelegateLayout.setHeaderView(headerView);*/
 
-        /*AppCompatTextView footerView = new AppCompatTextView(this) {
+        AppCompatTextView footerView = new AppCompatTextView(this) {
             @Override
             protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
                 super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(
@@ -74,7 +77,7 @@ public class QmHomeActivity extends BaseActivity {
         footerView.setTextColor(Color.WHITE);
         footerView.setGravity(Gravity.CENTER);
         footerView.setText("This is Top Footer");
-        mTopDelegateLayout.setFooterView(footerView);*/
+        mTopDelegateLayout.setFooterView(footerView);
 
         mTopRecyclerView = new NestedTopRecyclerView(this);
         mTopRecyclerView.setLayoutManager(new LinearLayoutManager(this) {

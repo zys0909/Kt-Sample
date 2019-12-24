@@ -1,7 +1,11 @@
 package com.dev.zhaoys.ui.home
 
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.view.View
 import com.dev.zhaoys.R
+import com.dev.zhaoys.Value
+import com.scwang.smartrefresh.layout.util.DensityUtil
 import com.zys.common.adapter.ItemCell
 import com.zys.common.adapter.RecyclerSupport
 import com.zys.common.adapter.RecyclerVH
@@ -14,10 +18,11 @@ import kotlinx.android.synthetic.main.item_home_normal.view.*
  * author zhaoys
  * create by 2019-09-27
  */
-class HomeItem(var id: String, var content: String) : ItemCell {
+class HomeItem(var id: Int, var content: String, var icon: String = Value.imageUrl[id % Value.imageUrl.size]) :
+    ItemCell {
     override fun itemContent(): String = content
 
-    override fun itemId(): String = id
+    override fun itemId(): String = id.toString()
 
     override fun layoutResId(): Int = R.layout.item_home_normal
 
@@ -27,11 +32,22 @@ class HomeItem(var id: String, var content: String) : ItemCell {
 
 class HomeItemViewHolder(itemView: View, support: RecyclerSupport) : RecyclerVH(itemView, support) {
     init {
+        val drawable = GradientDrawable()
+        drawable.setColor(Color.TRANSPARENT)
+        drawable.shape = GradientDrawable.RECTANGLE
+        drawable.setStroke(DensityUtil.dp2px(2f), Color.GRAY)
+        drawable.cornerRadius = DensityUtil.dp2px(2f).toFloat()
+        itemView.background = drawable
         itemView.debounceClick {
-            support.onClickCallback?.invoke(adapterPosition,it.id)
+            support.onClickCallback?.invoke(adapterPosition, it.id)
         }
     }
+
     override fun bind(itemCell: ItemCell, payloads: MutableList<Any>) {
-        itemView.tv_name.text = itemCell.itemContent()
+        if (itemCell is HomeItem) {
+            itemView.tv_name.text = itemCell.itemContent()
+            itemView.img_icon.visibility = View.GONE
+//            support.imageLoader.load(itemView.img_icon, itemCell.icon)
+        }
     }
 }

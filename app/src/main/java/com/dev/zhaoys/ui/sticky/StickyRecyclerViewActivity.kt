@@ -48,7 +48,7 @@ class StickyRecyclerViewActivity : BaseActivity() {
 
         val list = mutableListOf<ItemCell>()
         for (i in 0..50) {
-            list.add(HomeItem(i.toString(), "Item$i"))
+            list.add(HomeItem(i, "Item$i"))
         }
         list.add(5, HeaderItem())
         adapter.submitList(list, RecyclerSubmit(1, list.size, list.size))

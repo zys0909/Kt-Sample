@@ -41,6 +41,7 @@
         <activity android:name=".ui.other.TestImageActivity" />
         <activity android:name=".ui.testview.TestViewActivity" />
         <activity android:name=".ui.other.RulerActivity" />
+        <activity android:name=".ui.other.ClockActivity" />
     </application>
 
 </manifest>

@@ -105,15 +105,17 @@ public class BottomPagerAdapter extends PagerAdapter {
             }
         });
         recyclerView.setAdapter(adapter);
-        onDataLoaded(adapter);
+        onDataLoaded(adapter, position);
         return recyclerView;
     }
 
-    private void onDataLoaded(BaseRecyclerAdapter<String> adapter) {
-        List<String> data = new ArrayList<>(Arrays.asList("Helps", "Maintain", "Liver", "Health",
+    private void onDataLoaded(BaseRecyclerAdapter<String> adapter, int position) {
+        List<String> data1 = new ArrayList<>(Arrays.asList("Helps", "Maintain", "Liver", "Health",
                 "Function", "Supports", "Healthy", "Fat", "Metabolism", "Nuturally", "Bracket",
                 "Refrigerator", "Bathtub", "Wardrobe", "Comb", "Apron", "Carpet", "Bolster",
                 "Pillow", "Cushion"));
+        List<String> data2 = new ArrayList<>(Arrays.asList("Helps", "Maintain", "Liver"));
+        List<String> data = position % 2 == 0 ? data1 : data2;
         Collections.shuffle(data);
         adapter.setData(data);
     }
