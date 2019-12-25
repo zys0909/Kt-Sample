@@ -23,7 +23,7 @@
         android:paddingStart="15dp"
         android:paddingEnd="15dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context="com.dev.zhaoys.ui.qmhome.QmHomeActivity">
+        tools:context="com.dev.zhaoys.ui.qmhome.StickyTop2Activity">
 
     </com.dev.zhaoys.ui.qmhome.NestedScrollLayout>
 </LinearLayout>

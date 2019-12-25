@@ -59,11 +59,11 @@ public class NestedBottomView extends NestedBottomDelegateLayout {
 
     public void load() {
         List<String> list = new ArrayList<>();
-        list.add("二手房");
-        list.add("租房");
-        list.add("新房");
-        list.add("品质居住");
-        list.add("买房流程");
+        list.add("Header1");
+        list.add("Header2");
+        list.add("Header3");
+        list.add("Header4");
+        list.add("Header5");
         adapter.setData(list);
         mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override

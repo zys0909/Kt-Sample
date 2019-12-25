@@ -36,14 +36,15 @@ android {
 dependencies {
     kapt gilde_kapt
     kapt room_kapt
+    api kotlin_stdlib
+    api material
+
     api room_coroutines
     api lifecycle_extensions
     api lifecycle_viewmodel
-    api 'com.squareup.okhttp3:logging-interceptor:4.2.2'
     api glide_okhttp
+    api okhttp3_log
     api mmkv
-    api 'androidx.constraintlayout:constraintlayout:2.0.0-beta3'
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$rootProject.ext.kotlin_version"
-    api 'com.google.android.material:material:1.2.0-alpha01'
+    api constraintlayout
     api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-andx-4'
 }

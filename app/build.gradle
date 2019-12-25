@@ -48,8 +48,9 @@ dependencies {
     }
 
     implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.airbnb.android:lottie:3.3.1'
     implementation anko
-    implementation 'com.airbnb.android:lottie:3.1.0'
+    implementation viewpager2
     implementation tencent_x5
     implementation retrofit
     implementation retrofit_moshi
@@ -58,7 +59,5 @@ dependencies {
     implementation kotlinx_coroutines
     implementation kotlinx_coroutines_android
     implementation lifecycle_runtime_ktx
-
-    implementation 'com.github.YzyCoding:PushVoiceBroadcast:1.0.2'
 
 }

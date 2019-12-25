@@ -1,4 +1,4 @@
-package com.dev.zhaoys.ui.other
+package com.dev.zhaoys.widget
 
 import android.content.Context
 import android.graphics.Canvas
@@ -17,7 +17,7 @@ import java.lang.ref.WeakReference
  * author zys
  * create by 2019-12-19
  */
-private val TIME_AUTO_POLL: Long = 2000
+private const val TIME_AUTO_POLL: Long = 2000
 
 class TestView(context: Context, attributeSet: AttributeSet?) : View(context, attributeSet, 0) {
     var position = 0
@@ -26,7 +26,8 @@ class TestView(context: Context, attributeSet: AttributeSet?) : View(context, at
             invalidate()
         }
     private var running = false
-    var autoPollTask: AutoPollTask = AutoPollTask(this)
+    var autoPollTask: AutoPollTask =
+        AutoPollTask(this)
     private val paint = Paint()
     private val drawable: GradientDrawable = GradientDrawable()
 
@@ -39,7 +40,7 @@ class TestView(context: Context, attributeSet: AttributeSet?) : View(context, at
         drawable.setColor(Color.TRANSPARENT)
         drawable.shape = GradientDrawable.RECTANGLE
         drawable.setStroke(dp2px(3f), Color.BLACK)
-        drawable.cornerRadius =3f
+        drawable.cornerRadius = 3f
     }
 
     constructor(context: Context) : this(context, null)
@@ -73,18 +74,21 @@ class TestView(context: Context, attributeSet: AttributeSet?) : View(context, at
             drawable.draw(it)
         }
     }
-}
 
-class AutoPollTask(view: TestView) : Runnable {
+    class AutoPollTask(view: TestView) : Runnable {
 
-    private val weakReference = WeakReference(view)
-    override fun run() {
-        val view = weakReference.get()
-        if (view != null) {
-            val pos = view.position + 1
-            view.position = pos
-            Log.i("测试TAG", "position = $pos")
-            view.postDelayed(view.autoPollTask, TIME_AUTO_POLL)
+        private val weakReference = WeakReference(view)
+        override fun run() {
+            val view = weakReference.get()
+            if (view != null) {
+                val pos = view.position + 1
+                view.position = pos
+                Log.i("测试TAG", "position = $pos")
+                view.postDelayed(
+                    view.autoPollTask,
+                    TIME_AUTO_POLL
+                )
+            }
         }
     }
 }

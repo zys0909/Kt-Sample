@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class QmHomeActivity extends BaseActivity {
+public class StickyTop2Activity extends BaseActivity {
     private static final String TAG = "测试TAG";
     private NestedScrollLayout mCoordinatorLayout;
     private NestedTopDelegateLayout mTopDelegateLayout;
@@ -132,7 +132,7 @@ public class QmHomeActivity extends BaseActivity {
             }
         };
         mAdapter.setOnItemClickListener((itemView, pos) ->
-                Toast.makeText(QmHomeActivity.this, "click position=" + pos, Toast.LENGTH_SHORT).show());
+                Toast.makeText(StickyTop2Activity.this, "click position=" + pos, Toast.LENGTH_SHORT).show());
         mTopRecyclerView.setAdapter(mAdapter);
         mCoordinatorLayout.setDraggableScrollBarEnabled(true);
         onDataLoaded();

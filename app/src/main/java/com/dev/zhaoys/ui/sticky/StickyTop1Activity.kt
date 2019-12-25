@@ -12,7 +12,7 @@ import com.zys.common.adapter.RecyclerSupport
 import kotlinx.android.synthetic.main.activity_sticky_recyclerview.*
 import org.jetbrains.anko.toast
 
-class StickyRecyclerViewActivity : BaseActivity() {
+class StickyTop1Activity : BaseActivity() {
     private lateinit var adapter: RecyclerAdapter
     private lateinit var manager: LinearLayoutManager
     override fun layoutId(): Int = R.layout.activity_sticky_recyclerview

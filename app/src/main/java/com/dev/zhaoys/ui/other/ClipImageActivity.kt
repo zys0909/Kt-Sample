@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_test_image.*
  * author zhaoys
  * create by 2019/9/3 0003
  */
-class TestImageActivity : BaseActivity() {
+class ClipImageActivity : BaseActivity() {
     private val url = "https://ws1.sinaimg.cn/large/0065oQSqly1fytdr77urlj30sg10najf.jpg"
     private lateinit var imageLiad :ImageLoader
     override fun layoutId(): Int = R.layout.activity_test_image

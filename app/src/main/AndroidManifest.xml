@@ -19,7 +19,7 @@
         android:theme="@style/NoActionBar"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning"
         tools:targetApi="n">
-        <activity android:name=".ui.qmhome.QmHomeActivity"></activity>
+        <activity android:name=".ui.qmhome.StickyTop2Activity"></activity>
         <activity android:name=".ui.home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,9 +37,9 @@
         <activity android:name=".ui.wanandroid.ArticleListActivity" />
         <activity android:name=".ui.WebActivity" />
         <activity android:name=".ui.other.UCHomeActivity" />
-        <activity android:name=".ui.sticky.StickyRecyclerViewActivity" />
-        <activity android:name=".ui.other.TestImageActivity" />
-        <activity android:name=".ui.testview.TestViewActivity" />
+        <activity android:name=".ui.sticky.StickyTop1Activity" />
+        <activity android:name=".ui.other.ClipImageActivity" />
+        <activity android:name=".ui.other.ViewPager2Activity" />
         <activity android:name=".ui.other.RulerActivity" />
         <activity android:name=".ui.other.ClockActivity" />
     </application>

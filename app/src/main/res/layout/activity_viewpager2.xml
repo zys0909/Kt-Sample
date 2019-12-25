@@ -4,19 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.dev.zhaoys.ui.sticky.StickyRecyclerViewActivity">
+    tools:context="com.dev.zhaoys.ui.sticky.StickyTop1Activity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@id/toolbar"
         style="@style/ToolbarStyle" />
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_play"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="播报"/>
 
-    <com.dev.zhaoys.ui.testview.PathView
-        android:layout_width="200dp"
-        android:layout_height="200dp" />
 
 </LinearLayout>

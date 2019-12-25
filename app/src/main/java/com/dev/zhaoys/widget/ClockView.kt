@@ -1,11 +1,8 @@
-package com.dev.zhaoys.ui.other
+package com.dev.zhaoys.widget
 
 import android.content.Context
 import android.content.res.Resources
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.PointF
+import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 import java.lang.ref.WeakReference
@@ -41,7 +38,8 @@ class ClockView(context: Context, attributeSet: AttributeSet?) : View(context, a
     private var longRuler = dp2px(20)
     private var shortRuler = dp2px(5)
 
-    private val tag = Paint()
+    private val paint = Paint()
+    private val path = Path()
 
 
     init {
@@ -60,12 +58,12 @@ class ClockView(context: Context, attributeSet: AttributeSet?) : View(context, a
         circlePaint.strokeWidth = dp2px(2)
         circlePaint.color = Color.BLACK
 
-        tag.isAntiAlias = true
-        tag.strokeWidth = dp2px(1)
-        tag.color = Color.RED
-
+        // 使用 path 对图形进行描述（这段描述代码不必看懂）
+        paint.color = Color.RED
+        path.addArc(0f, 0f, 200f, 200f, -225f, 225f)
+        path.arcTo(200f, 0f, 400f, 200f, -180f, 225f, false)
+        path.lineTo(200f, 342f)
     }
-
 
 
     private val autoTask = AutoTask(this)
@@ -91,19 +89,31 @@ class ClockView(context: Context, attributeSet: AttributeSet?) : View(context, a
         if (radius == 0f) {
             radius = center.x - dp2px(15)
         }
+
     }
 
+    private var first = true
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
         canvas?.apply {
             circlePaint.style = Paint.Style.FILL
             onDrawPoint?.invoke(circlePaint)
+            //画中心圆点
             drawCircle(center.x, center.y, dp2px(3), circlePaint)
+            if (first) {
+                path.offset(center.x - 200, center.y - 160)
+                first = false
+            }
+            //画心形图案
+            drawPath(path, paint)
             circlePaint.style = Paint.Style.STROKE
             onDrawCircle?.invoke(circlePaint)
+            //画最外面的圆圈
             drawCircle(center.x, center.y, center.x - dp2px(15), circlePaint)
+            //画圆圈上的刻度
             drawRuler(canvas, radius)
+            //画指针
             drawPointH(canvas)
         }
     }
