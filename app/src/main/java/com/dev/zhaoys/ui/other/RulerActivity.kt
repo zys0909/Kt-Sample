@@ -20,7 +20,7 @@ class RulerActivity : BaseActivity() {
     override fun init(savedInstanceState: Bundle?) {
         initToolbar("Ruler")
         ruler_view.setScope(0, 1000, 100, 10)
-        ruler_view.setScrollSelected { selected -> showToast(this, selected) }
+        ruler_view.setScrollSelected { selected -> tv_text.text = selected }
     }
 
     private var toast: Toast? = null
@@ -32,7 +32,7 @@ class RulerActivity : BaseActivity() {
         } else {
             toast!!.setText(text)
         }
-        toast!!.show()
+        toast?.show()
     }
 
 

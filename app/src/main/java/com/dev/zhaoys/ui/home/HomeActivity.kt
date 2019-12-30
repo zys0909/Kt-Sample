@@ -1,7 +1,6 @@
 package com.dev.zhaoys.ui.home
 
 import android.os.Bundle
-import android.util.Log
 import androidx.recyclerview.widget.GridLayoutManager
 import com.dev.zhaoys.base.BaseActivity
 import com.dev.zhaoys.extend.openActivity
@@ -9,9 +8,6 @@ import com.dev.zhaoys.ui.other.*
 import com.dev.zhaoys.ui.qmhome.StickyTop2Activity
 import com.dev.zhaoys.ui.sticky.StickyTop1Activity
 import com.dev.zhaoys.ui.wanandroid.WanMainActivity
-import com.dev.zhaoys.utils.StrUtil
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.zys.common.adapter.ItemCell
 import com.zys.common.adapter.RecyclerAdapter
 import com.zys.common.adapter.RecyclerSubmit
@@ -59,9 +55,7 @@ class HomeActivity : BaseActivity() {
                 5 -> openActivity(ViewPager2Activity::class.java)
                 6 -> openActivity(StickyTop1Activity::class.java)
                 7 -> openActivity(StickyTop2Activity::class.java)
-                8 -> {
-                    test()
-                }
+                8 -> openActivity(TestActivity::class.java)
                 else -> {
                     toast("未指定页面")
                 }
@@ -69,19 +63,4 @@ class HomeActivity : BaseActivity() {
         }
     }
 
-    private val gson = Gson()
-    private fun test() {
-        val json = "[abc,eee,dfs]"
-        val b = StrUtil.isJsonArray(json)
-        if (b) {
-            val arr =
-                gson.fromJson<Array<String>>(json, object : TypeToken<Array<String>>() {}.type)
-
-            val s = StringBuilder()
-            arr.forEach { a -> s.append("$a  ") }
-            Log.i("测试TAG", s.toString())
-        } else {
-            Log.i("测试TAG", b.toString())
-        }
-    }
 }

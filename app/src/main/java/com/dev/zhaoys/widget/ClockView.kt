@@ -19,6 +19,8 @@ import kotlin.math.*
 class ClockView(context: Context, attributeSet: AttributeSet?) : View(context, attributeSet) {
     constructor(context: Context) : this(context, null)
 
+    constructor(context: Context,flag :Boolean):this(context){}
+
     var onDrawPoint: ((paint: Paint) -> Unit)? = null
     var onDrawCircle: ((paint: Paint) -> Unit)? = null
     var onDrawRuler1: ((paint: Paint) -> Unit)? = null

@@ -19,7 +19,7 @@ import java.lang.ref.WeakReference
  */
 private const val TIME_AUTO_POLL: Long = 2000
 
-class TestView(context: Context, attributeSet: AttributeSet?) : View(context, attributeSet, 0) {
+class TestView @JvmOverloads constructor(context: Context, attributeSet: AttributeSet?) : View(context, attributeSet, 0) {
     var position = 0
         set(value) {
             field = value

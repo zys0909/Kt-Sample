@@ -11,6 +11,14 @@
         android:id="@id/toolbar"
         style="@style/ToolbarStyle" />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+
     <com.dev.zhaoys.widget.ruler.ScrollRulerLayout
         android:id="@+id/ruler_view"
         android:layout_width="match_parent"

@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
@@ -78,6 +79,12 @@ public class ScrollRulerLayout extends ViewGroup {
             LayoutParams layoutParams = mCenterPointer.getLayoutParams();
             mCenterPointer.measure(layoutParams.width, heightMeasureSpec);
         }
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        getParent().requestDisallowInterceptTouchEvent(true);
+        return super.onInterceptTouchEvent(ev);
     }
 
     @Override

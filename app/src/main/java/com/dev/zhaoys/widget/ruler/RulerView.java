@@ -331,7 +331,7 @@ public class RulerView extends View implements ScrollChange {
                     int finalX = mScroller.getCurrX();
                     int centerPointX = mRulerHelper.getCenterPointX();
                     int velocityX = (int) (xVelocity * 0.35);
-                    mScroller.fling(finalX, 0, -velocityX, 0, -centerPointX, mCountRange + centerPointX, 0, 0);
+                    mScroller.fling(finalX, 0, -velocityX, 0, -10, mCountRange + centerPointX * 2, 0, 0);
                     invalidate();
                 } else {
                     isFling = false;
