@@ -1,14 +1,14 @@
 package com.dev.zhaoys.ui.other
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import android.util.TypedValue
 import androidx.recyclerview.widget.GridLayoutManager
 import com.dev.zhaoys.base.BaseActivity
 import com.dev.zhaoys.ui.home.HomeItem
+import com.dev.zhaoys.ui.proxy.DynamicJava
+import com.dev.zhaoys.ui.proxy.DynamicTest
+import com.dev.zhaoys.ui.proxy.IBuy
 import com.dev.zhaoys.utils.StrUtil
-import com.google.android.material.R
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.zys.common.adapter.ItemCell
@@ -18,6 +18,9 @@ import com.zys.common.adapter.RecyclerSupport
 import com.zys.common.imageload.ImageLoader
 import kotlinx.android.synthetic.main.activity_home.*
 import org.jetbrains.anko.toast
+import java.lang.reflect.InvocationHandler
+import java.lang.reflect.Method
+import java.lang.reflect.Proxy
 import java.text.DecimalFormat
 
 /**
@@ -30,23 +33,45 @@ class TestActivity : BaseActivity() {
     private lateinit var adapter: RecyclerAdapter
     override fun layoutId(): Int = com.dev.zhaoys.R.layout.activity_home
 
+    val cha =
+        arrayOf(
+            "🎵",
+            "♪",
+            "♩",
+            "♫",
+            "♬",
+            "¶",
+            "‖",
+            "♭",
+            "♯",
+            "§",
+            "∮",
+            "※",
+            "∴",
+            "∵",
+            "∽",
+            "¥",
+            "Ψ",
+            "$"
+        )
+
     override fun init(savedInstanceState: Bundle?) {
-        initToolbar("Home", false)
+        initToolbar("测试页面", false)
         val support = RecyclerSupport()
         support.imageLoader = ImageLoader(this)
         recyclerView.layoutManager = GridLayoutManager(this, 3)
         adapter = RecyclerAdapter(support)
         recyclerView.adapter = adapter
         val list = mutableListOf<ItemCell>()
-        list.add(HomeItem(0, "test1"))
-        list.add(HomeItem(1, "test2"))
-        list.add(HomeItem(2, "test3"))
-        list.add(HomeItem(3, "test4"))
-        list.add(HomeItem(4, "test5"))
-        list.add(HomeItem(5, "test6"))
-        list.add(HomeItem(6, "test7"))
-        list.add(HomeItem(7, "test8"))
-        list.add(HomeItem(8, "test9"))
+        list.add(HomeItem(0))
+        list.add(HomeItem(1))
+        list.add(HomeItem(2))
+        list.add(HomeItem(3))
+        list.add(HomeItem(4))
+        list.add(HomeItem(5))
+        list.add(HomeItem(6))
+        list.add(HomeItem(7))
+        list.add(HomeItem(8))
         adapter.submitList(list, RecyclerSubmit(0, 10, list.size))
         support.onClickCallback = { position: Int, _: Int ->
             val id = adapter.currentList()[position].itemId()
@@ -61,12 +86,18 @@ class TestActivity : BaseActivity() {
                     Log.i("测试TAG", toDouble.toString())
                 }
                 2 -> {
+                    for (str in cha) {
+                        Log.i("测试TAG", "str = $str, length = ${str.length}")
+                    }
                 }
                 3 -> {
+                    DynamicTest.t1()
                 }
                 4 -> {
+                    test3(IBuy::class.java).buyTicket("IBuy", -2)
                 }
                 5 -> {
+                    DynamicJava.t()
                 }
                 6 -> {
                 }
@@ -81,26 +112,23 @@ class TestActivity : BaseActivity() {
         }
     }
 
-    private fun t1() {
+    @Suppress("unchecked")
+    private fun <T> test3(clazz: Class<T>): T {
+        val instance = Proxy.newProxyInstance(
+            clazz.classLoader, arrayOf(clazz), object : InvocationHandler {
+                override fun invoke(proxy: Any?, method: Method?, args: Array<out Any>?): Any? {
+                    Log.i("测试TAG", "before invoke")
+                    val invoke = method?.invoke(clazz, args)
+                    Log.i("测试TAG", "after invoke")
+                    return invoke
+                }
+            }
+        )
+        Log.i("测试TAG", instance.toString())
+        return instance as T
 
     }
-    private fun getThemeResId(context: Context, themeId: Int): Int {
-        var themeId = themeId
-        if (themeId == 0) { // If the provided theme is 0, then retrieve the dialogTheme from our theme
-            val outValue = TypedValue()
-            themeId = if (context.theme.resolveAttribute(
-                    R.attr.bottomSheetDialogTheme,
-                    outValue,
-                    true
-                )
-            ) {
-                outValue.resourceId
-            } else { // bottomSheetDialogTheme is not provided; we default to our light theme
-                R.style.Theme_Design_Light_BottomSheetDialog
-            }
-        }
-        return themeId
-    }
+
 
     private val gson = Gson()
     private fun test() {
@@ -118,3 +146,4 @@ class TestActivity : BaseActivity() {
         }
     }
 }
+

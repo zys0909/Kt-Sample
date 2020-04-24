@@ -59,5 +59,4 @@ dependencies {
     implementation kotlinx_coroutines
     implementation kotlinx_coroutines_android
     implementation lifecycle_runtime_ktx
-
 }

@@ -33,6 +33,7 @@ class HomeActivity : BaseActivity() {
         recyclerView.layoutManager = GridLayoutManager(this, 3)
         adapter = RecyclerAdapter(support)
         recyclerView.adapter = adapter
+        recyclerView.isNestedScrollingEnabled = true
         val list = mutableListOf<ItemCell>()
         list.add(HomeItem(0, "WanAndroid"))
         list.add(HomeItem(1, "仿UC首页"))

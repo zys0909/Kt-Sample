@@ -18,9 +18,14 @@ import kotlinx.android.synthetic.main.item_home_normal.view.*
  * author zhaoys
  * create by 2019-09-27
  */
-class HomeItem(var id: Int, var content: String, var icon: String = Value.imageUrl[id % Value.imageUrl.size]) :
+class HomeItem(
+    var id: Int,
+    var content: String? = null,
+    var icon: String = Value.imageUrl[id % Value.imageUrl.size]
+) :
     ItemCell {
-    override fun itemContent(): String = content
+    override fun itemContent(): String =
+        if (content.isNullOrEmpty()) "Item $id" else content.toString()
 
     override fun itemId(): String = id.toString()
 
