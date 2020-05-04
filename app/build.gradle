@@ -19,7 +19,7 @@ android {
         buildConfigField('Long', 'READ_TIMEOUT', '60000L')
 
         packagingOptions {
-            pickFirst 'META-INF/*'
+            exclude 'META-INF/*'
         }
     }
     buildTypes {

@@ -1,4 +1,5 @@
 apply plugin: 'groovy'
+apply from: '../config.gradle'
 
 repositories {
     google()
@@ -12,7 +13,7 @@ dependencies {
     // Gradle DSL
     implementation gradleApi()
     // Android DSL
-    implementation 'com.android.tools.build:gradle:3.6.1'
+    implementation "com.android.tools.build:gradle:$gradle_version"
     // ASM V7.1    
     implementation group: 'org.ow2.asm', name: 'asm', version: '7.1'
     implementation group: 'org.ow2.asm', name: 'asm-commons', version: '7.1'
