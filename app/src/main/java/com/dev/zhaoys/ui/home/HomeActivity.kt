@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import com.dev.zhaoys.base.BaseActivity
 import com.dev.zhaoys.extend.openActivity
+import com.dev.zhaoys.extend.toast
 import com.dev.zhaoys.ui.other.*
 import com.dev.zhaoys.ui.qmhome.StickyTop2Activity
 import com.dev.zhaoys.ui.sticky.StickyTop1Activity
@@ -14,7 +15,6 @@ import com.zys.common.adapter.RecyclerSubmit
 import com.zys.common.adapter.RecyclerSupport
 import com.zys.common.imageload.ImageLoader
 import kotlinx.android.synthetic.main.activity_home.*
-import org.jetbrains.anko.toast
 
 /**
  * 描述:首页

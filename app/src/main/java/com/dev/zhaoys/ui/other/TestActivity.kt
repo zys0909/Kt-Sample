@@ -4,20 +4,17 @@ import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.GridLayoutManager
 import com.dev.zhaoys.base.BaseActivity
+import com.dev.zhaoys.extend.toast
 import com.dev.zhaoys.ui.home.HomeItem
 import com.dev.zhaoys.ui.proxy.DynamicJava
 import com.dev.zhaoys.ui.proxy.DynamicTest
 import com.dev.zhaoys.ui.proxy.IBuy
-import com.dev.zhaoys.utils.StrUtil
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.zys.common.adapter.ItemCell
 import com.zys.common.adapter.RecyclerAdapter
 import com.zys.common.adapter.RecyclerSubmit
 import com.zys.common.adapter.RecyclerSupport
 import com.zys.common.imageload.ImageLoader
 import kotlinx.android.synthetic.main.activity_home.*
-import org.jetbrains.anko.toast
 import java.lang.reflect.InvocationHandler
 import java.lang.reflect.Method
 import java.lang.reflect.Proxy
@@ -77,7 +74,7 @@ class TestActivity : BaseActivity() {
             val id = adapter.currentList()[position].itemId()
             when (id.toInt()) {
                 0 -> {
-                    test()
+
                 }
                 1 -> {
                     val a = Double.MAX_VALUE
@@ -127,23 +124,6 @@ class TestActivity : BaseActivity() {
         Log.i("测试TAG", instance.toString())
         return instance as T
 
-    }
-
-
-    private val gson = Gson()
-    private fun test() {
-        val json = "[abc,eee,dfs]"
-        val b = StrUtil.isJsonArray(json)
-        if (b) {
-            val arr =
-                gson.fromJson<Array<String>>(json, object : TypeToken<Array<String>>() {}.type)
-
-            val s = StringBuilder()
-            arr.forEach { a -> s.append("$a  ") }
-            Log.i("测试TAG", s.toString())
-        } else {
-            Log.i("测试TAG", b.toString())
-        }
     }
 }
 

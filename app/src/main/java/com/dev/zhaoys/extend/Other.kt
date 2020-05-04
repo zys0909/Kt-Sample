@@ -1,9 +1,11 @@
 package com.dev.zhaoys.extend
 
+import android.content.Context
+import android.content.Intent
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import org.jetbrains.anko.internals.AnkoInternals.createIntent
 
 /**
  * 描述:
@@ -17,12 +19,13 @@ internal var RecyclerView.orientation: Int
     }
     get() = (this.layoutManager as LinearLayoutManager).orientation
 
-internal fun <T> AppCompatActivity.openActivity(
-    clazz: Class<T>,
-    params: Array<out Pair<String, Any?>> = arrayOf()
-) {
-    this.startActivity(createIntent(this, clazz, params))
-    this.overridePendingTransition(0,0)
+internal fun <T> AppCompatActivity.openActivity(clazz: Class<T>) {
+    this.startActivity(Intent(this, clazz))
+    this.overridePendingTransition(0, 0)
+}
+
+internal fun Context.toast(msg: String) {
+    Toast.makeText(applicationContext, msg, Toast.LENGTH_SHORT).show()
 }
 
 

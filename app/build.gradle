@@ -42,21 +42,29 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     if (LOCAL_DEBUG) {
-        implementation 'com.github.zys0909:ktx-common:1.0.1-SNAPSHOT'
+//        implementation 'com.github.zys0909:ktx-common:1.0.1-SNAPSHOT'
+        implementation project(path: ':common')
     } else {
         implementation 'com.github.zys0909:ktx-common:0.0.1'
     }
 
-    implementation 'com.google.code.gson:gson:2.8.6'
-    implementation 'com.airbnb.android:lottie:3.3.1'
-    implementation anko
-    implementation viewpager2
-    implementation tencent_x5
-    implementation retrofit
-    implementation retrofit_moshi
-    implementation moshi
+    kapt room_kapt
     kapt moshi_kapt
-    implementation kotlinx_coroutines
-    implementation kotlinx_coroutines_android
-    implementation lifecycle_runtime_ktx
+    kapt gilde_kapt
+    implementation kotlin_stdlib
+    implementation activity_ktx
+    implementation fragment_ktx
+    implementation material
+    implementation constraintlayout
+    implementation room_coroutines
+    implementation lifecycle_viewmodel_ktx
+    implementation work_runtime_ktx
+    implementation retrofit_moshi
+    implementation logging_interceptor
+    implementation moshi
+    implementation glide_okhttp
+    implementation mmkv
+    implementation arouter_api
+    implementation smart_refresh
+    implementation lottie
 }

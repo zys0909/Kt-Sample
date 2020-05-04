@@ -34,17 +34,24 @@ android {
 }
 
 dependencies {
-    kapt gilde_kapt
-    kapt room_kapt
-    api kotlin_stdlib
-    api material
 
-    api room_coroutines
-    api lifecycle_extensions
-    api lifecycle_viewmodel
-    api glide_okhttp
-    api okhttp3_log
-    api mmkv
+    kapt room_kapt
+    kapt moshi_kapt
+    kapt gilde_kapt
+    api kotlin_stdlib
+    api activity_ktx
+    api fragment_ktx
+    api material
     api constraintlayout
-    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-andx-4'
+    api room_coroutines
+    api lifecycle_viewmodel_ktx
+    api work_runtime_ktx
+    api retrofit_moshi
+    api logging_interceptor
+    api moshi
+    api glide_okhttp
+    api mmkv
+    api arouter_api
+    api smart_refresh
+    api lottie
 }

@@ -10,6 +10,7 @@ import com.dev.zhaoys.app.ApiCreate
 import com.dev.zhaoys.app.ExtraConst
 import com.dev.zhaoys.app.TestApi
 import com.dev.zhaoys.base.BaseActivity
+import com.dev.zhaoys.extend.toast
 import com.dev.zhaoys.ui.WebActivity
 import com.zys.common.adapter.ItemCell
 import com.zys.common.adapter.RecyclerAdapter
@@ -20,7 +21,6 @@ import kotlinx.android.synthetic.main.activity_wan_android_main.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import org.jetbrains.anko.toast
 
 class WanMainActivity : BaseActivity() {
 

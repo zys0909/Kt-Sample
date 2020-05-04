@@ -4,13 +4,13 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev.zhaoys.R
 import com.dev.zhaoys.base.BaseActivity
+import com.dev.zhaoys.extend.toast
 import com.dev.zhaoys.ui.home.HomeItem
 import com.zys.common.adapter.ItemCell
 import com.zys.common.adapter.RecyclerAdapter
 import com.zys.common.adapter.RecyclerSubmit
 import com.zys.common.adapter.RecyclerSupport
 import kotlinx.android.synthetic.main.activity_sticky_recyclerview.*
-import org.jetbrains.anko.toast
 
 class StickyTop1Activity : BaseActivity() {
     private lateinit var adapter: RecyclerAdapter
