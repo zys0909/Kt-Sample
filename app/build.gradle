@@ -2,11 +2,19 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'walle'
 
 android {
     compileSdkVersion rootProject.ext.compileSdk
     buildToolsVersion rootProject.ext.buildTools
-
+    signingConfigs {
+        debug {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile file('../debug.keystore')
+            storePassword 'android'
+        }
+    }
     defaultConfig {
         applicationId "com.centa.zhaoys"
         minSdkVersion rootProject.ext.minSdk
@@ -24,14 +32,24 @@ android {
     }
     buildTypes {
         debug {
+            signingConfig signingConfigs.debug
             debuggable true
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         release {
+            signingConfig signingConfigs.debug
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+    walle {
+        // 指定渠道包的输出路径
+        apkOutputFolder = new File("${project.buildDir}/outputs/channels")
+        // 定制渠道包的APK的文件名称
+        apkFileNameFormat = '${appName}-${channel}-v${versionName}-${buildTime}.apk'
+        // 渠道配置文件
+        channelFile = new File("${project.getProjectDir()}/channel")
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -67,4 +85,11 @@ dependencies {
     implementation arouter_api
     implementation smart_refresh
     implementation lottie
+
+    implementation 'com.meituan.android.walle:library:1.1.6'
+}
+task beta(type: Exec) {
+    group 'package'
+    workingDir "$rootDir/app"
+    commandLine './gradlew', 'clean assembleReleaseChannels -PchannelList=baidu'
 }
