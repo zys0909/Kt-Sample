@@ -1,0 +1,34 @@
+apply plugin: 'kotlin'
+apply plugin: 'groovy'
+apply from: 'upload.gradle'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        // 因为使用的 Kotlin 需要需要添加 Kotlin 插件
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.72"
+    }
+}
+repositories {
+    google()
+    jcenter()
+    mavenCentral()
+}
+dependencies {
+
+    implementation(localGroovy())
+    implementation(gradleApi())
+
+}
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+        resources {
+            srcDir 'src/main/resources'
+        }
+    }
+}

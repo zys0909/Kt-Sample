@@ -11,6 +11,8 @@ git push origin dev:dev
 
 git rm -r --cached .idea 从版本库地柜删除.idea文件夹
 
+git remote set-url origin +url 设置或更改远程库地址
+
 git reset --hard head 撤销到上次提交(不可恢复)
 
 

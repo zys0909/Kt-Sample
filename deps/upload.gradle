@@ -1,0 +1,12 @@
+apply plugin: 'maven'
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            // 上传到当前项目根目录下的本地 repo 目录中          
+            repository(url: uri('../repo'))
+            pom.groupId = 'com.centa.android'
+            pom.artifactId = 'sale-house-plugin'
+            pom.version = '1.0.0'
+        }
+    }
+}
