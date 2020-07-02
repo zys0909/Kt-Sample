@@ -1,2 +1,3 @@
+include ':ktx-test'
 include ':app', ':common'
 includeBuild 'deps'

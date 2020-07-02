@@ -1,0 +1,17 @@
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'kotlin'
+apply plugin: 'kotlin-kapt'
+mainClassName = 'java.MainRun'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //noinspection DifferentStdlibGradleVersion
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.72'
+    def mo_shi_version = '1.9.2'
+    implementation  "com.squareup.moshi:moshi-kotlin:$mo_shi_version"
+    kapt  "com.squareup.moshi:moshi-kotlin-codegen:$mo_shi_version"
+}
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
