@@ -26,7 +26,7 @@
             android:visibility="gone" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <com.dev.zhaoys.widget.webview.BridgeWebView
+    <WebView
         android:id="@+id/webView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

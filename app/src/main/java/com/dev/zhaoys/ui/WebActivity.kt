@@ -4,14 +4,10 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.ValueCallback
-import android.webkit.WebChromeClient
-import android.webkit.WebSettings
-import android.webkit.WebView
+import android.webkit.*
 import com.dev.zhaoys.R
 import com.dev.zhaoys.app.ExtraConst
 import com.dev.zhaoys.base.BaseActivity
-import com.dev.zhaoys.widget.webview.BridgeWebViewClient
 import kotlinx.android.synthetic.main.activity_web.*
 
 /**
@@ -38,7 +34,7 @@ class WebActivity : BaseActivity() {
         }
 
         webView.apply {
-            webViewClient = object : BridgeWebViewClient(webView) {
+            webViewClient = object : WebViewClient() {
                 override fun shouldOverrideUrlLoading(webView: WebView, url: String) = when {
                     url.startsWith("tel:") -> {
                         dial(url.replace("tel:", ""))

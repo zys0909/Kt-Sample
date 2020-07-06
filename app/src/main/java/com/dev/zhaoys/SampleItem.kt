@@ -1,10 +1,8 @@
-package com.dev.zhaoys.ui.home
+package com.dev.zhaoys
 
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.view.View
-import com.dev.zhaoys.R
-import com.dev.zhaoys.Value
 import com.scwang.smartrefresh.layout.util.DensityUtil
 import com.zys.common.adapter.ItemCell
 import com.zys.common.adapter.RecyclerSupport

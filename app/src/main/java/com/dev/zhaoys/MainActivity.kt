@@ -1,4 +1,4 @@
-package com.dev.zhaoys.ui.home
+package com.dev.zhaoys
 
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
@@ -14,17 +14,17 @@ import com.zys.common.adapter.RecyclerAdapter
 import com.zys.common.adapter.RecyclerSubmit
 import com.zys.common.adapter.RecyclerSupport
 import com.zys.common.imageload.ImageLoader
-import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.activity_sample_list.*
 
 /**
  * 描述:首页
  *
  * author zys
  */
-class HomeActivity : BaseActivity() {
+class MainActivity : BaseActivity() {
     private lateinit var adapter: RecyclerAdapter
 
-    override fun layoutId(): Int = com.dev.zhaoys.R.layout.activity_home
+    override fun layoutId(): Int = R.layout.activity_sample_list
 
     override fun init(savedInstanceState: Bundle?) {
         initToolbar("Home", false)

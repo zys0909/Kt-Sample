@@ -5,7 +5,7 @@ import android.util.Log
 import androidx.recyclerview.widget.GridLayoutManager
 import com.dev.zhaoys.base.BaseActivity
 import com.dev.zhaoys.extend.toast
-import com.dev.zhaoys.ui.home.HomeItem
+import com.dev.zhaoys.HomeItem
 import com.dev.zhaoys.ui.proxy.DynamicJava
 import com.dev.zhaoys.ui.proxy.DynamicTest
 import com.dev.zhaoys.ui.proxy.IBuy
@@ -14,7 +14,7 @@ import com.zys.common.adapter.RecyclerAdapter
 import com.zys.common.adapter.RecyclerSubmit
 import com.zys.common.adapter.RecyclerSupport
 import com.zys.common.imageload.ImageLoader
-import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.activity_sample_list.*
 import java.lang.reflect.InvocationHandler
 import java.lang.reflect.Method
 import java.lang.reflect.Proxy
@@ -28,7 +28,7 @@ import java.text.DecimalFormat
  */
 class TestActivity : BaseActivity() {
     private lateinit var adapter: RecyclerAdapter
-    override fun layoutId(): Int = com.dev.zhaoys.R.layout.activity_home
+    override fun layoutId(): Int = com.dev.zhaoys.R.layout.activity_sample_list
 
     val cha =
         arrayOf(
