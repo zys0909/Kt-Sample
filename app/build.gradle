@@ -57,6 +57,19 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    //打包命名
+    android.applicationVariants.all { variant ->
+        if (variant.buildType.name == 'release') {
+            variant.outputs.all {
+                def date = new Date().format("yyyyMMdd_HH-mm", TimeZone.getTimeZone("GMT+08"))
+                def dir = new File(project.buildDir.absolutePath + "/apk")
+                variant.getPackageApplicationProvider().get().outputDirectory = dir
+                def variantName = variant.name.replace('Release', '')
+                outputFileName = "app-${variantName}-${variant.versionName}-${date}.apk"
+            }
+        }
+    }
 }
 
 dependencies {
