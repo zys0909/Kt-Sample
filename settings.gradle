@@ -1,3 +1,3 @@
-include ':ktx-test'
+include ':ktx-java'
 include ':app', ':common'
 includeBuild 'deps'

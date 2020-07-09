@@ -2,7 +2,9 @@ package com.dev.zhaoys.utils
 
 import android.content.Context
 import android.content.ContextWrapper
+import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
+import com.dev.zhaoys.app.App
 
 /**
  * 描述:
@@ -20,5 +22,12 @@ object SysUtil {
             else -> null
         }
 
+    fun getIP() {
+        val cm = App.instance.getSystemService(Context.CONNECTIVITY_SERVICE)
+        if (cm is ConnectivityManager) {
+            cm.activeNetworkInfo.subtype
+        }
+
+    }
 
 }
