@@ -9,7 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.dev.zhaoys.utils.SysUtil
+import com.dev.zhaoys.extend.getActivity
 import java.lang.ref.WeakReference
 
 /**
@@ -36,7 +36,7 @@ class AutoRecyclerView(context: Context, attr: AttributeSet?, defStyleAttr: Int)
     init {
         PagerSnapHelper().attachToRecyclerView(this)
         task = AutoPollTask(this)
-        val activity = SysUtil.getActivity4Context(context)
+        val activity = context.getActivity()
         activity?.let {
             liveData.observe(it, Observer { b ->
                 if (b) start() else stop()
@@ -95,8 +95,8 @@ class AutoRecyclerView(context: Context, attr: AttributeSet?, defStyleAttr: Int)
 
         override fun run() {
             val recyclerView = reference.get()
-            if (recyclerView != null && recyclerView.running && recyclerView.layoutManager is LinearLayoutManager) {
-                val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+            if (recyclerView != null && recyclerView.running) {
+                val layoutManager = recyclerView.layoutManager
                 val position = layoutManager.findFirstCompletelyVisibleItemPosition()
                 if (position + 1 < layoutManager.itemCount) {
                     recyclerView.smoothScrollToPosition(position + 1)

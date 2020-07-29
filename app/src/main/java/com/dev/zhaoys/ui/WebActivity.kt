@@ -1,13 +1,12 @@
 package com.dev.zhaoys.ui
 
-import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.*
 import com.dev.zhaoys.R
-import com.dev.zhaoys.app.ExtraConst
-import com.dev.zhaoys.base.BaseActivity
+import com.dev.zhaoys.constant.ExtraConst
+import com.dev.zhaoys.app.BaseActivity
 import kotlinx.android.synthetic.main.activity_web.*
 
 /**
@@ -16,7 +15,6 @@ import kotlinx.android.synthetic.main.activity_web.*
  */
 @Suppress("DEPRECATION")
 class WebActivity : BaseActivity() {
-    private var fileCallback: ValueCallback<Array<Uri>>? = null
     private var menuState = false
     override fun layoutId() = R.layout.activity_web
 
@@ -51,7 +49,7 @@ class WebActivity : BaseActivity() {
             }
             webChromeClient = object : WebChromeClient() {
                 override fun onReceivedTitle(p0: WebView?, p1: String?) {
-//                    updateTitle(if (p1.isNullOrEmpty()) "" else p1)
+                    toolbar.title = if (p1.isNullOrEmpty()) "" else p1
                 }
 
                 override fun onProgressChanged(p0: WebView?, p1: Int) {
@@ -64,19 +62,6 @@ class WebActivity : BaseActivity() {
                         }
                         else -> progressBar.visibility = View.GONE
                     }
-                }
-
-                override fun onShowFileChooser(
-                    p0: WebView?,
-                    p1: ValueCallback<Array<Uri>>?,
-                    p2: FileChooserParams?
-                ): Boolean {
-                    if (p1 != null) {
-                        fileCallback = p1
-//                        openAlbumPermissions()
-                        return true
-                    }
-                    return super.onShowFileChooser(p0, p1, p2)
                 }
             }
         }

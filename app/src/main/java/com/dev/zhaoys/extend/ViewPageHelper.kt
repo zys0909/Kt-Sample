@@ -26,7 +26,7 @@ class ViewPageHelper(private val viewPager2: ViewPager2) {
 
     @SuppressLint("ClickableViewAccessibility")
     fun init() {
-        val activity = SysUtil.getActivity4Context(viewPager2.context)
+        val activity = viewPager2.context.getActivity()
         viewPager2.setOnTouchListener { _, event ->
             event?.let {
                 when (event.action) {

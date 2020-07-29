@@ -2,15 +2,15 @@ package com.dev.zhaoys.ui.wanandroid
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dev.zhaoys.app.ApiCreate
 import com.dev.zhaoys.app.TestApi
-import com.dev.zhaoys.base.BaseViewModel
 import com.dev.zhaoys.data.response.ArticleData
 import com.dev.zhaoys.data.response.HomeBannerData
 import kotlinx.coroutines.launch
 
-class WanViewModel : BaseViewModel() {
+class WanViewModel : ViewModel() {
     private val bannerLiveData by lazy {
         MutableLiveData<List<HomeBannerData>>()
     }

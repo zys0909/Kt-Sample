@@ -2,12 +2,10 @@ package com.dev.zhaoys.widget.behavior;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import com.dev.zhaoys.R;
-import com.dev.zhaoys.utils.ResourcesUtil;
 
 /**
  * Created by ylhu on 17-2-23.

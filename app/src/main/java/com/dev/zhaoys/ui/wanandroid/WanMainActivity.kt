@@ -7,9 +7,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev.zhaoys.R
 import com.dev.zhaoys.app.ApiCreate
-import com.dev.zhaoys.app.ExtraConst
+import com.dev.zhaoys.constant.ExtraConst
 import com.dev.zhaoys.app.TestApi
-import com.dev.zhaoys.base.BaseActivity
+import com.dev.zhaoys.app.BaseActivity
 import com.dev.zhaoys.extend.toast
 import com.dev.zhaoys.ui.WebActivity
 import com.zys.common.adapter.ItemCell

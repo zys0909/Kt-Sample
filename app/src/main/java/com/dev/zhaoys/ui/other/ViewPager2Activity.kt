@@ -2,7 +2,7 @@ package com.dev.zhaoys.ui.other
 
 import android.os.Bundle
 import com.dev.zhaoys.R
-import com.dev.zhaoys.base.BaseActivity
+import com.dev.zhaoys.app.BaseActivity
 
 /**
  * 描述:

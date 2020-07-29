@@ -36,6 +36,10 @@ class ApiCreate private constructor() {
                 .build()
         }
 
+        val testApi: TestApi by lazy {
+            retrofit.create(TestApi::class.java)
+        }
+
         fun <T> build(service: Class<T>): T {
             return retrofit.create(service)
         }

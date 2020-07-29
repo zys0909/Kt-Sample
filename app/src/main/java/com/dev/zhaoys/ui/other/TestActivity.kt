@@ -3,9 +3,9 @@ package com.dev.zhaoys.ui.other
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.GridLayoutManager
-import com.dev.zhaoys.base.BaseActivity
+import com.dev.zhaoys.app.BaseActivity
 import com.dev.zhaoys.extend.toast
-import com.dev.zhaoys.HomeItem
+import com.dev.zhaoys.ui.main.HomeItem
 import com.dev.zhaoys.ui.proxy.DynamicJava
 import com.dev.zhaoys.ui.proxy.DynamicTest
 import com.dev.zhaoys.ui.proxy.IBuy

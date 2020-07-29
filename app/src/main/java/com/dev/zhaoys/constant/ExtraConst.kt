@@ -1,4 +1,4 @@
-package com.dev.zhaoys.app
+package com.dev.zhaoys.constant
 
 /**
  * 描述:

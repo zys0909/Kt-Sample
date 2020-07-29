@@ -4,7 +4,7 @@ import android.graphics.Color
 import android.os.Bundle
 import com.dev.zhaoys.R
 import com.dev.zhaoys.Value
-import com.dev.zhaoys.base.BaseActivity
+import com.dev.zhaoys.app.BaseActivity
 import kotlinx.android.synthetic.main.activity_clock.*
 import java.util.*
 

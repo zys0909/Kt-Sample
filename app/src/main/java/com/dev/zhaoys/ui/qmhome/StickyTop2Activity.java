@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dev.zhaoys.R;
-import com.dev.zhaoys.base.BaseActivity;
+import com.dev.zhaoys.app.BaseActivity;
 import com.dev.zhaoys.ui.qmhome.bottom.NestedBottomAreaBehavior;
 import com.dev.zhaoys.ui.qmhome.bottom.NestedBottomView;
 import com.dev.zhaoys.ui.qmhome.tools.BaseRecyclerAdapter;

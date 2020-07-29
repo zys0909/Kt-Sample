@@ -3,9 +3,9 @@ package com.dev.zhaoys.ui.sticky
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev.zhaoys.R
-import com.dev.zhaoys.base.BaseActivity
+import com.dev.zhaoys.app.BaseActivity
 import com.dev.zhaoys.extend.toast
-import com.dev.zhaoys.HomeItem
+import com.dev.zhaoys.ui.main.HomeItem
 import com.zys.common.adapter.ItemCell
 import com.zys.common.adapter.RecyclerAdapter
 import com.zys.common.adapter.RecyclerSubmit

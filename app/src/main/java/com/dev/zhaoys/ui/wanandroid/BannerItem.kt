@@ -1,16 +1,14 @@
 package com.dev.zhaoys.ui.wanandroid
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dev.zhaoys.R
-import com.dev.zhaoys.base.BaseAdapter
-import com.dev.zhaoys.base.IViewHolder
 import com.dev.zhaoys.data.response.HomeBannerData
 import com.zys.common.adapter.ItemCell
 import com.zys.common.adapter.RecyclerSupport
 import com.zys.common.adapter.RecyclerVH
-import com.zys.common.imageload.ImageLoader
 import kotlinx.android.synthetic.main.item_home_banner.view.*
 import kotlinx.android.synthetic.main.item_home_banner_child.view.*
 
@@ -39,7 +37,7 @@ class BannerItemVh(itemView: View, support: RecyclerSupport) : RecyclerVH(itemVi
     init {
         itemView.apply {
             rv_banner.orientation = RecyclerView.HORIZONTAL
-            bannerChildAdapter = BannerChildAdapter(BannerChildSupport(support.imageLoader))
+            bannerChildAdapter = BannerChildAdapter(support)
             rv_banner.adapter = bannerChildAdapter
 //                ViewPageHelper(rv_banner).init()
         }
@@ -51,9 +49,9 @@ class BannerItemVh(itemView: View, support: RecyclerSupport) : RecyclerVH(itemVi
     }
 }
 
-class BannerChildAdapter(private val support: BannerChildSupport) :
-    BaseAdapter<HomeBannerData, BannerChildVh>() {
-
+class BannerChildAdapter(private val support: RecyclerSupport) :
+    RecyclerView.Adapter<BannerChildVh>() {
+    val list = ArrayList<HomeBannerData>()
     fun load(temp: List<HomeBannerData>) {
         list.clear()
         list.addAll(temp)
@@ -61,7 +59,10 @@ class BannerChildAdapter(private val support: BannerChildSupport) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BannerChildVh =
-        BannerChildVh(inflateView(parent, R.layout.item_home_banner_child), support)
+        BannerChildVh(
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.item_home_banner_child, parent, false), support
+        )
 
     override fun onBindViewHolder(holder: BannerChildVh, position: Int) {
         holder.bind(list[position % list.size])
@@ -74,12 +75,10 @@ class BannerChildAdapter(private val support: BannerChildSupport) :
 
 }
 
-class BannerChildSupport(val imageLoad: ImageLoader)
+class BannerChildVh(itemView: View, val support: RecyclerSupport) :
+    RecyclerView.ViewHolder(itemView) {
 
-class BannerChildVh(itemView: View, s: BannerChildSupport) :
-    IViewHolder<HomeBannerData, BannerChildSupport>(itemView, s) {
-
-    override fun bind(data: HomeBannerData) {
-        support.imageLoad.load(itemView.iv_banner, data.imagePath)
+    fun bind(data: HomeBannerData) {
+        support.imageLoader.load(itemView.iv_banner, data.imagePath)
     }
 }
