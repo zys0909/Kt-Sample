@@ -1,13 +1,10 @@
 package com.dev.zhaoys.ui.other
 
 import android.os.Bundle
-import android.util.Log
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev.zhaoys.R
 import com.dev.zhaoys.app.ApiService
-import com.dev.zhaoys.app.TestApi
-import com.dev.zhaoys.app.TestCreate
 import com.dev.zhaoys.app.BaseActivity
 import com.dev.zhaoys.data.PageData
 import com.dev.zhaoys.extend.error
@@ -64,17 +61,6 @@ class UCHomeActivity : BaseActivity() {
                 articleList(0)
             }
         })
-        test()
-    }
-
-    private fun test() {
-        GlobalScope.launch {
-            try {
-                val response = TestCreate.build(TestApi::class.java).testTop()
-                Log.d("测试TAG", response.bytes().toString())
-            } catch (e: java.lang.Exception) {
-            }
-        }
     }
 
     private fun articleList(index: Int) {
