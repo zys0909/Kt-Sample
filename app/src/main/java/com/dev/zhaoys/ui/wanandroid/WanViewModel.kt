@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dev.zhaoys.app.ApiCreate
+import com.dev.zhaoys.app.ApiService
 import com.dev.zhaoys.app.TestApi
 import com.dev.zhaoys.data.response.ArticleData
 import com.dev.zhaoys.data.response.HomeBannerData
@@ -31,7 +31,7 @@ class WanViewModel : ViewModel() {
     private fun bannerRequest() {
         viewModelScope.launch {
             try {
-                val await = ApiCreate.build(TestApi::class.java).homeBanner()
+                val await = ApiService.testApi.homeBanner()
                 if (await.errorCode == 0) {
                     bannerLiveData.postValue(await.data)
                 } else {
@@ -56,7 +56,7 @@ class WanViewModel : ViewModel() {
     private fun articleTopRequest() {
         viewModelScope.launch {
             try {
-                val await = ApiCreate.build(TestApi::class.java).articleTop()
+                val await = ApiService.testApi.articleTop()
                 if (await.errorCode == 0) {
                     articleLiveData.postValue(await.data)
                 } else {

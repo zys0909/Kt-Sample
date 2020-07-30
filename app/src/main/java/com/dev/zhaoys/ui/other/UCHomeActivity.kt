@@ -5,7 +5,7 @@ import android.util.Log
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev.zhaoys.R
-import com.dev.zhaoys.app.ApiCreate
+import com.dev.zhaoys.app.ApiService
 import com.dev.zhaoys.app.TestApi
 import com.dev.zhaoys.app.TestCreate
 import com.dev.zhaoys.app.BaseActivity
@@ -80,7 +80,7 @@ class UCHomeActivity : BaseActivity() {
     private fun articleList(index: Int) {
         GlobalScope.launch {
             try {
-                val response = ApiCreate.build(TestApi::class.java).articleList(index)
+                val response = ApiService.testApi.articleList(index)
                 if (response.errorCode == 0) {
                     val list = mutableListOf<ItemCell>()
                     val temp = response.data?.datas ?: emptyList()

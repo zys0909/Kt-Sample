@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit
  * @author zhaoys
  * create by 2019/7/1 0001 11:27
  */
-class ApiCreate private constructor() {
+class ApiService private constructor() {
 
     companion object {
         private val retrofit: Retrofit by lazy {
@@ -23,6 +23,7 @@ class ApiCreate private constructor() {
                 .readTimeout(BuildConfig.READ_TIMEOUT, TimeUnit.MILLISECONDS)
                 .cache(Cache(App.instance.cacheDir, 104857600L))
                 .addInterceptor(HostInterceptor())
+
             if (BuildConfig.DEBUG) {
                 val httpLoggingInterceptor = HttpLoggingInterceptor()
                 httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
@@ -38,10 +39,6 @@ class ApiCreate private constructor() {
 
         val testApi: TestApi by lazy {
             retrofit.create(TestApi::class.java)
-        }
-
-        fun <T> build(service: Class<T>): T {
-            return retrofit.create(service)
         }
     }
 }
