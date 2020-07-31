@@ -25,7 +25,7 @@ val json2 = "{\n" +
         "}"
 val json3 = "{\n" +
         "\t\"name\": \"zhaoys \",\n" +
-        "\t\"userId \": \"123\",\n" +
+        "\t\"userId \": null,\n" +
         "\t\"h \": 17.5,\n" +
         "\t\"group\": {\n" +
         "\t\t\"name\": \"centa\",\n" +
@@ -43,6 +43,17 @@ data class User(
     val name: String = "", // zhaoys
     @Json(name = "userId ")
     val userId: String = "" // 123
+)
+
+@JsonClass(generateAdapter = true)
+data class UserTest(
+    val group: Group? = null,
+    @Json(name = "h ")
+    val h: Double? = null, // 17.5
+    val list: List<Int>? = null,
+    val name: String? = "", // zhaoys
+    @Json(name = "userId ")
+    val userId: String  // 123
 )
 
 @JsonClass(generateAdapter = true)
