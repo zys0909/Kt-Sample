@@ -2,8 +2,11 @@ apply plugin: 'maven'
 uploadArchives {
     repositories {
         mavenDeployer {
-            // 上传到当前项目根目录下的本地 repo 目录中          
-            repository(url: uri('../repo'))
+            // 上传到当前项目根目录下的本地 repo 目录中      
+            File file = new File(rootDir.parentFile.path, "localMaven/release/")
+            println(file.absolutePath)
+            println(gradle.gradleVersion)
+            repository(url: "file:${file.absolutePath}")
             pom.groupId = 'com.centa.android'
             pom.artifactId = 'sale-house-plugin'
             pom.version = '1.0.0'
