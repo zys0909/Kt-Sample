@@ -6,15 +6,16 @@ buildscript {
         kotlin_version = '1.3.72'
     }
     repositories {
-        google()
-        jcenter()
+        maven { url "https://maven.aliyun.com/repository/google" }
+        maven { url "https://maven.aliyun.com/repository/jcenter" }
+        maven { url "https://maven.aliyun.com/repository/central" }
         maven { url uri('repo') }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:$gradle_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.meituan.android.walle:plugin:1.1.6'
-//        classpath "com.centa.android:sale-house-plugin:1.0.0"
+        classpath "com.centa.android:sale-house-plugin:1.0.0"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -22,8 +23,9 @@ buildscript {
 
 allprojects {
     repositories {
-        google()
-        jcenter()
+        maven { url "https://maven.aliyun.com/repository/google" }
+        maven { url "https://maven.aliyun.com/repository/jcenter" }
+        maven { url "https://maven.aliyun.com/repository/central" }
         maven { url "https://jitpack.io" }
 //        maven { url "http://nexus.local.com/repository/maven-public/" }
         def file = new File("localMaven/snapshots/")
