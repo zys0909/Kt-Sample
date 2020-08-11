@@ -1,6 +1,11 @@
 package com.dev.zhaoys.app
 
 import android.app.Application
+import com.kingja.loadsir.callback.ProgressCallback
+
+import com.kingja.loadsir.core.LoadSir
+import com.zys.common.callback.*
+
 
 /**
  * 描述:
@@ -17,5 +22,6 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
+        initLoadSir()
     }
 }
