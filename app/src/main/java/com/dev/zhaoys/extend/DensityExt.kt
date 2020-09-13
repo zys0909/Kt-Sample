@@ -1,6 +1,7 @@
 package com.dev.zhaoys.extend
 
 import android.content.res.Resources
+import android.util.TypedValue
 
 /**
  * 描述:
@@ -23,3 +24,6 @@ val Number.dpf: Float
         is Double -> (this * Resources.getSystem().displayMetrics.density + 0.5f).toFloat()
         else -> this.toInt() * Resources.getSystem().displayMetrics.density + 0.5f
     }
+
+fun dp(dp: Float) =
+    TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, Resources.getSystem().displayMetrics)
