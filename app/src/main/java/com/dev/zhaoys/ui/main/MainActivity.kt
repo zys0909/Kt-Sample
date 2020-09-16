@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.dev.zhaoys.R
 import com.dev.zhaoys.app.BaseActivity
 import com.dev.zhaoys.extend.openActivity
+import com.dev.zhaoys.ui.hook.HookActivity
 import com.dev.zhaoys.ui.other.*
 import com.dev.zhaoys.ui.qmhome.StickyTop2Activity
 import com.dev.zhaoys.ui.sticky.StickyTop1Activity
@@ -83,7 +84,10 @@ class MainActivity : BaseActivity() {
                 "测试"
             ) { openActivity(TestActivity::class.java) })
         list.add(HomeItem(9, "IP") {
-            Log.i("测试TAG",SysUtil.getLocalIpAddress())
+            Log.i("测试TAG", SysUtil.getLocalIpAddress())
+        })
+        list.add(HomeItem(10, "HookActivity") {
+            openActivity(HookActivity::class.java)
         })
 
         adapter.submitList(list, RecyclerSubmit(0, 10, list.size))
