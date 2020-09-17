@@ -16,8 +16,8 @@ ext {
 
        lifecycle_version = '2.2.0-rc02'
        lifecycle_viewmodel_ktx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
-       room_version = '2.1.0-alpha04'
-       room_coroutines = "androidx.room:room-coroutines:$room_version"
+       room_version = '2.2.5'
+       room_runtime = "androidx.room:room-runtime:$room_version"
        room_kapt = "androidx.room:room-compiler:$room_version"
        work_runtime_ktx = 'androidx.work:work-runtime-ktx:2.3.0-alpha03'
        retrofit_version = '2.6.2'

@@ -30,6 +30,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    kotlinOptions {
+        jvmTarget = 1.8
+    }
 
 }
 
@@ -43,7 +46,7 @@ dependencies {
     api fragment_ktx
     api material
     api constraintlayout
-    api room_coroutines
+    api room_runtime
     api lifecycle_viewmodel_ktx
     api work_runtime_ktx
     api retrofit_moshi

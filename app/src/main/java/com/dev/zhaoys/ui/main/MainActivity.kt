@@ -7,6 +7,7 @@ import com.dev.zhaoys.R
 import com.dev.zhaoys.app.BaseActivity
 import com.dev.zhaoys.extend.openActivity
 import com.dev.zhaoys.ui.flexLayout.FlexActivity
+import com.dev.zhaoys.ui.hook.HookActivity
 import com.dev.zhaoys.ui.other.*
 import com.dev.zhaoys.ui.qmhome.StickyTop2Activity
 import com.dev.zhaoys.ui.sticky.StickyTop1Activity
@@ -74,8 +75,9 @@ class MainActivity : BaseActivity() {
         list.add(HomeItem(11, "流式布局") {
             openActivity(FlexActivity::class.java)
         })
-
+        list.add(HomeItem(12, "HookActivity") {
+            openActivity(HookActivity::class.java)
+        })
         adapter.submitList(list, RecyclerSubmit(0, 10, list.size))
     }
-
 }
