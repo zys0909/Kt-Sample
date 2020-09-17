@@ -57,7 +57,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
+    kotlinOptions {
+        jvmTarget = 1.8
+    }
     //打包命名
     android.applicationVariants.all { variant ->
         if (variant.buildType.name == 'release') {
@@ -89,7 +91,7 @@ dependencies {
     implementation fragment_ktx
     implementation material
     implementation constraintlayout
-    implementation room_coroutines
+    implementation room_runtime
     implementation lifecycle_viewmodel_ktx
     implementation work_runtime_ktx
     implementation retrofit_moshi
