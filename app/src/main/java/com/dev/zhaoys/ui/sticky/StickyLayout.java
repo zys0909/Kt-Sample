@@ -32,11 +32,7 @@ public class StickyLayout extends SmartRefreshLayout implements ViewCallback {
     }
 
     public StickyLayout(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
-    }
-
-    public StickyLayout(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
+        super(context, attrs);
         mStickyWrapView = new FrameLayout(context);
         mRecyclerView = new RecyclerView(context);
         mRecyclerView.setOverScrollMode(OVER_SCROLL_NEVER);

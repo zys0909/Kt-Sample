@@ -9,11 +9,13 @@ import com.dev.zhaoys.ui.main.HomeItem
 import com.dev.zhaoys.ui.proxy.DynamicJava
 import com.dev.zhaoys.ui.proxy.DynamicTest
 import com.dev.zhaoys.ui.proxy.IBuy
+import com.squareup.moshi.Types
 import com.zys.common.adapter.ItemCell
 import com.zys.common.adapter.RecyclerAdapter
 import com.zys.common.adapter.RecyclerSubmit
 import com.zys.common.adapter.RecyclerSupport
 import com.zys.common.imageload.ImageLoader
+import com.zys.common.util.JsonUtil
 import kotlinx.android.synthetic.main.activity_sample_list.*
 import java.lang.reflect.InvocationHandler
 import java.lang.reflect.Method
@@ -69,7 +71,14 @@ class TestActivity : BaseActivity() {
         list.add(HomeItem(6))
         list.add(HomeItem(7))
         list.add(HomeItem(8))
+        list.add(HomeItem(9))
+        list.add(HomeItem(10))
+        list.add(HomeItem(11))
+        list.add(HomeItem(12))
+        list.add(HomeItem(13))
         adapter.submitList(list, RecyclerSubmit(0, 10, list.size))
+        val map = mutableMapOf<String, Boolean>()
+
         support.onClickCallback = { position: Int, _: Int ->
             val id = adapter.currentList()[position].itemId()
             when (id.toInt()) {
@@ -97,16 +106,52 @@ class TestActivity : BaseActivity() {
                     DynamicJava.t()
                 }
                 6 -> {
+                    val type = map.javaClass
+                    Log.i("测试TAG", "type = $type")
                 }
                 7 -> {
+                    val list = listOf("aaa", "bbb", "ccc", "ddd")
+                    val type = JsonUtil.toJson1(list)
+                    Log.i("测试TAG", "type = $type")
                 }
                 8 -> {
+                    val list = listOf("aaa", "bbb", "ccc", "ddd") as Any
+                    val type = JsonUtil.toJson(list)
+                    Log.i("测试TAG", "type = $type")
+                }
+                9 -> {
+                    val map = mutableMapOf("a" to 1, "b" to 2, "c" to 3)
+                    val toJson = JsonUtil.toJson(map)
+                    Log.i("测试TAG", "9 = ${JsonUtil.parseMap<Int>(toJson)}")
+                }
+                10 -> {
+                    val type = testType<Int>(true)
+                    Log.i("测试TAG", "MapType = $type")
+                }
+                11 -> {
+                    val type = testType<Int>(false)
+                    Log.i("测试TAG", "MapTypeWithOwner = $type")
                 }
                 else -> {
                     toast("I do not")
                 }
             }
         }
+    }
+
+    private inline fun <reified V> testType(boolean: Boolean) = if (boolean) {
+        Types.newParameterizedType(
+            MutableMap::class.java,
+            String::class.java,
+            V::class.java
+        )
+    } else {
+        val mapType = Types.newParameterizedType(
+            MutableMap::class.java,
+            String::class.java,
+            V::class.java
+        )
+        Types.newParameterizedType(List::class.java, mapType)
     }
 
     @Suppress("unchecked")

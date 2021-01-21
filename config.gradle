@@ -1,41 +1,42 @@
 ext {
-    gradle_version = '4.0.0'
-    compileSdk = 28
+    gradle_version = '4.0.1'
+    compileSdk = 29
     minSdk = 21
-    targetSdk = 28
-    buildTools = '29.0.2'
+    targetSdk = 29
+    buildTools = '29.0.3'
 
-    kotlin_version = '1.3.61'
+    kotlin_version = '1.4.0'
 
 
-       kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-       activity_ktx = "androidx.activity:activity-ktx:1.1.0"
-       fragment_ktx = "androidx.fragment:fragment-ktx:1.2.3"
-       material = 'com.google.android.material:material:1.2.0-alpha05'
-       constraintlayout = 'androidx.constraintlayout:constraintlayout:2.0.0-beta3'
+    kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    activity_ktx = "androidx.activity:activity-ktx:1.1.0"
+    fragment_ktx = "androidx.fragment:fragment-ktx:1.2.5"
+    material = 'com.google.android.material:material:1.3.0-beta01'
+    constraintlayout = 'androidx.constraintlayout:constraintlayout:2.0.1'
 
-       lifecycle_version = '2.2.0-rc02'
-       lifecycle_viewmodel_ktx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
-       room_version = '2.1.0-alpha04'
-       room_coroutines = "androidx.room:room-coroutines:$room_version"
-       room_kapt = "androidx.room:room-compiler:$room_version"
-       work_runtime_ktx = 'androidx.work:work-runtime-ktx:2.3.0-alpha03'
-       retrofit_version = '2.6.2'
-       retrofit = "com.squareup.retrofit2:retrofit:$retrofit_version"
-       retrofit_moshi = "com.squareup.retrofit2:converter-moshi:$retrofit_version"
-       logging_interceptor = 'com.squareup.okhttp3:logging-interceptor:4.2.2'
-       moshi_version = '1.9.2'
-       moshi = "com.squareup.moshi:moshi-kotlin:$moshi_version"
-       moshi_kapt = "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
-       glide_version = '4.10.0'
-       glide = "com.github.bumptech.glide:glide:$glide_version"
-       glide_okhttp = "com.github.bumptech.glide:okhttp3-integration:$glide_version"
-       gilde_kapt = "com.github.bumptech.glide:compiler:$glide_version"
-       smart_refresh = 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-andx-4'
-       lottie = 'com.airbnb.android:lottie:3.1.0'
-       mmkv = 'com.tencent:mmkv:1.0.22'
+    lifecycle_version = '2.3.0-rc01'
+    lifecycle_viewmodel_ktx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    def room_version = '2.2.6'
+    //room
+    room_ktx = "androidx.room:room-ktx:$room_version"
+    room_kapt = "androidx.room:room-compiler:$room_version"
+    work_runtime_ktx = 'androidx.work:work-runtime-ktx:2.3.0-alpha03'
+    retrofit_version = '2.9.0'
+    retrofit = "com.squareup.retrofit2:retrofit:$retrofit_version"
+    retrofit_moshi = "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+    logging_interceptor = 'com.squareup.okhttp3:logging-interceptor:4.7.2'
+    moshi_version = '1.11.0'
+    moshi = "com.squareup.moshi:moshi-kotlin:$moshi_version"
+    moshi_kapt = "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
+    glide_version = '4.11.0'
+    glide = "com.github.bumptech.glide:glide:$glide_version"
+    glide_okhttp = "com.github.bumptech.glide:okhttp3-integration:$glide_version"
+    gilde_kapt = "com.github.bumptech.glide:compiler:$glide_version"
+    smart_refresh = 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.3'
+    lottie = 'com.airbnb.android:lottie:3.5.0'
+    mmkv = 'com.tencent:mmkv:1.2.7'
 
-       arouter_api = 'com.alibaba:arouter-api:1.5.0'
-       arouter_kapt = 'com.alibaba:arouter-compiler:1.2.2'
+    arouter_api = 'com.alibaba:arouter-api:1.5.1'
+    arouter_kapt = 'com.alibaba:arouter-compiler:1.5.1'
 
 }

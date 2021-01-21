@@ -28,6 +28,13 @@ class MyGlideModule : AppGlideModule() {
     companion object {
         const val CONNECT_TIMEOUT = 30000L
         const val READ_TIMEOUT = 30000L
+
+        private val okHttpClient: OkHttpClient by lazy {
+            OkHttpClient.Builder()
+                .connectTimeout(CONNECT_TIMEOUT, TimeUnit.MILLISECONDS)
+                .readTimeout(READ_TIMEOUT, TimeUnit.MILLISECONDS)
+                .build()
+        }
     }
 
     override fun isManifestParsingEnabled(): Boolean {
@@ -47,19 +54,7 @@ class MyGlideModule : AppGlideModule() {
         registry.replace(
             GlideUrl::class.java,
             InputStream::class.java,
-            OkHttpUrlLoader.Factory(OkHttpClient4Glide.okHttpClient)
+            OkHttpUrlLoader.Factory(okHttpClient)
         )
-    }
-}
-
-class OkHttpClient4Glide private constructor() {
-
-    companion object {
-        val okHttpClient: OkHttpClient by lazy {
-            OkHttpClient.Builder()
-                .connectTimeout(CONNECT_TIMEOUT, TimeUnit.MILLISECONDS)
-                .readTimeout(READ_TIMEOUT, TimeUnit.MILLISECONDS)
-                .build()
-        }
     }
 }

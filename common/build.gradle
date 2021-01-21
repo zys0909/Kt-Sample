@@ -16,8 +16,6 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
     }
 
     buildTypes {
@@ -43,7 +41,7 @@ dependencies {
     api fragment_ktx
     api material
     api constraintlayout
-    api room_coroutines
+    api room_ktx
     api lifecycle_viewmodel_ktx
     api work_runtime_ktx
     api retrofit_moshi
@@ -54,4 +52,5 @@ dependencies {
     api arouter_api
     api smart_refresh
     api lottie
+    api 'com.google.code.gson:gson:2.8.6'
 }

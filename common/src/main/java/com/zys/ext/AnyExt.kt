@@ -1,4 +1,4 @@
-package com.zys.common.ext
+package com.zys.ext
 
 /**
  * 描述:

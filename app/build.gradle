@@ -89,7 +89,7 @@ dependencies {
     implementation fragment_ktx
     implementation material
     implementation constraintlayout
-    implementation room_coroutines
+    implementation room_ktx
     implementation lifecycle_viewmodel_ktx
     implementation work_runtime_ktx
     implementation retrofit_moshi
@@ -101,7 +101,7 @@ dependencies {
     implementation smart_refresh
     implementation lottie
 
-    implementation 'com.meituan.android.walle:library:1.1.6'
+//    implementation 'com.meituan.android.walle:library:1.1.6'
 }
 task beta(type: Exec) {
     group 'package'

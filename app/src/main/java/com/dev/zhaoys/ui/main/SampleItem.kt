@@ -4,12 +4,13 @@ import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.view.View
 import com.dev.zhaoys.R
-import com.scwang.smartrefresh.layout.util.DensityUtil
 import com.zys.common.adapter.ItemCell
 import com.zys.common.adapter.RecyclerSupport
 import com.zys.common.adapter.RecyclerVH
-import com.zys.common.ext.asClass
-import com.zys.common.ext.debounceClick
+import com.zys.ext.asClass
+import com.zys.ext.debounceClick
+import com.zys.ext.dp
+import com.zys.ext.dpf
 import kotlinx.android.synthetic.main.item_home_normal.view.*
 
 /**
@@ -42,8 +43,8 @@ class HomeItemViewHolder(itemView: View, support: RecyclerSupport) : RecyclerVH(
         val drawable = GradientDrawable()
         drawable.setColor(Color.TRANSPARENT)
         drawable.shape = GradientDrawable.RECTANGLE
-        drawable.setStroke(DensityUtil.dp2px(2f), Color.GRAY)
-        drawable.cornerRadius = DensityUtil.dp2px(2f).toFloat()
+        drawable.setStroke(2.dp, Color.GRAY)
+        drawable.cornerRadius = 2.dpf
         itemView.background = drawable
         itemView.debounceClick {
             support.onClickCallback?.invoke(adapterPosition, it.id)

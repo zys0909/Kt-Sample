@@ -37,7 +37,7 @@ fun SmartRefreshLayout.requestComplete(page: PageData?, recyclerView: RecyclerVi
                     }
                 }
             }
-            finishRefresh(900, false)
+            finishRefresh( false)
             setNoMoreData(noData)
         }
         else -> {

@@ -33,7 +33,7 @@ import com.dev.zhaoys.ui.qmhome.tools.BottomPagerAdapter;
 import com.dev.zhaoys.ui.qmhome.tools.HomeViewPager;
 import com.dev.zhaoys.ui.qmhome.tools.OnItemClickCallback;
 import com.dev.zhaoys.ui.qmhome.tools.RecyclerViewHolder;
-import com.scwang.smartrefresh.layout.util.DensityUtil;
+import com.zys.ext.DensityUtil;
 
 import java.util.ArrayList;
 import java.util.List;

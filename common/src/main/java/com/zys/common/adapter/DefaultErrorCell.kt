@@ -2,7 +2,7 @@ package com.zys.common.adapter
 
 import android.view.View
 import com.zys.common.R
-import com.zys.common.ext.debounceClick
+import com.zys.ext.debounceClick
 
 class DefaultErrorCell : ItemCell {
 

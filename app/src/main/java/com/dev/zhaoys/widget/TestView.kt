@@ -8,7 +8,8 @@ import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
-import com.scwang.smartrefresh.layout.util.DensityUtil.dp2px
+import com.zys.ext.dp
+import com.zys.ext.dpf
 import java.lang.ref.WeakReference
 
 /**
@@ -34,12 +35,12 @@ class TestView @JvmOverloads constructor(context: Context, attributeSet: Attribu
     init {
         paint.color = Color.RED
         paint.isAntiAlias = true
-        paint.textSize = dp2px(20f).toFloat()
+        paint.textSize = 20.dpf
         paint.textAlign = Paint.Align.CENTER
 
         drawable.setColor(Color.TRANSPARENT)
         drawable.shape = GradientDrawable.RECTANGLE
-        drawable.setStroke(dp2px(3f), Color.BLACK)
+        drawable.setStroke(3.dp, Color.BLACK)
         drawable.cornerRadius = 3f
     }
 
