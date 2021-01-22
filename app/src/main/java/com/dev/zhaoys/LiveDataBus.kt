@@ -1,3 +1,5 @@
+@file:Suppress("UNCHECKED_CAST","UNUSED")
+
 package com.dev.zhaoys
 
 import androidx.lifecycle.LifecycleOwner
@@ -12,7 +14,6 @@ import java.lang.reflect.Method
  * LiveDataBus
  * 基于LiveData实现的事件总线
  */
-@Suppress("unused")
 object LiveDataBus {
     private val mBus by lazy { mutableMapOf<String, BusLiveData<*>>() }
 

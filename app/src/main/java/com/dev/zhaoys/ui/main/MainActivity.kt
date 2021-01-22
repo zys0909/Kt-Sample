@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.dev.zhaoys.R
 import com.dev.zhaoys.app.BaseActivity
 import com.dev.zhaoys.extend.openActivity
+import com.dev.zhaoys.ui.flexLayout.FlexActivity
 import com.dev.zhaoys.ui.hook.HookActivity
 import com.dev.zhaoys.ui.other.*
 import com.dev.zhaoys.ui.qmhome.StickyTop2Activity
@@ -39,58 +40,44 @@ class MainActivity : BaseActivity() {
         recyclerView.isNestedScrollingEnabled = true
         val list = mutableListOf<ItemCell>()
         list.add(HomeItem(0, "WanAndroid") {
-            openActivity(
-                WanMainActivity::class.java
-            )
+            openActivity(WanMainActivity::class.java)
         })
         list.add(HomeItem(1, "仿UC首页") {
-            openActivity(
-                UCHomeActivity::class.java
-            )
+            openActivity(UCHomeActivity::class.java)
         })
         list.add(HomeItem(2, "图片裁剪") {
-            openActivity(
-                ClipImageActivity::class.java
-            )
+            openActivity(ClipImageActivity::class.java)
         })
         list.add(HomeItem(3, "Ruler-View") {
-            openActivity(
-                RulerActivity::class.java
-            )
+            openActivity(RulerActivity::class.java)
         })
-        list.add(
-            HomeItem(
-                4,
-                "Clock"
-            ) { openActivity(ClockActivity::class.java) })
+        list.add(HomeItem(4, "Clock") {
+            openActivity(ClockActivity::class.java)
+        })
         list.add(HomeItem(5, "ViewPager2") {
-            openActivity(
-                ViewPager2Activity::class.java
-            )
+            openActivity(ViewPager2Activity::class.java)
         })
         list.add(HomeItem(6, "悬浮置顶1") {
-            openActivity(
-                StickyTop1Activity::class.java
-            )
+            openActivity(StickyTop1Activity::class.java)
         })
         list.add(HomeItem(7, "悬浮置顶2") {
-            openActivity(
-                StickyTop2Activity::class.java
-            )
+            openActivity(StickyTop2Activity::class.java)
         })
-        list.add(
-            HomeItem(
-                8,
-                "测试"
-            ) { openActivity(TestActivity::class.java) })
+        list.add(HomeItem(8, "测试") {
+            openActivity(TestActivity::class.java)
+        })
         list.add(HomeItem(9, "IP") {
             Log.i("测试TAG", SysUtil.getLocalIpAddress())
         })
-        list.add(HomeItem(10, "HookActivity") {
+        list.add(HomeItem(10, "Text测试") {
+            openActivity(TextActivity::class.java)
+        })
+        list.add(HomeItem(11, "流式布局") {
+            openActivity(FlexActivity::class.java)
+        })
+        list.add(HomeItem(12, "HookActivity") {
             openActivity(HookActivity::class.java)
         })
-
         adapter.submitList(list, RecyclerSubmit(0, 10, list.size))
     }
-
 }
