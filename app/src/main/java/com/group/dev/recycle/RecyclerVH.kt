@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
  * author zys
  * create by 2021/1/22
  */
-class RecyclerVH(itemView:View):RecyclerView.ViewHolder(itemView) {
+abstract class RecyclerVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-
+    abstract fun bind(itemCell: ItemCell)
 }
