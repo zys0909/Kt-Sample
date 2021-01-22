@@ -36,6 +36,7 @@ ext {
     lottie = 'com.airbnb.android:lottie:3.5.0'
     mmkv = 'com.tencent:mmkv:1.2.7'
 
+
     arouter_api = 'com.alibaba:arouter-api:1.5.1'
     arouter_kapt = 'com.alibaba:arouter-compiler:1.5.1'
 

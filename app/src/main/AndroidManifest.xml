@@ -44,6 +44,7 @@
         <activity android:name=".ui.other.RulerActivity" />
         <activity android:name=".ui.other.ClockActivity" />
         <activity android:name=".ui.other.TestActivity" />
+        <activity android:name=".ui.hook.TargetActivity" />
     </application>
 
 </manifest>

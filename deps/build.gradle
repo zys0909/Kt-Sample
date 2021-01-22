@@ -4,7 +4,9 @@ apply from: 'upload.gradle'
 
 buildscript {
     repositories {
-        jcenter()
+        maven { url "https://maven.aliyun.com/repository/google" }
+        maven { url "https://maven.aliyun.com/repository/jcenter" }
+        maven { url "https://maven.aliyun.com/repository/central" }
     }
     dependencies {
         // 因为使用的 Kotlin 需要需要添加 Kotlin 插件
@@ -12,14 +14,18 @@ buildscript {
     }
 }
 repositories {
-    google()
-    jcenter()
-    mavenCentral()
+    maven { url "https://maven.aliyun.com/repository/google" }
+    maven { url "https://maven.aliyun.com/repository/jcenter" }
+    maven { url "https://maven.aliyun.com/repository/central" }
 }
 dependencies {
 
     implementation(localGroovy())
     implementation(gradleApi())
+    implementation "com.android.tools.build:gradle:4.0.0"
+    implementation "com.squareup.retrofit2:retrofit:2.6.2"
+    implementation "com.squareup.retrofit2:converter-gson:2.6.2"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.2.2"
 
 }
 sourceSets {

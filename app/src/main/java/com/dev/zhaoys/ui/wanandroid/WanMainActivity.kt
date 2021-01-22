@@ -6,7 +6,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev.zhaoys.R
-import com.dev.zhaoys.app.ApiCreate
+import com.dev.zhaoys.app.ApiService
 import com.dev.zhaoys.constant.ExtraConst
 import com.dev.zhaoys.app.TestApi
 import com.dev.zhaoys.app.BaseActivity
@@ -108,7 +108,7 @@ class WanMainActivity : BaseActivity() {
         val total = 12
         lifecycleScope.launch {
             try {
-                val response = ApiCreate.build(TestApi::class.java).articleList(0)
+                val response = ApiService.testApi.articleList(0)
                 if (response.errorCode == 0) {
                     val list = mutableListOf<ItemCell>()
                     val temp = response.data?.datas ?: emptyList()
