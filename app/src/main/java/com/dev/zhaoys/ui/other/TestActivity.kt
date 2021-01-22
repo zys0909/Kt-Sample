@@ -15,7 +15,7 @@ import com.zys.common.adapter.RecyclerAdapter
 import com.zys.common.adapter.RecyclerSubmit
 import com.zys.common.adapter.RecyclerSupport
 import com.zys.common.imageload.ImageLoader
-import com.zys.common.util.JsonUtil
+import com.group.dev.util.JsonUtil
 import kotlinx.android.synthetic.main.activity_sample_list.*
 import java.lang.reflect.InvocationHandler
 import java.lang.reflect.Method

@@ -4,9 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev.zhaoys.R
-import com.dev.zhaoys.app.ApiService
-import com.dev.zhaoys.constant.ExtraConst
-import com.dev.zhaoys.app.TestApi
+import com.group.dev.api.ApiService
+import com.group.dev.constant.ExtraConst
 import com.dev.zhaoys.app.BaseActivity
 import com.dev.zhaoys.data.PageData
 import com.dev.zhaoys.extend.error

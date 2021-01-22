@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.webkit.*
 import com.dev.zhaoys.R
-import com.dev.zhaoys.constant.ExtraConst
+import com.group.dev.constant.ExtraConst
 import com.dev.zhaoys.app.BaseActivity
 import kotlinx.android.synthetic.main.activity_web.*
 

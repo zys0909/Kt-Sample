@@ -1,6 +1,6 @@
 @file:Suppress("unused", "SpellCheckingInspection")
 
-package com.zys.common.util
+package com.group.dev.util
 
 import android.os.Bundle
 import android.util.Log

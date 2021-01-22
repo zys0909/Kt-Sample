@@ -4,8 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dev.zhaoys.app.ApiService
-import com.dev.zhaoys.app.TestApi
+import com.group.dev.api.ApiService
 import com.dev.zhaoys.data.response.ArticleData
 import com.dev.zhaoys.data.response.HomeBannerData
 import kotlinx.coroutines.launch

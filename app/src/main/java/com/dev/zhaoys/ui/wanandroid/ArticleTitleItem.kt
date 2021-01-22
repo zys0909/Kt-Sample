@@ -5,7 +5,7 @@ import com.dev.zhaoys.R
 import com.zys.common.adapter.ItemCell
 import com.zys.common.adapter.RecyclerSupport
 import com.zys.common.adapter.RecyclerVH
-import com.zys.ext.debounceClick
+import com.group.dev.ext.debounceClick
 import kotlinx.android.synthetic.main.item_home_article_title.view.*
 
 /**

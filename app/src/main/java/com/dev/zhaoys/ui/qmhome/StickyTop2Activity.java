@@ -21,7 +21,7 @@ import com.dev.zhaoys.ui.qmhome.tools.RecyclerViewHolder;
 import com.dev.zhaoys.ui.qmhome.top.NestedTopAreaBehavior;
 import com.dev.zhaoys.ui.qmhome.top.NestedTopDelegateLayout;
 import com.dev.zhaoys.ui.qmhome.top.NestedTopRecyclerView;
-import com.zys.ext.DensityUtil;
+import com.group.dev.ext.DensityUtil;
 
 import org.jetbrains.annotations.Nullable;
 

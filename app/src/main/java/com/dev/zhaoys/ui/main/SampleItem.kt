@@ -7,10 +7,10 @@ import com.dev.zhaoys.R
 import com.zys.common.adapter.ItemCell
 import com.zys.common.adapter.RecyclerSupport
 import com.zys.common.adapter.RecyclerVH
-import com.zys.ext.asClass
-import com.zys.ext.debounceClick
-import com.zys.ext.dp
-import com.zys.ext.dpf
+import com.group.dev.ext.asClass
+import com.group.dev.ext.debounceClick
+import com.group.dev.ext.dp
+import com.group.dev.ext.dpf
 import kotlinx.android.synthetic.main.item_home_normal.view.*
 
 /**

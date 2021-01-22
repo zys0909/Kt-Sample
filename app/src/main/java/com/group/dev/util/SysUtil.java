@@ -1,4 +1,4 @@
-package com.zys.common.util;
+package com.group.dev.util;
 
 import android.content.Context;
 import android.util.Log;
@@ -50,7 +50,6 @@ public class SysUtil {
             return;
         }
         try {
-
             File file = new File(context.getExternalCacheDir(), fileName);
             file.deleteOnExit();
             file.createNewFile();

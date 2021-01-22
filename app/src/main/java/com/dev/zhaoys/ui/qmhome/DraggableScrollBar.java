@@ -46,7 +46,7 @@ import androidx.core.view.ViewCompat;
 
 import com.dev.zhaoys.R;
 import com.dev.zhaoys.ui.qmhome.tools.Helper;
-import com.zys.ext.DensityUtil;
+import com.group.dev.ext.DensityUtil;
 
 public class DraggableScrollBar extends View {
 

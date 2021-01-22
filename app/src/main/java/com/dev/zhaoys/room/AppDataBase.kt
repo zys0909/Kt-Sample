@@ -3,7 +3,6 @@ package com.dev.zhaoys.room
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.dev.zhaoys.app.App
 import com.dev.zhaoys.room.entity.UserEntity
 
 /**

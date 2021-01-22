@@ -18,16 +18,11 @@ android {
         }
     }
     defaultConfig {
-        applicationId "com.centa.zhaoys"
+        applicationId "com.group.dev"
         minSdkVersion rootProject.ext.minSdk
         targetSdkVersion rootProject.ext.targetSdk
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField('String', 'BASE_URL', '\"https://www.wanandroid.com\"')
-        buildConfigField('Long', 'CONNECT_TIMEOUT', '60000L')
-        buildConfigField('Long', 'READ_TIMEOUT', '60000L')
-
         packagingOptions {
             exclude 'META-INF/*'
         }
@@ -43,6 +38,13 @@ android {
             signingConfig signingConfigs.debug
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    flavorDimensions 'channel'
+    productFlavors {
+        alpha {
+            applicationIdSuffix '.debug'
+            resValue("bool", "debug_mode", "true")
         }
     }
     walle {

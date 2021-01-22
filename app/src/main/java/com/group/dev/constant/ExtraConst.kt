@@ -1,4 +1,4 @@
-package com.dev.zhaoys.constant
+package com.group.dev.constant
 
 /**
  * 描述:
