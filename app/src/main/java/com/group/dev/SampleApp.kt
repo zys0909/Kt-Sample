@@ -1,7 +1,8 @@
 package com.group.dev
 
 import android.app.Application
-import com.group.dev.core.App
+import com.dev.zhaoys.R
+import com.zys.core.App
 
 /**
  * 描述:
@@ -13,7 +14,8 @@ class SampleApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        App.instance = this
+//        App.init(this,resources.getBoolean(R.bool.debug_mode))
+        App.init(this,true)
 
     }
 }

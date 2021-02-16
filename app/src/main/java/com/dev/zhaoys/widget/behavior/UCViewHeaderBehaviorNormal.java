@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.ViewCompat;
 import com.dev.zhaoys.R;
-import com.dev.zhaoys.app.App;
+import com.zys.core.App;
 
 import java.lang.ref.WeakReference;
 
@@ -19,7 +19,7 @@ import java.lang.ref.WeakReference;
 @SuppressWarnings("unused")
 public class UCViewHeaderBehaviorNormal extends ViewOffsetBehavior<View> {
     private int mTitleViewHeight = 0;
-    private OverScroller mOverScroller;
+    private final OverScroller mOverScroller;
     private WeakReference<View> mChild;
 
     private static final int STATE_OPENED = 0;
@@ -32,7 +32,7 @@ public class UCViewHeaderBehaviorNormal extends ViewOffsetBehavior<View> {
     public UCViewHeaderBehaviorNormal() {
 
         super();
-        mOverScroller = new OverScroller(App.getInstance());
+        mOverScroller = new OverScroller(App.instance());
     }
 
     public UCViewHeaderBehaviorNormal(Context context, AttributeSet attrs) {

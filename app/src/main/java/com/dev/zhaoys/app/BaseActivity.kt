@@ -13,14 +13,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.dev.zhaoys.R
 import com.group.dev.constant.ExtraConst
-import com.zys.common.util.StatusBarUtils
+import com.zys.ext.fitSystemBar
 import java.util.*
 
 abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        StatusBarUtils.setTransparent(this)
         setContentView(layoutId())
         val title = intent.getStringExtra(ExtraConst.ACTIVITY_TITLE)
         title?.let {
@@ -36,7 +35,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     protected fun initToolbar(title: CharSequence? = null, showHomeAsUp: Boolean = true) {
         findViewById<Toolbar>(R.id.toolbar)?.let {
-            it.setPadding(0, StatusBarUtils.getHeight(this), 0, 0)
+            it.fitSystemBar()
             setSupportActionBar(it)
             supportActionBar?.setDisplayHomeAsUpEnabled(showHomeAsUp)
             supportActionBar?.title = title
@@ -44,8 +43,8 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean = when {
-        item.itemId == android.R.id.home -> {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
+        android.R.id.home -> {
             finish()
             true
         }

@@ -17,7 +17,6 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
 import com.tencent.mmkv.MMKV
 import com.zys.common.adapter.ItemCell
 import com.zys.common.adapter.RecyclerAdapter
-import com.zys.common.adapter.RecyclerSubmit
 import com.zys.common.adapter.RecyclerSupport
 import kotlinx.android.synthetic.main.activity_new_home.*
 import kotlinx.coroutines.Dispatchers
@@ -75,10 +74,7 @@ class UCHomeActivity : BaseActivity() {
                         list.add(ArticleItem(0, temp[i]))
                     }
                     GlobalScope.launch(context = Dispatchers.Main, block = {
-                        mainAdapter.submitList(
-                            list,
-                            RecyclerSubmit(index, 10, response.data?.size ?: 0)
-                        )
+                        mainAdapter.submit(list)
                         val pageData = response.data?.let {
                             PageData(it.curPage, it.size, it.total)
                         }

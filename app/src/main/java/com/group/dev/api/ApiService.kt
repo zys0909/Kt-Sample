@@ -3,7 +3,7 @@ package com.group.dev.api
 import android.util.Log
 import com.dev.zhaoys.app.HostInterceptor
 import com.group.dev.constant.AppConst
-import com.group.dev.core.App
+import com.zys.core.App
 import okhttp3.Cache
 import okhttp3.Dns
 import okhttp3.OkHttpClient

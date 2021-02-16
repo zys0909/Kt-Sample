@@ -1,7 +1,7 @@
-package com.group.dev.core
+package com.zys.core
 
 import android.app.Application
-import com.dev.zhaoys.R
+import kotlin.properties.Delegates
 
 /**
  * 描述:
@@ -18,6 +18,11 @@ object App {
 
     @JvmStatic
     @get:JvmName("debug")
-    val debug: Boolean
-        get() = instance.resources.getBoolean(R.bool.debug_mode)
+    var debug by Delegates.notNull<Boolean>()
+
+
+    fun init(application: Application, debug: Boolean) {
+        instance = application
+        this.debug = debug
+    }
 }

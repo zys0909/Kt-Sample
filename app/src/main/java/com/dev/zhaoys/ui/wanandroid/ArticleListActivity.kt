@@ -15,7 +15,6 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
 import com.zys.common.adapter.ItemCell
 import com.zys.common.adapter.RecyclerAdapter
-import com.zys.common.adapter.RecyclerSubmit
 import com.zys.common.adapter.RecyclerSupport
 import kotlinx.android.synthetic.main.activity_wan_android_main.recyclerView
 import kotlinx.android.synthetic.main.layout_smart_refresh.*
@@ -44,14 +43,14 @@ class ArticleListActivity : BaseActivity() {
             when (type) {
                 R.id.iv_follow -> {
                     val article =
-                        (adapter.currentList()[position] as ArticleItem).article
+                        (adapter.currentList[position] as ArticleItem).article
                     article.collect = !article.collect
                     adapter.notifyItemChanged(position, "collect")
                 }
 
                 R.id.item_article -> {
                     val article =
-                        (adapter.currentList()[position] as ArticleItem).article
+                        (adapter.currentList[position] as ArticleItem).article
                     startActivity(
                         Intent(this, WebActivity::class.java)
                             .putExtra(ExtraConst.WEB_URL, article.link)
@@ -95,7 +94,7 @@ class ArticleListActivity : BaseActivity() {
                         list.add(ArticleItem(0, temp[i]))
                     }
                     GlobalScope.launch(context = Dispatchers.Main, block = {
-                        adapter.submitList(list, RecyclerSubmit(index,10,response.data?.size?:0))
+                        adapter.submit(list)
                         val pageData = response.data?.let {
                             PageData(it.curPage, it.size, it.total)
                         }
