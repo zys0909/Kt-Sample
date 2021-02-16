@@ -1,4 +1,4 @@
-package com.dev.zhaoys.ui.main
+package com.dev.zhaoys.ui
 
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable

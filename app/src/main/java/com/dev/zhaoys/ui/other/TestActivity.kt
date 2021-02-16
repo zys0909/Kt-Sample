@@ -5,7 +5,7 @@ import android.util.Log
 import androidx.recyclerview.widget.GridLayoutManager
 import com.dev.zhaoys.app.BaseActivity
 import com.dev.zhaoys.extend.toast
-import com.dev.zhaoys.ui.main.HomeItem
+import com.dev.zhaoys.ui.HomeItem
 import com.dev.zhaoys.ui.proxy.DynamicJava
 import com.dev.zhaoys.ui.proxy.DynamicTest
 import com.dev.zhaoys.ui.proxy.IBuy

@@ -49,6 +49,7 @@
         <activity android:name="com.group.dev.ui.FlexActivity" />
         <activity android:name=".ui.hook.TargetActivity" />
         <activity android:name=".ui.other.TextActivity" />
+        <activity android:name="com.group.dev.ui.decoration_sticky.DecorationStickyActivity" />
     </application>
 
 </manifest>

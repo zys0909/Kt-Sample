@@ -11,6 +11,7 @@ import com.dev.zhaoys.ui.qmhome.StickyTop2Activity
 import com.dev.zhaoys.ui.sticky.StickyTop1Activity
 import com.dev.zhaoys.ui.wanandroid.WanMainActivity
 import com.dev.zhaoys.utils.SysUtil
+import com.group.dev.ui.decoration_sticky.DecorationStickyActivity
 import com.zys.base.BaseSampleFragment
 import com.zys.common.adapter.ItemCell
 import com.zys.ext.toast
@@ -69,6 +70,9 @@ class HomeFragment : BaseSampleFragment() {
         })
         list.add(MainCell("HookActivity") {
             openActivity<HookActivity>()
+        })
+        list.add(MainCell("DecorationSticky") {
+            openActivity<DecorationStickyActivity>()
         })
         return list
     }
