@@ -1,9 +1,6 @@
 package com.group.dev.ui.decoration_sticky
 
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.Rect
+import android.graphics.*
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,10 +15,12 @@ import com.dev.zhaoys.extend.dpf
  */
 class StickyDecoration : RecyclerView.ItemDecoration() {
 
-    private val groupHeaderHeight = 50.dp
+    private val groupHeaderHeight = 30.dp
     private val dividerHeight = 2.dp
+    private val paddingLeft = 10.dpf
     private val paint by lazy { Paint() }
     private val rect = Rect()
+    private val path = Path()
 
     init {
         paint.run {
@@ -44,24 +43,9 @@ class StickyDecoration : RecyclerView.ItemDecoration() {
                 }
 
                 if (adapter.isGroupHeader(position)) {
-                    paint.color = Color.RED
-                    c.drawRect(
-                        left,
-                        (view.top - groupHeaderHeight).toFloat(),
-                        right,
-                        view.top.toFloat(), paint
-                    )
-                    paint.color = Color.WHITE
                     val groupName = adapter.getGroupName(position)
-                    paint.getTextBounds(groupName, 0, groupName.length, rect)
-
-                    c.drawText(
-                        groupName,
-                        left + 20.dp,
-                        (view.top - groupHeaderHeight / 2 + rect.height() / 2).toFloat(),
-                        paint
-                    )
-
+                    val top = (view.top - groupHeaderHeight).toFloat()
+                    drawHeader(c, groupName, left, top, right, view.top.toFloat(), false)
                 } else {
                     paint.color = Color.BLACK
                     c.drawRect(
@@ -88,48 +72,48 @@ class StickyDecoration : RecyclerView.ItemDecoration() {
             val right = (parent.width - parent.paddingRight).toFloat()
             val top = parent.paddingTop.toFloat()
             // 当第二个是组的头部的时候
-            if (adapter.isGroupHeader(position + 1)) {
-                val height = kotlin.math.min(groupHeaderHeight, view.bottom - parent.paddingTop)
+            val groupHeader = adapter.isGroupHeader(position + 1)
 
-                paint.color = Color.RED
-                c.drawRect(
-                    left,
-                    top,
-                    right,
-                    top + height, paint
-                )
-                paint.color = Color.WHITE
-                val groupName = adapter.getGroupName(position)
-                paint.getTextBounds(groupName, 0, groupName.length, rect)
-                c.clipRect(left, top, right, top + height)
-                c.drawText(
-                    groupName,
-                    left + 20.dp,
-                    (top + height - groupHeaderHeight / 2 + rect.height() / 2),
-                    paint
-                )
-
+            val bottom = if (groupHeader) {
+                top + kotlin.math.min(groupHeaderHeight, view.bottom - parent.paddingTop)
             } else {
-                paint.color = Color.RED
-                c.drawRect(
-                    left,
-                    top,
-                    right,
-                    top + groupHeaderHeight, paint
-                )
-                paint.color = Color.WHITE
-                val groupName = adapter.getGroupName(position)
-                paint.getTextBounds(groupName, 0, groupName.length, rect)
-                c.drawText(
-                    groupName,
-                    left + 20.dp,
-                    (top + groupHeaderHeight / 2 + rect.height() / 2),
-                    paint
-                )
+                top + groupHeaderHeight
             }
-
-
+            val groupName = adapter.getGroupName(position)
+            drawHeader(c, groupName, left, top, right, bottom, true)
         }
+    }
+
+    private fun drawHeader(
+        c: Canvas, groupName: String,
+        left: Float, top: Float, right: Float, bottom: Float,
+        isOver: Boolean
+    ) {
+        c.save()
+        paint.color = 0xFFEEEEEE.toInt()
+        c.drawRect(left, top, right, bottom, paint)
+        c.restore()
+
+        paint.getTextBounds(groupName, 0, groupName.length, rect)
+        val textRight = (left + right) / 2
+        if (isOver) {
+            c.clipRect(left, top, textRight, bottom)
+        }
+        c.save()
+        paint.color = Color.RED
+        path.reset()
+        path.moveTo(left, bottom - groupHeaderHeight)
+        path.lineTo(textRight, bottom - groupHeaderHeight)
+        path.lineTo(bottom - groupHeaderHeight / 2f, textRight - paddingLeft)
+        path.lineTo(textRight, bottom)
+        path.lineTo(left, bottom)
+        c.drawPath(path, paint)
+
+
+        paint.color = Color.WHITE
+        val y = bottom - groupHeaderHeight / 2 + rect.height() / 2
+        c.drawText(groupName, left + paddingLeft, y, paint)
+        c.restore()
     }
 
     override fun getItemOffsets(

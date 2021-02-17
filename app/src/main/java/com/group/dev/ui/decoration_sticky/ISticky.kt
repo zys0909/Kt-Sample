@@ -7,6 +7,7 @@ package com.group.dev.ui.decoration_sticky
  * create by 2021/2/16
  */
 interface ISticky {
+
     fun isGroupHeader(position: Int): Boolean
 
     fun getGroupName(position: Int): String

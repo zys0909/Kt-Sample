@@ -13,5 +13,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/black"
-        android:paddingTop="150dp" />
+        android:paddingTop="80dp" />
 </LinearLayout>

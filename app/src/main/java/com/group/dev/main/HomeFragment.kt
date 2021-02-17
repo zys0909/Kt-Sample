@@ -71,7 +71,7 @@ class HomeFragment : BaseSampleFragment() {
         list.add(MainCell("HookActivity") {
             openActivity<HookActivity>()
         })
-        list.add(MainCell("DecorationSticky") {
+        list.add(MainCell("分组-悬浮") {
             openActivity<DecorationStickyActivity>()
         })
         return list
