@@ -1,7 +1,6 @@
 package com.group.dev.ui.decoration_sticky
 
 import android.graphics.Color
-import android.text.format.DateUtils
 import android.view.Gravity
 import android.view.ViewGroup
 import android.widget.TextView
@@ -29,7 +28,7 @@ class DateCell(val text: String) {
 class DateVH(private val textView: TextView) : RecyclerView.ViewHolder(textView) {
 
     init {
-        textView.setBackgroundColor(0xFFEEEEEE.toInt())
+        textView.setBackgroundColor(0xFF999999.toInt())
         textView.textSize = 20f
         textView.setTextColor(Color.BLACK)
         textView.gravity = Gravity.CENTER
