@@ -13,7 +13,6 @@ import com.group.dev.api.ApiService
 import com.group.dev.constant.ExtraConst
 import com.zys.common.adapter.ItemCell
 import com.zys.common.adapter.RecyclerAdapter
-import com.zys.common.adapter.RecyclerSubmit
 import com.zys.common.adapter.RecyclerSupport
 import com.zys.common.imageload.ImageLoader
 import kotlinx.android.synthetic.main.activity_wan_android_main.*
@@ -42,7 +41,7 @@ class WanMainActivity : BaseActivity() {
             when (type) {
                 R.id.iv_follow -> {
                     val article =
-                        (adapter.currentList()[position] as ArticleItem).article
+                        (adapter.currentList[position] as ArticleItem).article
                     article.collect = !article.collect
                     adapter.notifyItemChanged(position, "collect")
                 }
@@ -56,7 +55,7 @@ class WanMainActivity : BaseActivity() {
                 }
                 R.id.item_article -> {
                     val article =
-                        (adapter.currentList()[position] as ArticleItem).article
+                        (adapter.currentList[position] as ArticleItem).article
                     startActivity(
                         Intent(this@WanMainActivity, WebActivity::class.java)
                             .putExtra(ExtraConst.WEB_URL, article.link)
@@ -80,7 +79,7 @@ class WanMainActivity : BaseActivity() {
         }
         model.banner().observe(this, Observer {
             if (!it.isNullOrEmpty()) {
-                adapter.submitList(listOf(BannerItem(it)), RecyclerSubmit())
+                adapter.submit(listOf(BannerItem(it)))
             }
         })
         articleTop()
@@ -98,7 +97,7 @@ class WanMainActivity : BaseActivity() {
                 for (i in 0 until size) {
                     list.add(ArticleItem(POSITION_ARTICLE_TOP + i, it[i]))
                 }
-                adapter.submitList(list, RecyclerSubmit())
+                adapter.submit(list)
             }
         })
     }
@@ -116,7 +115,7 @@ class WanMainActivity : BaseActivity() {
                         list.add(ArticleItem(POSITION_ARTICLE_LIST + 1, temp[i]))
                     }
                     GlobalScope.launch(context = Dispatchers.Main, block = {
-                        adapter.submitList(list, RecyclerSubmit())
+                        adapter.submit(list)
                     })
                 }
             } catch (e: Exception) {

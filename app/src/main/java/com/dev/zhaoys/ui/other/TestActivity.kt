@@ -5,14 +5,13 @@ import android.util.Log
 import androidx.recyclerview.widget.GridLayoutManager
 import com.dev.zhaoys.app.BaseActivity
 import com.dev.zhaoys.extend.toast
-import com.dev.zhaoys.ui.main.HomeItem
+import com.dev.zhaoys.ui.HomeItem
 import com.dev.zhaoys.ui.proxy.DynamicJava
 import com.dev.zhaoys.ui.proxy.DynamicTest
 import com.dev.zhaoys.ui.proxy.IBuy
 import com.squareup.moshi.Types
 import com.zys.common.adapter.ItemCell
 import com.zys.common.adapter.RecyclerAdapter
-import com.zys.common.adapter.RecyclerSubmit
 import com.zys.common.adapter.RecyclerSupport
 import com.zys.common.imageload.ImageLoader
 import com.group.dev.util.JsonUtil
@@ -76,11 +75,11 @@ class TestActivity : BaseActivity() {
         list.add(HomeItem(11))
         list.add(HomeItem(12))
         list.add(HomeItem(13))
-        adapter.submitList(list, RecyclerSubmit(0, 10, list.size))
+        adapter.submit(list)
         val map = mutableMapOf<String, Boolean>()
 
         support.onClickCallback = { position: Int, _: Int ->
-            val id = adapter.currentList()[position].itemId()
+            val id = adapter.currentList[position].itemId()
             when (id.toInt()) {
                 0 -> {
 

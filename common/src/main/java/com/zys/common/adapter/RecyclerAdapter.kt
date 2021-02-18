@@ -18,19 +18,7 @@ open class RecyclerAdapter(
     }).build()
 ) : RecyclerView.Adapter<RecyclerVH>() {
 
-    private var recyclerSubmit = RecyclerSubmit()
-    private val differ = AsyncListDiffer(AdapterListUpdateCallback(this), config).apply {
-        addListListener { _, _ ->
-            when (recyclerSubmit.pageIndex) {
-                0 -> support.onRefresh?.invoke()
-                else -> support.onLoadComplete?.invoke(
-                    recyclerSubmit.pageIndex,
-                    recyclerSubmit.pageCount,
-                    recyclerSubmit.total
-                )
-            }
-        }
-    }
+    private val differ = AsyncListDiffer(AdapterListUpdateCallback(this), config)
 
     override fun getItemViewType(position: Int) = differ.currentList[position].layoutResId()
 
@@ -59,53 +47,19 @@ open class RecyclerAdapter(
         //empty
     }
 
-    fun currentList(): MutableList<ItemCell> = differ.currentList
+    val currentList: MutableList<ItemCell>
+        get() =  differ.currentList
 
-    fun submitLoading(cell: ItemCell? = null) {
-        recyclerSubmit = RecyclerSubmit(0)
-        val newList = mutableListOf<ItemCell>()
-        cell?.let {
-            newList.add(it)
-        }
-        differ.submitList(newList)
-    }
-
-    /**
-     * submit error
-     */
-    fun submitError(pageIndex: Int = 1, cell: ItemCell = DEF_ERROR_CELL) {
-        recyclerSubmit = RecyclerSubmit(pageIndex)
-        if (pageIndex == 1) {
-            differ.submitList(mutableListOf(cell))
-        } else {
-            support.onLoadComplete?.invoke(pageIndex, 0, 0)
-        }
-    }
 
     /**
      * submit list
      */
-    fun submitList(
-        list: List<ItemCell>,
-        block: RecyclerSubmit,
-        cell: ItemCell = DEF_EMPTY_CELL
-    ) {
-        recyclerSubmit = block
-        if (list.isEmpty()) {
-            if (block.pageIndex == 1) {
-                differ.submitList(mutableListOf(cell))
-            } else {
-                support.onLoadComplete?.invoke(block.pageIndex, block.pageCount, block.total)
-            }
-        } else {
-            if (block.pageIndex == 1) {
-                differ.submitList(list)
-            } else {
-                val temp = mutableListOf<ItemCell>()
-                temp.addAll(differ.currentList)
-                temp.addAll(list)
-                differ.submitList(temp)
-            }
+    fun submit(list: List<ItemCell>, block: ()->Unit = {}) {
+        val temp = mutableListOf<ItemCell>()
+        temp.addAll(differ.currentList)
+        temp.addAll(list)
+        differ.submitList(temp){
+            block.invoke()
         }
     }
 }

@@ -2,7 +2,6 @@ package com.dev.zhaoys.widget.behavior;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.OverScroller;
@@ -10,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.ViewCompat;
 import com.dev.zhaoys.R;
-import com.dev.zhaoys.app.App;
+import com.zys.core.App;
 
 import java.lang.ref.WeakReference;
 
@@ -33,7 +32,7 @@ public class UCViewHeaderBehavior extends ViewOffsetBehavior<View> {
     public UCViewHeaderBehavior() {
 
         super();
-        mOverScroller = new OverScroller(App.getInstance());
+        mOverScroller = new OverScroller(App.instance());
     }
 
     public UCViewHeaderBehavior(Context context, AttributeSet attrs) {

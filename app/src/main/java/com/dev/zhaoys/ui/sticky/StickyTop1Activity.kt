@@ -5,10 +5,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev.zhaoys.R
 import com.dev.zhaoys.app.BaseActivity
 import com.dev.zhaoys.extend.toast
-import com.dev.zhaoys.ui.main.HomeItem
+import com.dev.zhaoys.ui.HomeItem
 import com.zys.common.adapter.ItemCell
 import com.zys.common.adapter.RecyclerAdapter
-import com.zys.common.adapter.RecyclerSubmit
 import com.zys.common.adapter.RecyclerSupport
 import kotlinx.android.synthetic.main.activity_sticky_recyclerview.*
 
@@ -27,9 +26,9 @@ class StickyTop1Activity : BaseActivity() {
                     scrollToTop(position)
                 }
                 R.id.tv_name2 -> {
-                    if (position >= 0 && position < adapter.currentList().size) {
+                    if (position >= 0 && position < adapter.currentList.size) {
                         scrollToTop(position)
-                        val itemCell = adapter.currentList()[position] as HeaderItem
+                        val itemCell = adapter.currentList[position] as HeaderItem
                         val src = itemCell.arr[1]
                         itemCell.arr[1] = src + 1
                         adapter.notifyItemChanged(position)
@@ -51,7 +50,7 @@ class StickyTop1Activity : BaseActivity() {
             list.add(HomeItem(i, "Item$i"))
         }
         list.add(5, HeaderItem())
-        adapter.submitList(list, RecyclerSubmit(1, list.size, list.size))
+        adapter.submit(list)
     }
 
     private fun scrollToTop(position: Int) {
@@ -60,7 +59,7 @@ class StickyTop1Activity : BaseActivity() {
     }
 
     private fun modify() {
-        val currentList = adapter.currentList()
+        val currentList = adapter.currentList
         var headerPosition = -1
         for (i in 0 until currentList.size) {
             if (currentList[i] is HeaderItem) {

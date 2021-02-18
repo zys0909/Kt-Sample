@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.wifi.WifiManager
 import android.util.Log
+import com.zys.core.App
 import java.net.InetAddress
 import java.net.NetworkInterface
 import java.net.SocketException

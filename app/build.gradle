@@ -76,7 +76,6 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
     if (LOCAL_DEBUG) {
 //        implementation 'com.github.zys0909:ktx-common:1.0.1-SNAPSHOT'
         implementation project(path: ':common')

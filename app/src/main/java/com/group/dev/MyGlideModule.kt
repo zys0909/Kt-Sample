@@ -26,7 +26,7 @@ class MyGlideModule : AppGlideModule() {
 
     companion object {
 
-        private val okHttpClient: OkHttpClient by lazy {
+        private val okHttpClient: OkHttpClient by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
             OkHttpClient.Builder()
                 .connectTimeout(AppConst.HTTP_TIMEOUT, TimeUnit.SECONDS)
                 .readTimeout(AppConst.HTTP_TIMEOUT, TimeUnit.SECONDS)

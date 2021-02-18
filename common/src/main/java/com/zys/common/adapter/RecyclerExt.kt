@@ -4,13 +4,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 
-val DEF_EMPTY_CELL by lazy {
-    DefaultEmptyCell()
-}
 
-val DEF_ERROR_CELL by lazy {
-    DefaultErrorCell()
-}
 
 inline fun createAdapter(support: RecyclerSupport.() -> Unit): RecyclerAdapter {
     return RecyclerAdapter(RecyclerSupport().apply(support))
