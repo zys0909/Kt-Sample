@@ -1,6 +1,8 @@
 package com.group.dev.ext
 
 import android.view.View
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.SimpleItemAnimator
 
 
 inline fun View.debounceClick(crossinline click: (v: View) -> Unit = {}) {
@@ -11,5 +13,15 @@ inline fun View.debounceClick(crossinline click: (v: View) -> Unit = {}) {
             latest = current
             click.invoke(it)
         }
+    }
+}
+
+fun RecyclerView.closeAnim() {
+    this.itemAnimator?.apply {
+        changeDuration = 0
+        addDuration = 0
+        removeDuration = 0
+        moveDuration = 0
+        (this as? SimpleItemAnimator)?.supportsChangeAnimations = false
     }
 }
