@@ -12,7 +12,8 @@
         <item name="android:windowLightStatusBar" tools:targetApi="M">true</item>
         <item name="android:navigationBarColor">@android:color/white</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="O_MR1">true</item>
-        <item name="android:windowContentTransitions">true</item>
+                <item name="android:windowContentTransitions">true</item>
+        <item name="android:screenOrientation">portrait</item>
     </style>
 
 </resources>

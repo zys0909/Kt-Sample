@@ -1,8 +1,8 @@
 package  androidx.lifecycle
 
 import android.annotation.SuppressLint
-import com.zys.common.net.RequestCoroutineScopeActivityImpl
-import com.zys.common.net.RequestCoroutineScopeViewModelImp
+import com.group.common.net.RequestCoroutineScopeActivityImpl
+import com.group.common.net.RequestCoroutineScopeViewModelImp
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 

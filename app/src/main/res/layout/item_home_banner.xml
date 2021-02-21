@@ -7,7 +7,7 @@
         android:paddingStart="15dp"
         android:paddingEnd="15dp">
 
-    <com.dev.zhaoys.widget.AutoRecyclerView
+    <com.group.dev.widget.AutoRecyclerView
             android:id="@+id/rv_banner"
             android:layout_width="0dp"
             android:layout_height="0dp"

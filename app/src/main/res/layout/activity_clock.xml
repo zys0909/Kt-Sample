@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.dev.zhaoys.ui.sticky.StickyTop1Activity">
+    tools:context="com.group.dev.ui.sticky.StickyTop1Activity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@id/toolbar"
         style="@style/ToolbarStyle" />
 
-    <com.dev.zhaoys.widget.ClockView
+    <com.group.dev.widget.ClockView
         android:id="@+id/clock"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

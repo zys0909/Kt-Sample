@@ -3,8 +3,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'walle'
-//apply plugin: 'sale-house'
-
 
 android {
     compileSdkVersion rootProject.ext.compileSdk
@@ -18,16 +16,12 @@ android {
         }
     }
     defaultConfig {
-        applicationId "com.centa.zhaoys"
+        applicationId "com.group.dev"
         minSdkVersion rootProject.ext.minSdk
         targetSdkVersion rootProject.ext.targetSdk
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField('String', 'BASE_URL', '\"https://www.wanandroid.com\"')
-        buildConfigField('Long', 'CONNECT_TIMEOUT', '60000L')
-        buildConfigField('Long', 'READ_TIMEOUT', '60000L')
-
+        resValue("bool", "debug_mode", "false")
         packagingOptions {
             exclude 'META-INF/*'
         }
@@ -43,6 +37,13 @@ android {
             signingConfig signingConfigs.debug
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    flavorDimensions 'channel'
+    productFlavors {
+        alpha {
+            applicationIdSuffix '.debug'
+            resValue("bool", "debug_mode", "true")
         }
     }
     walle {
@@ -62,10 +63,10 @@ android {
     }
     //打包命名
     android.applicationVariants.all { variant ->
-        if (variant.buildType.name == 'release') {
+        if (variant.buildType.name != 'debug') {
             variant.outputs.all {
                 def date = new Date().format("yyyyMMdd_HH-mm", TimeZone.getTimeZone("GMT+08"))
-                def dir = new File(project.buildDir.absolutePath + "/apk")
+                def dir = new File(project.buildDir, "apk")
                 variant.getPackageApplicationProvider().get().outputDirectory = dir
                 def variantName = variant.name.replace('Release', '')
                 outputFileName = "app-${variantName}-${variant.versionName}-${date}.apk"
@@ -75,7 +76,6 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
     if (LOCAL_DEBUG) {
 //        implementation 'com.github.zys0909:ktx-common:1.0.1-SNAPSHOT'
         implementation project(path: ':common')
@@ -104,9 +104,4 @@ dependencies {
     implementation lottie
 
 //    implementation 'com.meituan.android.walle:library:1.1.6'
-}
-task beta(type: Exec) {
-    group 'package'
-    workingDir "$rootDir/app"
-    commandLine './gradlew', 'clean assembleReleaseChannels -PchannelList=baidu'
 }

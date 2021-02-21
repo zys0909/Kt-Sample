@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">kotlin-test</string>
+    <string name="app_name">Kt-Sample</string>
     <string name="no_more_data">松手吧!没有了</string>
 
     <string name="behavior_content">com.dev.zhaoys.widget.behavior.UCViewContentBehavior</string>

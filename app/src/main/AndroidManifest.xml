@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.dev.zhaoys">
+    package="com.group.dev">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
@@ -10,7 +10,7 @@
     <uses-permission-sdk-23 android:name="android.permission.CALL_PHONE" />
 
     <application
-        android:name=".app.App"
+        android:name="com.group.dev.SampleApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -20,7 +20,9 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning"
         tools:targetApi="n">
-        <activity android:name=".ui.main.MainActivity">
+        <activity
+            android:name="com.group.dev.main.MainActivity"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,20 +33,25 @@
         <activity-alias
             android:name=".app.App"
             android:icon="@color/colorAccent"
-            android:targetActivity=".ui.main.MainActivity" />
+            android:targetActivity="com.group.dev.main.MainActivity" />
 
-        <activity android:name=".ui.qmhome.StickyTop2Activity" />
-        <activity android:name=".ui.wanandroid.WanMainActivity" />
-        <activity android:name=".ui.wanandroid.ArticleListActivity" />
-        <activity android:name=".ui.WebActivity" />
-        <activity android:name=".ui.other.UCHomeActivity" />
-        <activity android:name=".ui.sticky.StickyTop1Activity" />
-        <activity android:name=".ui.other.ClipImageActivity" />
-        <activity android:name=".ui.other.ViewPager2Activity" />
-        <activity android:name=".ui.other.RulerActivity" />
-        <activity android:name=".ui.other.ClockActivity" />
-        <activity android:name=".ui.other.TestActivity" />
-        <activity android:name=".ui.hook.TargetActivity" />
+        <activity android:name="com.group.dev.ui.qmhome.StickyTop2Activity" />
+        <activity android:name="com.group.dev.ui.wanandroid.WanMainActivity" />
+        <activity android:name="com.group.dev.ui.wanandroid.ArticleListActivity" />
+        <activity android:name="com.group.dev.ui.WebActivity" />
+        <activity android:name="com.group.dev.ui.other.UCHomeActivity" />
+        <activity android:name="com.group.dev.ui.sticky.StickyTop1Activity" />
+        <activity android:name="com.group.dev.ui.other.ClipImageActivity" />
+        <activity android:name="com.group.dev.ui.other.ViewPager2Activity" />
+        <activity android:name="com.group.dev.ui.other.RulerActivity" />
+        <activity android:name="com.group.dev.ui.other.ClockActivity" />
+        <activity android:name="com.group.dev.ui.other.TestActivity" />
+        <activity android:name="com.group.dev.ui.flextag.FlexActivity" />
+        <activity android:name="com.group.dev.ui.hook.TargetActivity" />
+        <activity android:name="com.group.dev.ui.other.TextActivity" />
+        <activity android:name="com.group.dev.ui.decoration_sticky.DecorationStickyActivity" />
+        <activity android:name="com.group.dev.ui.tantan.TanTanActivity" />
+        <activity android:name="com.group.dev.ui.fish.FishActivity" />
     </application>
 
 </manifest>

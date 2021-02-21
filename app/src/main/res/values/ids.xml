@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="smartRefreshLayout" type="id"/>
-    <item name="recyclerView" type="id"/>
-    <item name="appbarLayout" type="id"/>
-    <item name="toolbar" type="id"/>
 
-    <item name="id_uc_view_header_layout" type="id"/>
-    <item name="id_uc_view_title_layout" type="id"/>
-    <item name="id_uc_view_tab_layout" type="id"/>
 
-    <item name="fake_status_bar_view" type="id"/>
+    <item name="id_uc_view_header_layout" type="id" />
+    <item name="id_uc_view_title_layout" type="id" />
+    <item name="id_uc_view_tab_layout" type="id" />
+
+    <item name="fake_status_bar_view" type="id" />
 </resources>

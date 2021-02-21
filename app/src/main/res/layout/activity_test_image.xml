@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.dev.zhaoys.ui.other.ClipImageActivity">
+    tools:context="com.group.dev.ui.other.ClipImageActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@id/toolbar"
@@ -97,7 +97,7 @@
         android:textColor="#4CAF50"
         android:textSize="18sp" />
 
-    <com.dev.zhaoys.widget.TestView
+    <com.group.dev.widget.TestView
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"

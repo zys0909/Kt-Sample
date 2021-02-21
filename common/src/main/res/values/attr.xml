@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="FlexTagLayout">
+        <attr name="flexTag_stroke_color" format="reference|color" />
+        <attr name="flexTag_stroke_width" format="dimension" />
+        <attr name="flexTag_fill_color" format="reference|color" />
+        <attr name="flexTag_radius" format="dimension" />
+        <attr name="flexTag_textColor" format="color" />
+        <attr name="flexTag_textSize" format="dimension" />
+        <attr name="flexTag_paddingStartEnd" format="dimension" />
+        <attr name="flexTag_paddingTopBottom" format="dimension" />
+
+        <attr name="flexTag_horizontal_space" format="dimension" />
+        <attr name="flexTag_vertical_space" format="dimension" />
+        <attr name="flexTag_max_lines" format="integer" />
+        <attr name="flexTag_max_count" format="integer" />
+    </declare-styleable>
+</resources>

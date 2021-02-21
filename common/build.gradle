@@ -4,7 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 apply from: '../config.gradle'
-apply from:'upload_nexus.gradle'
+apply from: 'upload_nexus.gradle'
 
 android {
     compileSdkVersion rootProject.ext.compileSdk
@@ -55,4 +55,5 @@ dependencies {
     api smart_refresh
     api lottie
     api 'com.google.code.gson:gson:2.8.6'
+    api "com.kingja.loadsir:loadsir:1.3.8"
 }
