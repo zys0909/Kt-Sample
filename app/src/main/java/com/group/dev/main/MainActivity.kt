@@ -2,9 +2,8 @@ package com.group.dev.main
 
 import android.os.Bundle
 import android.view.View
-import com.dev.zhaoys.R
-import com.dev.zhaoys.app.BaseActivity
-import com.zys.ext.fitSystemBar
+import com.group.dev.R
+import com.group.common.base.BaseActivity
 
 
 /**

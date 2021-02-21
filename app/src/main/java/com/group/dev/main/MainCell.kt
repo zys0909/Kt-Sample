@@ -5,14 +5,14 @@ import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
-import com.dev.zhaoys.R
-import com.zys.common.adapter.ItemCell
-import com.zys.common.adapter.RecyclerSupport
-import com.zys.common.adapter.RecyclerVH
-import com.zys.ext.asClass
-import com.zys.ext.debounceClick
-import com.zys.ext.dp
-import com.zys.ext.dpf
+import com.group.dev.R
+import com.group.common.adapter.ItemCell
+import com.group.common.adapter.RecyclerSupport
+import com.group.common.adapter.RecyclerVH
+import com.group.common.ext.asClass
+import com.group.common.ext.debounceClick
+import com.group.common.ext.dp
+import com.group.common.ext.dpf
 import kotlinx.android.synthetic.main.item_home_normal.view.*
 
 /**

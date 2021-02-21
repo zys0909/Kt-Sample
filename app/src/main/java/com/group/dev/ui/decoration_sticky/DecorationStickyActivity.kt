@@ -2,9 +2,9 @@ package com.group.dev.ui.decoration_sticky
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.dev.zhaoys.app.RecyclerViewActivity
-import com.zys.core.ColorR
-import com.zys.ext.dp
+import com.group.common.base.RecyclerViewActivity
+import com.group.common.core.ColorR
+import com.group.common.ext.dp
 
 /**
  * 描述: RecyclerView.ItemDecoration 实现 分组 悬浮 置顶

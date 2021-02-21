@@ -14,7 +14,7 @@
         app:srlEnableOverScrollBounce="false"
         app:srlEnableOverScrollDrag="false">
 
-    <com.dev.zhaoys.widget.LottieHeader
+    <com.group.dev.widget.LottieHeader
             android:layout_width="match_parent"
             android:layout_height="50dp"/>
 
@@ -24,7 +24,7 @@
             android:layout_height="match_parent"
             android:overScrollMode="never"/>
 
-    <com.dev.zhaoys.widget.LottieFooter
+    <com.group.dev.widget.LottieFooter
             android:layout_width="match_parent"
             android:layout_height="50dp"/>
 </com.scwang.smartrefresh.layout.SmartRefreshLayout>

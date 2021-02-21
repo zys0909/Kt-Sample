@@ -3,8 +3,8 @@ package com.group.dev.ui.tantan
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.dev.zhaoys.R
-import com.zys.common.imageload.ImageLoader
+import com.group.dev.R
+import com.group.common.imageload.ImageLoader
 
 /**
  * 描述:

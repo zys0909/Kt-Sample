@@ -10,9 +10,9 @@ import android.view.ViewGroup
 import androidx.annotation.ColorInt
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
-import com.zys.common.R
-import com.zys.ext.dp
-import com.zys.ext.dpf
+import com.group.common.R
+import com.group.common.ext.dp
+import com.group.common.ext.dpf
 import kotlin.math.max
 
 /**

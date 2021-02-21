@@ -1,7 +1,7 @@
 package com.group.dev.ui.fish
 
 import android.widget.FrameLayout
-import com.dev.zhaoys.app.SimpleViewActivity
+import com.group.common.base.SimpleViewActivity
 
 /**
  * 描述:
@@ -9,7 +9,7 @@ import com.dev.zhaoys.app.SimpleViewActivity
  * author zys
  * create by 2021/2/21
  */
-class FishActivity :SimpleViewActivity<FrameLayout>() {
+class FishActivity : SimpleViewActivity<FrameLayout>() {
     override fun generateRootView(): FrameLayout {
         return FrameLayout(this)
     }

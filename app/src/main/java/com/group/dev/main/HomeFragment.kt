@@ -4,21 +4,21 @@ import android.util.Log
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.dev.zhaoys.extend.openActivity
+import com.group.common.ext.openActivity
 import com.group.dev.ui.flextag.FlexActivity
-import com.dev.zhaoys.ui.hook.HookActivity
-import com.dev.zhaoys.ui.other.*
-import com.dev.zhaoys.ui.qmhome.StickyTop2Activity
-import com.dev.zhaoys.ui.sticky.StickyTop1Activity
-import com.dev.zhaoys.ui.wanandroid.WanMainActivity
-import com.dev.zhaoys.utils.SysUtil
+import com.group.dev.ui.hook.HookActivity
+import com.group.dev.ui.other.*
+import com.group.dev.ui.qmhome.StickyTop2Activity
+import com.group.dev.ui.sticky.StickyTop1Activity
+import com.group.dev.ui.wanandroid.WanMainActivity
+import com.group.dev.utils.SysUtil
 import com.group.dev.ui.decoration_sticky.DecorationStickyActivity
 import com.group.dev.ui.fish.FishActivity
 import com.group.dev.ui.tantan.TanTanActivity
-import com.zys.base.BaseSampleFragment
-import com.zys.common.adapter.ItemCell
-import com.zys.core.ExtraConst
-import com.zys.ext.toast
+import com.group.common.base.BaseSampleFragment
+import com.group.common.adapter.ItemCell
+import com.group.common.core.ExtraConst
+import com.group.common.ext.toast
 
 /**
  * 描述:
@@ -76,13 +76,13 @@ class HomeFragment : BaseSampleFragment() {
             openActivity<HookActivity>()
         })
         list.add(MainCell("分组-悬浮") {
-            openActivity<DecorationStickyActivity>(bundleOf(ExtraConst.Pager_Title to it))
+            openActivity<DecorationStickyActivity>(bundleOf(ExtraConst.ACTIVITY_TITLE to it))
         })
         list.add(MainCell("仿探探卡片") {
-            openActivity<TanTanActivity>(bundleOf(ExtraConst.Pager_Title to it))
+            openActivity<TanTanActivity>(bundleOf(ExtraConst.ACTIVITY_TITLE to it))
         })
         list.add(MainCell("灵动的锦鲤") {
-            openActivity<FishActivity>(bundleOf(ExtraConst.Pager_Title to it))
+            openActivity<FishActivity>(bundleOf(ExtraConst.ACTIVITY_TITLE to it))
         })
         return list
     }

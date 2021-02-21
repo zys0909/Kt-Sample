@@ -2,10 +2,9 @@ package com.group.dev.ui.flextag
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import com.dev.zhaoys.R
-import com.dev.zhaoys.app.BaseActivity
+import com.group.common.base.BaseActivity
 import com.google.android.material.button.MaterialButton
-import com.group.dev.ui.flextag.FlexTagLayout
+import com.group.dev.R
 
 /**
  * 描述:

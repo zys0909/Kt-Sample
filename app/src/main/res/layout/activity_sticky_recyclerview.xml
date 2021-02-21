@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.dev.zhaoys.ui.sticky.StickyTop1Activity">
+    tools:context="com.group.dev.ui.sticky.StickyTop1Activity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@id/toolbar"
         style="@style/ToolbarStyle" />
 
-    <com.dev.zhaoys.ui.sticky.StickyLayout
+    <com.group.dev.ui.sticky.StickyLayout
         android:id="@+id/qm_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

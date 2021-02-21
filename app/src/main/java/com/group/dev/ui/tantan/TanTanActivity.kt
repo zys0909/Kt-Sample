@@ -2,8 +2,8 @@ package com.group.dev.ui.tantan
 
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.dev.zhaoys.app.RecyclerViewActivity
-import com.zys.common.imageload.ImageLoader
+import com.group.common.base.RecyclerViewActivity
+import com.group.common.imageload.ImageLoader
 
 /**
  * 描述:

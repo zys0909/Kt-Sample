@@ -1,8 +1,7 @@
 package com.group.dev
 
 import android.app.Application
-import com.dev.zhaoys.R
-import com.zys.core.App
+import com.group.common.core.App
 
 /**
  * 描述:

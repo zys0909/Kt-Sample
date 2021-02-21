@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.dev.zhaoys.ui.sticky.StickyTop1Activity">
+    tools:context="com.group.dev.ui.sticky.StickyTop1Activity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@id/toolbar"
@@ -19,7 +19,7 @@
         android:textColor="@android:color/black"
         android:textSize="20sp" />
 
-    <com.dev.zhaoys.widget.ruler.ScrollRulerLayout
+    <com.group.dev.widget.ruler.ScrollRulerLayout
         android:id="@+id/ruler_view"
         android:layout_width="match_parent"
         android:layout_height="50dp"

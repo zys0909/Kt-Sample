@@ -12,7 +12,7 @@ import com.bumptech.glide.load.engine.cache.ExternalPreferredCacheDiskCacheFacto
 import com.bumptech.glide.load.model.GlideUrl
 import com.bumptech.glide.module.AppGlideModule
 import com.bumptech.glide.request.RequestOptions
-import com.group.dev.constant.AppConst
+import com.group.common.core.AppConst
 import okhttp3.OkHttpClient
 import java.io.InputStream
 import java.util.concurrent.TimeUnit

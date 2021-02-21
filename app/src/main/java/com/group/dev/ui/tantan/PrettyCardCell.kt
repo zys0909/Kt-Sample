@@ -4,12 +4,8 @@ import android.view.View
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
-import com.dev.zhaoys.R
-import com.zys.common.adapter.ItemCell
-import com.zys.common.adapter.RecyclerSupport
-import com.zys.common.adapter.RecyclerVH
-import com.zys.common.imageload.ImageLoader
-import com.zys.ext.asClass
+import com.group.dev.R
+import com.group.common.imageload.ImageLoader
 
 /**
  * 描述:

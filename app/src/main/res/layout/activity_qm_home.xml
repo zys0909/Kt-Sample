@@ -16,15 +16,15 @@
         android:textColor="@android:color/black"
         android:textSize="18sp" />
 
-    <com.dev.zhaoys.ui.qmhome.NestedScrollLayout
+    <com.group.dev.ui.qmhome.NestedScrollLayout
         android:id="@+id/coordinator"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingStart="15dp"
         android:paddingEnd="15dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context="com.dev.zhaoys.ui.qmhome.StickyTop2Activity">
+        tools:context="com.group.dev.ui.qmhome.StickyTop2Activity">
 
-    </com.dev.zhaoys.ui.qmhome.NestedScrollLayout>
+    </com.group.dev.ui.qmhome.NestedScrollLayout>
 </LinearLayout>
 

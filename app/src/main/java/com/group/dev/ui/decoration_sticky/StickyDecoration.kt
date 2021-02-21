@@ -5,8 +5,8 @@ import android.graphics.drawable.ColorDrawable
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.zys.ext.dp
-import com.zys.ext.dpf
+import com.group.common.ext.dp
+import com.group.common.ext.dpf
 
 /**
  * 描述:

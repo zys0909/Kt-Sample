@@ -1,9 +1,9 @@
 package com.group.dev.api
 
-import com.dev.zhaoys.data.response.ArticleData
-import com.dev.zhaoys.data.response.ArticleListData
-import com.dev.zhaoys.data.response.HomeBannerData
-import com.dev.zhaoys.data.response.Response
+import com.group.dev.data.response.ArticleData
+import com.group.dev.data.response.ArticleListData
+import com.group.dev.data.response.HomeBannerData
+import com.group.dev.data.response.Response
 import okhttp3.ResponseBody
 import retrofit2.http.GET
 import retrofit2.http.Path
