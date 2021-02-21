@@ -46,10 +46,11 @@
         <activity android:name=".ui.other.RulerActivity" />
         <activity android:name=".ui.other.ClockActivity" />
         <activity android:name=".ui.other.TestActivity" />
-        <activity android:name="com.group.dev.ui.FlexActivity" />
+        <activity android:name="com.group.dev.ui.flextag.FlexActivity" />
         <activity android:name=".ui.hook.TargetActivity" />
         <activity android:name=".ui.other.TextActivity" />
         <activity android:name="com.group.dev.ui.decoration_sticky.DecorationStickyActivity" />
+        <activity android:name="com.group.dev.ui.tantan.TanTanActivity" />
     </application>
 
 </manifest>

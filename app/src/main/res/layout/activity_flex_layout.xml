@@ -7,7 +7,7 @@
 
     <include layout="@layout/layout_toolbar" />
 
-    <com.zys.widget.flextag.FlexTagLayout
+    <com.group.dev.ui.flextag.FlexTagLayout
         android:id="@+id/flexTagLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"

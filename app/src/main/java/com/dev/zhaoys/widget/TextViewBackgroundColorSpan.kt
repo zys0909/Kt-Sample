@@ -8,8 +8,8 @@ import android.text.Spanned
 import android.text.style.ReplacementSpan
 import android.widget.TextView
 import androidx.annotation.ColorInt
-import com.dev.zhaoys.extend.dp
-import com.dev.zhaoys.extend.dpf
+import com.zys.ext.dp
+import com.zys.ext.dpf
 
 fun TextView.setSpan(
     text1: String,

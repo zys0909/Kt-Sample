@@ -16,7 +16,7 @@ class DecorationStickyActivity : BaseActivity() {
     private val recyclerView by lazy { findViewById<RecyclerView>(R.id.recyclerView) }
     private val recyclerAdapter by lazy { DecorationAdapter() }
 
-    override fun layoutId(): Int = R.layout.activity_decoration_sticky
+    override fun layoutId(): Int = R.layout.activity_sample_recyclerview
 
     override fun init(savedInstanceState: Bundle?) {
         initToolbar("DecorationSticky")

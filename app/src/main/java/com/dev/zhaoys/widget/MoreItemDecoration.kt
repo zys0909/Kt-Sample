@@ -7,7 +7,7 @@ import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.dev.zhaoys.extend.dp
+import com.zys.ext.dp
 
 /**
  * 描述:

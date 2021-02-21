@@ -1,4 +1,4 @@
-package com.zys.widget.flextag
+package com.group.dev.ui.flextag
 
 import android.content.Context
 import android.graphics.Color

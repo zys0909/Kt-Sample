@@ -5,8 +5,8 @@ import android.graphics.drawable.ColorDrawable
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.dev.zhaoys.extend.dp
-import com.dev.zhaoys.extend.dpf
+import com.zys.ext.dp
+import com.zys.ext.dpf
 
 /**
  * 描述:
@@ -130,9 +130,9 @@ class StickyDecoration : RecyclerView.ItemDecoration() {
             val position = parent.getChildLayoutPosition(view)
             if (adapter.isGroupHeader(position)) {
                 outRect.top = groupHeaderHeight + dividerHeight
-            } else {
-                outRect.bottom = dividerHeight
             }
+            outRect.bottom = dividerHeight
+
         }
     }
 }

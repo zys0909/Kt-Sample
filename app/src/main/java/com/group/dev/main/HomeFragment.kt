@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dev.zhaoys.extend.openActivity
-import com.group.dev.ui.FlexActivity
+import com.group.dev.ui.flextag.FlexActivity
 import com.dev.zhaoys.ui.hook.HookActivity
 import com.dev.zhaoys.ui.other.*
 import com.dev.zhaoys.ui.qmhome.StickyTop2Activity
@@ -12,6 +12,7 @@ import com.dev.zhaoys.ui.sticky.StickyTop1Activity
 import com.dev.zhaoys.ui.wanandroid.WanMainActivity
 import com.dev.zhaoys.utils.SysUtil
 import com.group.dev.ui.decoration_sticky.DecorationStickyActivity
+import com.group.dev.ui.tantan.TanTanActivity
 import com.zys.base.BaseSampleFragment
 import com.zys.common.adapter.ItemCell
 import com.zys.ext.toast
@@ -73,6 +74,9 @@ class HomeFragment : BaseSampleFragment() {
         })
         list.add(MainCell("分组-悬浮") {
             openActivity<DecorationStickyActivity>()
+        })
+        list.add(MainCell("仿探探卡片") {
+            openActivity<TanTanActivity>()
         })
         return list
     }
