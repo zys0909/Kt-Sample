@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.view.View
+import androidx.appcompat.widget.AppCompatTextView
 import com.dev.zhaoys.R
 import com.zys.common.adapter.ItemCell
 import com.zys.common.adapter.RecyclerSupport
@@ -20,7 +21,7 @@ import kotlinx.android.synthetic.main.item_home_normal.view.*
  * author zys
  * create by 2021/2/14
  */
-class MainCell(val content: String, val callback: () -> Unit = {}) :
+class MainCell(val content: String, val callback: (String) -> Unit = {}) :
     ItemCell {
     override fun itemContent(): String = content
 
@@ -33,7 +34,9 @@ class MainCell(val content: String, val callback: () -> Unit = {}) :
 }
 
 class MainViewHolder(itemView: View, support: RecyclerSupport) : RecyclerVH(itemView, support) {
-    private var block: (() -> Unit)? = null
+    private val tvName = itemView.findViewById<AppCompatTextView>(R.id.tv_name)
+    private var block: ((String) -> Unit)? = null
+    private var cell: MainCell? = null
 
     init {
         val drawable = GradientDrawable()
@@ -44,14 +47,15 @@ class MainViewHolder(itemView: View, support: RecyclerSupport) : RecyclerVH(item
         itemView.background = drawable
         itemView.debounceClick {
             support.onClickCallback?.invoke(adapterPosition, it.id)
-            block?.invoke()
+            val mainCell = cell ?: return@debounceClick
+            mainCell.callback.invoke(mainCell.content)
         }
     }
 
     @SuppressLint("SetTextI18n")
     override fun bind(itemCell: ItemCell, payloads: MutableList<Any>) {
-        itemCell.asClass<MainCell> {
-            itemView.tv_name.text = "${adapterPosition + 1} - ${itemContent()}"
+        cell = itemCell.asClass {
+            tvName.text = "${adapterPosition + 1} - ${itemContent()}"
             block = callback
         }
     }

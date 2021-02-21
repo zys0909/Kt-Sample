@@ -1,12 +1,9 @@
 package com.group.dev.ui.tantan
 
 import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dev.zhaoys.app.RecyclerViewActivity
-import com.zys.common.adapter.createAdapter
 import com.zys.common.imageload.ImageLoader
-import com.zys.widget.AppToolBar
 
 /**
  * 描述:
@@ -38,13 +35,12 @@ class TanTanActivity : RecyclerViewActivity() {
     private val cardData: List<PrettyCardCell>
         get() = array.mapIndexed { index, s -> PrettyCardCell("美女${index + 1}", s) }
 
-    override fun init(toolBar: AppToolBar, recyclerView: RecyclerView) {
-        toolBar.title = "仿探探卡片"
+    override fun init(view: RecyclerView) {
         val prettyAdapter = PrettyAdapter(ImageLoader(this@TanTanActivity))
-        recyclerView.layoutManager = CardLayoutManager()
-        recyclerView.adapter = prettyAdapter
+        view.layoutManager = CardLayoutManager()
+        view.adapter = prettyAdapter
         prettyAdapter.submit(cardData)
         val itemTouchCallback = ItemTouchCallback(prettyAdapter)
-        ItemTouchHelper(itemTouchCallback).attachToRecyclerView(recyclerView)
+        ItemTouchHelper(itemTouchCallback).attachToRecyclerView(view)
     }
 }

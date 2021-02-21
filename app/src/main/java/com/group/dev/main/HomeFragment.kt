@@ -1,6 +1,7 @@
 package com.group.dev.main
 
 import android.util.Log
+import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dev.zhaoys.extend.openActivity
@@ -12,9 +13,11 @@ import com.dev.zhaoys.ui.sticky.StickyTop1Activity
 import com.dev.zhaoys.ui.wanandroid.WanMainActivity
 import com.dev.zhaoys.utils.SysUtil
 import com.group.dev.ui.decoration_sticky.DecorationStickyActivity
+import com.group.dev.ui.fish.FishActivity
 import com.group.dev.ui.tantan.TanTanActivity
 import com.zys.base.BaseSampleFragment
 import com.zys.common.adapter.ItemCell
+import com.zys.core.ExtraConst
 import com.zys.ext.toast
 
 /**
@@ -73,10 +76,13 @@ class HomeFragment : BaseSampleFragment() {
             openActivity<HookActivity>()
         })
         list.add(MainCell("分组-悬浮") {
-            openActivity<DecorationStickyActivity>()
+            openActivity<DecorationStickyActivity>(bundleOf(ExtraConst.Pager_Title to it))
         })
         list.add(MainCell("仿探探卡片") {
-            openActivity<TanTanActivity>()
+            openActivity<TanTanActivity>(bundleOf(ExtraConst.Pager_Title to it))
+        })
+        list.add(MainCell("灵动的锦鲤") {
+            openActivity<FishActivity>(bundleOf(ExtraConst.Pager_Title to it))
         })
         return list
     }

@@ -2,8 +2,10 @@ package com.dev.zhaoys.extend
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,13 +22,14 @@ var RecyclerView.orientation: Int
     }
     get() = (this.layoutManager as LinearLayoutManager).orientation
 
-inline fun <reified T> AppCompatActivity.openActivity() {
-    this.startActivity(Intent(this, T::class.java))
-    this.overridePendingTransition(0, 0)
+inline fun <reified T> AppCompatActivity.openActivity(bundle: Bundle = bundleOf()) {
+    this.startActivity(Intent(this, T::class.java).putExtras(bundle))
+//    this.overridePendingTransition(0, 0)
 }
 
-inline fun <reified T> Fragment.openActivity() {
-    this.startActivity(Intent(requireContext(), T::class.java))
+inline fun <reified T> Fragment.openActivity(bundle: Bundle = bundleOf()) {
+
+    this.startActivity(Intent(requireContext(), T::class.java).putExtras(bundle))
 //    requireActivity().overridePendingTransition(0, 0)
 }
 

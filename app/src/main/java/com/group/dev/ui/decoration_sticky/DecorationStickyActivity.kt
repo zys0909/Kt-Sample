@@ -1,10 +1,10 @@
-package com.group.dev.ui.decoration_sticky;
+package com.group.dev.ui.decoration_sticky
 
-import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.dev.zhaoys.R
-import com.dev.zhaoys.app.BaseActivity
+import com.dev.zhaoys.app.RecyclerViewActivity
+import com.zys.core.ColorR
+import com.zys.ext.dp
 
 /**
  * 描述: RecyclerView.ItemDecoration 实现 分组 悬浮 置顶
@@ -12,17 +12,15 @@ import com.dev.zhaoys.app.BaseActivity
  * author zys
  * create by 2021/2/16
  */
-class DecorationStickyActivity : BaseActivity() {
-    private val recyclerView by lazy { findViewById<RecyclerView>(R.id.recyclerView) }
+class DecorationStickyActivity : RecyclerViewActivity() {
     private val recyclerAdapter by lazy { DecorationAdapter() }
 
-    override fun layoutId(): Int = R.layout.activity_sample_recyclerview
-
-    override fun init(savedInstanceState: Bundle?) {
-        initToolbar("DecorationSticky")
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = recyclerAdapter
-        recyclerView.addItemDecoration(StickyDecoration())
+    override fun init(view: RecyclerView) {
+        view.setPadding(20.dp, 80.dp, 20.dp, 0)
+        view.setBackgroundColor(ColorR.EEEEEE)
+        view.layoutManager = LinearLayoutManager(this)
+        view.adapter = recyclerAdapter
+        view.addItemDecoration(StickyDecoration())
         val temp = mutableListOf<DateCell>()
         for (y in 2018..2021) {
             for (m in 1..12 step 2) {

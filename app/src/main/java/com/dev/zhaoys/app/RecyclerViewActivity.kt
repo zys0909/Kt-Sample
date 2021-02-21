@@ -1,10 +1,6 @@
 package com.dev.zhaoys.app
 
-import android.os.Bundle
-import android.widget.LinearLayout
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.zys.widget.AppToolBar
 
 /**
  * 描述:简单的RecycleView 基类
@@ -12,21 +8,10 @@ import com.zys.widget.AppToolBar
  * author zys
  * create by 2021/2/21
  */
-abstract class RecyclerViewActivity : AppCompatActivity() {
+abstract class RecyclerViewActivity : SimpleViewActivity<RecyclerView>() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val toolBar = AppToolBar(this).apply {
-            setBackgroundColor(0xFFEEEEEE.toInt())
-        }
-        val recyclerView = RecyclerView(this)
-        setContentView(LinearLayout(this).apply {
-            orientation = LinearLayout.VERTICAL
-            addView(toolBar, -1, -2)
-            addView(recyclerView, -1, -1)
-        })
-        init(toolBar, recyclerView)
+    override fun generateRootView(): RecyclerView {
+        return RecyclerView(this)
     }
 
-    abstract fun init(toolBar: AppToolBar, recyclerView: RecyclerView)
 }
