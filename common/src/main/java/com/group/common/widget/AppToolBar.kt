@@ -3,6 +3,7 @@ package com.group.common.widget
 import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.Gravity
 import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatImageView
@@ -11,7 +12,10 @@ import androidx.core.view.isVisible
 import androidx.core.view.setPadding
 import com.group.common.R
 import com.group.common.core.ColorR
-import com.group.common.ext.*
+import com.group.common.ext.activity
+import com.group.common.ext.debounceClick
+import com.group.common.ext.dp
+import com.group.common.ext.fitSystemBar
 
 /**
  * 描述:
@@ -31,8 +35,10 @@ class AppToolBar @JvmOverloads constructor(context: Context, attrs: AttributeSet
         orientation = HORIZONTAL
         toolBar.apply {
             minimumHeight = 50.dp
-            textSize = 16.dpf
+            setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16f)
             setTextColor(Color.BLACK)
+            
+            gravity = Gravity.CENTER_VERTICAL
         }
         backView.setPadding(10.dp)
         backView.setImageResource(R.drawable.ic_android_black_24dp)
