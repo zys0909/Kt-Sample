@@ -9,7 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.dev.zhaoys.extend.getActivity
+import com.group.common.ext.getActivity
 import java.lang.ref.WeakReference
 
 /**

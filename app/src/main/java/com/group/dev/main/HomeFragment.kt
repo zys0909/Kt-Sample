@@ -1,24 +1,25 @@
 package com.group.dev.main
 
 import android.util.Log
+import android.view.View
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.group.common.adapter.ItemCell
+import com.group.common.base.BaseSampleFragment
+import com.group.common.core.ExtraConst
 import com.group.common.ext.openActivity
+import com.group.common.ext.toast
+import com.group.dev.ui.decoration_sticky.DecorationStickyActivity
+import com.group.dev.ui.fish.FishActivity
 import com.group.dev.ui.flextag.FlexActivity
 import com.group.dev.ui.hook.HookActivity
 import com.group.dev.ui.other.*
 import com.group.dev.ui.qmhome.StickyTop2Activity
 import com.group.dev.ui.sticky.StickyTop1Activity
+import com.group.dev.ui.tantan.TanTanActivity
 import com.group.dev.ui.wanandroid.WanMainActivity
 import com.group.dev.utils.SysUtil
-import com.group.dev.ui.decoration_sticky.DecorationStickyActivity
-import com.group.dev.ui.fish.FishActivity
-import com.group.dev.ui.tantan.TanTanActivity
-import com.group.common.base.BaseSampleFragment
-import com.group.common.adapter.ItemCell
-import com.group.common.core.ExtraConst
-import com.group.common.ext.toast
 
 /**
  * 描述:
@@ -28,10 +29,13 @@ import com.group.common.ext.toast
  */
 class HomeFragment : BaseSampleFragment() {
 
-    override val titleBar: String = "Home"
 
     override val recyclerManager: RecyclerView.LayoutManager
         get() = GridLayoutManager(context, 2)
+
+    override fun init(view: View) {
+        setTitle("Home", false)
+    }
 
     override fun initList(): List<ItemCell> {
         val list = mutableListOf<ItemCell>()

@@ -3,6 +3,7 @@ package com.group.dev.ui.decoration_sticky
 import android.graphics.*
 import android.graphics.drawable.ColorDrawable
 import android.view.View
+import androidx.annotation.ColorInt
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.group.common.ext.dp
@@ -14,7 +15,7 @@ import com.group.common.ext.dpf
  * author zys
  * create by 2021/2/16
  */
-class StickyDecoration : RecyclerView.ItemDecoration() {
+class StickyDecoration(@ColorInt private val color: Int = 0) : RecyclerView.ItemDecoration() {
 
     private val groupHeaderHeight = 50.dp
     private val dividerHeight = 2.dp
@@ -92,7 +93,9 @@ class StickyDecoration : RecyclerView.ItemDecoration() {
         }
         c.save()
         //画背景
-        paint.color = (parent.background as? ColorDrawable)?.color ?: 0
+        paint.color = if (color == 0) {
+            (parent.background as? ColorDrawable)?.color ?: 0
+        } else color
         c.drawRect(rectF, paint)
         c.restore()
         rectF.inset(10.dpf, 10.dpf)
@@ -130,9 +133,9 @@ class StickyDecoration : RecyclerView.ItemDecoration() {
             val position = parent.getChildLayoutPosition(view)
             if (adapter.isGroupHeader(position)) {
                 outRect.top = groupHeaderHeight + dividerHeight
+            } else {
+                outRect.top = dividerHeight
             }
-            outRect.bottom = dividerHeight
-
         }
     }
 }

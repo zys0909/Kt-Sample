@@ -17,10 +17,10 @@ class DecorationStickyActivity : RecyclerViewActivity() {
 
     override fun init(view: RecyclerView) {
         view.setPadding(20.dp, 80.dp, 20.dp, 0)
-        view.setBackgroundColor(ColorR.EEEEEE)
+        view.setBackgroundColor(ColorR.C1C4CC)
         view.layoutManager = LinearLayoutManager(this)
         view.adapter = recyclerAdapter
-        view.addItemDecoration(StickyDecoration())
+        view.addItemDecoration(StickyDecoration(ColorR.BBBBBB))
         val temp = mutableListOf<DateCell>()
         for (y in 2018..2021) {
             for (m in 1..12 step 2) {

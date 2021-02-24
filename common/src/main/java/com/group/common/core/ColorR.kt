@@ -11,4 +11,7 @@ package com.group.common.core
 @Suppress()
 object ColorR {
     const val EEEEEE = 0xFFEEEEEE.toInt()
+    const val C1C4CC = 0xFFC1C4CC.toInt()
+    const val FCFCFC = 0xFFFCFCFC.toInt()
+    const val BBBBBB = 0xFFBBBBBB.toInt()
 }

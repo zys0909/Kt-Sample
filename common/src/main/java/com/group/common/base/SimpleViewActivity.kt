@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
-import com.group.common.core.ColorR
 import com.group.common.core.ExtraConst
 import com.group.common.widget.AppToolBar
 
@@ -25,9 +24,8 @@ abstract class SimpleViewActivity<V : View> : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val linearLayout = LinearLayout(this)
         setContentView(linearLayout)
-        toolBar.setBackgroundColor(ColorR.EEEEEE)
         if (defaultTitle.isNotEmpty()) {
-            toolBar.title = defaultTitle
+            toolBar.setTitle(defaultTitle)
         }
         linearLayout.orientation = LinearLayout.VERTICAL
         linearLayout.addView(toolBar, -1, -2)
@@ -36,7 +34,7 @@ abstract class SimpleViewActivity<V : View> : AppCompatActivity() {
     }
 
     fun setToolBar(string: String) {
-        toolBar.title = string
+        toolBar.setTitle(string)
     }
 
     abstract fun generateRootView(): V

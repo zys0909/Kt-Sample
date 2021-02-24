@@ -12,6 +12,7 @@ import com.group.common.adapter.ItemCell
 import com.group.common.adapter.RecyclerAdapter
 import com.group.common.adapter.RecyclerSupport
 import com.group.common.ext.dp
+import com.group.common.ext.fitSystemBar
 import com.group.common.widget.AppToolBar
 
 /**
@@ -22,36 +23,44 @@ import com.group.common.widget.AppToolBar
  */
 abstract class BaseSampleFragment : Fragment() {
 
+    protected val appToolBar by lazy { AppToolBar(requireContext()) }
+    protected val recyclerView by lazy { RecyclerView(requireContext()) }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val recyclerView = RecyclerView(requireContext()).apply {
-            setPadding(10.dp, 0, 10.dp, 0)
-            layoutManager = recyclerManager
-            adapter = RecyclerAdapter(support).also {
-                it.submit(initList())
-            }
+        val rootView = LinearLayout(requireContext())
+        rootView.orientation = LinearLayout.VERTICAL
+        recyclerView.setPadding(10.dp, 0, 10.dp, 0)
+        recyclerView.layoutManager = recyclerManager
+        recyclerView.adapter = RecyclerAdapter(support).also {
+            it.submit(initList())
         }
-        return LinearLayout(requireContext()).apply {
-            orientation = LinearLayout.VERTICAL
-            if (titleBar.isNotEmpty()) {
-                addView(AppToolBar(context).apply {
-                    setBackgroundColor(0xFFEEEEEE.toInt())
-                    title = titleBar
-                })
-            }
-            addView(recyclerView)
-        }
+        appToolBar.visibility = View.GONE
+        rootView.addView(appToolBar)
+        rootView.addView(recyclerView)
+        return rootView
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        init(view)
     }
 
     open val support: RecyclerSupport = RecyclerSupport()
-
-    open val titleBar: String = ""
 
     open val recyclerManager: RecyclerView.LayoutManager
         get() = GridLayoutManager(context, 3)
 
     abstract fun initList(): List<ItemCell>
+
+    abstract fun init(view: View)
+
+    fun setTitle(titleChar: CharSequence, homeAsUp: Boolean = true) {
+        appToolBar.visibility = View.VISIBLE
+        appToolBar.fitSystemBar()
+        appToolBar.setTitle(titleChar, homeAsUp)
+    }
 }

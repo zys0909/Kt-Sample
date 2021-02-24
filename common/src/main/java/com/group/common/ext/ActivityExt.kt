@@ -1,7 +1,9 @@
-package com.dev.zhaoys.extend
+package com.group.common.ext
 
 import android.content.Context
 import android.content.ContextWrapper
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 
 /**
@@ -21,3 +23,18 @@ fun Context.getActivity(): FragmentActivity? {
     }
     return null
 }
+
+val Context.activity: AppCompatActivity?
+    get() {
+        var context: Context = this
+        while (context is ContextWrapper) {
+            if (context is AppCompatActivity) {
+                return context
+            }
+            context = context.baseContext
+        }
+        return null
+    }
+
+val View.activity: AppCompatActivity?
+    get() = this.context.activity
