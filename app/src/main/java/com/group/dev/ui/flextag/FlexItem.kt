@@ -42,4 +42,19 @@ class FlexSpecialItem(
         text, textSize, textColor,
         ViewUtil.createDrawable(bgColor, 1.dpf, Color.TRANSPARENT, 0)
     )
+
+    constructor(
+        text: String,
+        textSize: Float,
+        textColor: Int,
+        bgColor: Int,
+        bgRadius: Float,
+        bgStrokeColor: Int,
+        bgStrokeWidth: Int
+    ) : this(
+        text,
+        textSize,
+        textColor,
+        ViewUtil.createDrawable(bgColor, bgRadius, bgStrokeColor, bgStrokeWidth)
+    )
 }

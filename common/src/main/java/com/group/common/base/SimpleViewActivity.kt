@@ -15,7 +15,7 @@ import com.group.common.widget.AppToolBar
  */
 abstract class SimpleViewActivity<V : View> : AppCompatActivity() {
     private val defaultTitle: String by lazy {
-        intent.getStringExtra(ExtraConst.ACTIVITY_TITLE)
+        intent.getStringExtra(ExtraConst.ACTIVITY_TITLE) ?: ""
     }
     private val toolBar by lazy { AppToolBar(this) }
     private val rootView by lazy { generateRootView() }

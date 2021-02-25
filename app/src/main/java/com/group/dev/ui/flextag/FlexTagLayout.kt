@@ -70,12 +70,12 @@ class FlexTagLayout @JvmOverloads constructor(
     /**
      * 标签之间的间隔距离 (水平方向)
      */
-    private var horizontalSpacing = 1.5.dp
+    var horizontalSpacing = 1.5.dp
 
     /**
      * 标签之间的间隔距离 (竖直方向)
      */
-    private var verticalSpacing = 0
+    var verticalSpacing = 0
 
     /**
      * 最大行数，
@@ -100,36 +100,36 @@ class FlexTagLayout @JvmOverloads constructor(
      * 标签字体颜色
      */
     @ColorInt
-    private var tagTextColor = Color.BLACK
+    var tagTextColor = Color.BLACK
 
     /**
      * 标签字号
      */
-    private var tagTextSize = 10.dpf
+    var tagTextSize = 10.dpf
 
     /**
      * 背景填充色
      */
-    private var tagFillColor = Color.TRANSPARENT
+    var tagFillColor = Color.TRANSPARENT
 
     /**
      * 背景边框圆角半径，为0 ，表示没有圆角
      */
-    private var tagRadius = 1.dpf
+    var tagRadius = 1.dpf
 
     /**
      * 背景边框颜色
      */
-    private var tagStrokeColor = Color.TRANSPARENT
+    var tagStrokeColor = Color.TRANSPARENT
 
     /**
      * 背景边框宽度
      */
-    private var tagStrokeWidth = 0.5.dp
+    var tagStrokeWidth = 0.5.dp
 
-    private var paddingStartEnd = 3.dp
+    var paddingStartEnd = 3.dp
 
-    private var paddingTopBottom = 0
+    var paddingTopBottom = 0
 
     private val bgDrawable: Drawable
         get() = ViewUtil.createDrawable(tagFillColor, tagRadius, tagStrokeColor, tagStrokeWidth)

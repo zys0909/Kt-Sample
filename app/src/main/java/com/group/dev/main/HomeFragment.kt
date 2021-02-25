@@ -2,12 +2,10 @@ package com.group.dev.main
 
 import android.util.Log
 import android.view.View
-import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.group.common.adapter.ItemCell
 import com.group.common.base.BaseSampleFragment
-import com.group.common.core.ExtraConst
 import com.group.common.ext.openActivity
 import com.group.common.ext.toast
 import com.group.dev.ui.decoration_sticky.DecorationStickyActivity
@@ -71,22 +69,22 @@ class HomeFragment : BaseSampleFragment() {
             toast(SysUtil.getLocalIpAddress())
         })
         list.add(MainCell("Text测试") {
-            openActivity<TextActivity>()
+            openActivity<TextActivity>(it)
         })
         list.add(MainCell("流式布局") {
-            openActivity<FlexActivity>()
+            openActivity<FlexActivity>(it)
         })
         list.add(MainCell("HookActivity") {
-            openActivity<HookActivity>()
+            openActivity<HookActivity>(it)
         })
         list.add(MainCell("分组-悬浮") {
-            openActivity<DecorationStickyActivity>(bundleOf(ExtraConst.ACTIVITY_TITLE to it))
+            openActivity<DecorationStickyActivity>(it)
         })
         list.add(MainCell("仿探探卡片") {
-            openActivity<TanTanActivity>(bundleOf(ExtraConst.ACTIVITY_TITLE to it))
+            openActivity<TanTanActivity>(it)
         })
         list.add(MainCell("灵动的锦鲤") {
-            openActivity<FishActivity>(bundleOf(ExtraConst.ACTIVITY_TITLE to it))
+            openActivity<FishActivity>(it)
         })
         return list
     }
