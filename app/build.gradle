@@ -103,5 +103,7 @@ dependencies {
     implementation smart_refresh
     implementation lottie
 
-//    implementation 'com.meituan.android.walle:library:1.1.6'
+    def nav_version = "2.3.3"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 }

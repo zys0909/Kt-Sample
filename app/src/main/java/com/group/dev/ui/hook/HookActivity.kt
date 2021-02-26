@@ -1,12 +1,7 @@
 package com.group.dev.ui.hook
 
-import android.graphics.Color
-import android.os.Bundle
-import com.group.dev.R
-import com.group.dev.Value
-import com.group.common.base.BaseActivity
-import kotlinx.android.synthetic.main.activity_clock.*
-import java.util.*
+import android.widget.LinearLayout
+import com.group.common.base.SimpleViewActivity
 
 /**
  * 描述:
@@ -14,38 +9,14 @@ import java.util.*
  * author zys
  * create by 2020/9/11
  */
-class HookActivity : BaseActivity() {
-    private val r = Random()
-    private val p: Int
-        get() {
-            return r.nextInt(1000)
-        }
+class HookActivity : SimpleViewActivity<LinearLayout>() {
 
-    override fun layoutId(): Int = R.layout.activity_clock
+    override fun generateRootView(): LinearLayout {
 
-    override fun init(savedInstanceState: Bundle?) {
-        initToolbar("Clock")
-        clock.setBackgroundColor(Color.parseColor("#eeeeee"))
-        clock.onDrawPoint = {
-            it.color = Color.parseColor(Value.color[p % 12])
-        }
-        clock.onDrawCircle = {
-            it.color = Color.parseColor(Value.color[p % 12])
-        }
-        clock.onDrawRuler1 = {
-            it.color = Color.parseColor(Value.color[p % 12])
-        }
-        clock.onDrawRuler2 = {
-            it.color = Color.parseColor(Value.color[p % 12])
-        }
-        clock.onDrawNeedle1 = {
-            it.color = Color.parseColor(Value.color[p % 12])
-        }
-        clock.onDrawNeedle2 = {
-            it.color = Color.parseColor(Value.color[p % 12])
-        }
-        clock.onDrawNeedle3 = {
-            it.color = Color.parseColor(Value.color[p % 12])
-        }
+        return LinearLayout(this)
+    }
+
+    override fun init(view: LinearLayout) {
+
     }
 }

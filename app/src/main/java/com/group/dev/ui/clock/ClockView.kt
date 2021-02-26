@@ -1,4 +1,4 @@
-package com.group.dev.widget
+package com.group.dev.ui.clock
 
 import android.content.Context
 import android.content.res.Resources

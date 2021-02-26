@@ -38,8 +38,8 @@ class FlexActivity : SimpleViewActivity<LinearLayout>() {
         val tags = mutableListOf<FlexItem>()
         arr.forEachIndexed { index, s ->
             val item = when (index % 3) {
-                0 -> FlexSpecialItem(s, 16.dpf, Color.WHITE, Color.BLACK)
-                1 -> FlexSpecialItem(s, 16.dpf, Color.BLUE, ColorR.C1C4CC, 1.dpf, Color.BLACK, 1.dp)
+                0 -> FlexSpecialItem(s, 14.dpf, Color.WHITE, Color.BLACK)
+                1 -> FlexSpecialItem(s, 14.dpf, Color.BLUE, ColorR.C1C4CC, 1.dpf, Color.BLACK, 1.dp)
                 else -> FlexTextItem(s)
             }
             tags.add(item)

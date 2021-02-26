@@ -8,6 +8,7 @@ import com.group.common.adapter.ItemCell
 import com.group.common.base.BaseSampleFragment
 import com.group.common.ext.openActivity
 import com.group.common.ext.toast
+import com.group.dev.ui.clock.ClockActivity
 import com.group.dev.ui.decoration_sticky.DecorationStickyActivity
 import com.group.dev.ui.fish.FishActivity
 import com.group.dev.ui.flextag.FlexActivity
@@ -25,7 +26,7 @@ import com.group.dev.utils.SysUtil
  * author zys
  * create by 2021/2/14
  */
-class HomeFragment : BaseSampleFragment() {
+class HomeFragment1 : BaseSampleFragment() {
 
 
     override val recyclerManager: RecyclerView.LayoutManager
@@ -52,9 +53,7 @@ class HomeFragment : BaseSampleFragment() {
         list.add(MainCell("Clock") {
             openActivity<ClockActivity>()
         })
-        list.add(MainCell("ViewPager2") {
-            openActivity<ViewPager2Activity>()
-        })
+
         list.add(MainCell("悬浮置顶1") {
             openActivity<StickyTop1Activity>()
         })
