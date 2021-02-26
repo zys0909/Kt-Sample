@@ -16,6 +16,6 @@ class HomeFragment3 : BaseSampleFragment() {
     }
 
     override fun init(view: View) {
-
+        setTitle("CCCC", false)
     }
 }

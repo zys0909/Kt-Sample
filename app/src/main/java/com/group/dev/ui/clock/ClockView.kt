@@ -70,8 +70,8 @@ class ClockView(context: Context, attributeSet: AttributeSet?) : View(context, a
 
     private val autoTask = AutoTask(this)
 
-    override fun onFinishInflate() {
-        super.onFinishInflate()
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
         postDelayed(autoTask, 1000L)
     }
 

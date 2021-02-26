@@ -2,8 +2,6 @@ package com.group.dev.main
 
 import android.util.Log
 import android.view.View
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.group.common.adapter.ItemCell
 import com.group.common.base.BaseSampleFragment
 import com.group.common.ext.openActivity
@@ -17,7 +15,6 @@ import com.group.dev.ui.other.*
 import com.group.dev.ui.qmhome.StickyTop2Activity
 import com.group.dev.ui.sticky.StickyTop1Activity
 import com.group.dev.ui.tantan.TanTanActivity
-import com.group.dev.ui.wanandroid.WanMainActivity
 import com.group.dev.utils.SysUtil
 
 /**
@@ -29,39 +26,34 @@ import com.group.dev.utils.SysUtil
 class HomeFragment1 : BaseSampleFragment() {
 
 
-    override val recyclerManager: RecyclerView.LayoutManager
-        get() = GridLayoutManager(context, 2)
-
     override fun init(view: View) {
         setTitle("Home", false)
     }
 
     override fun initList(): List<ItemCell> {
         val list = mutableListOf<ItemCell>()
-        list.add(MainCell("WanAndroid") {
-            openActivity<WanMainActivity>()
-        })
+
         list.add(MainCell("仿UC首页") {
-            openActivity<UCHomeActivity>()
+            openActivity<UCHomeActivity>(it)
         })
         list.add(MainCell("图片裁剪") {
-            openActivity<ClipImageActivity>()
+            openActivity<ClipImageActivity>(it)
         })
         list.add(MainCell("Ruler-View") {
-            openActivity<RulerActivity>()
+            openActivity<RulerActivity>(it)
         })
-        list.add(MainCell("Clock") {
-            openActivity<ClockActivity>()
+        list.add(MainCell("炫彩时钟") {
+            openActivity<ClockActivity>(it)
         })
 
         list.add(MainCell("悬浮置顶1") {
-            openActivity<StickyTop1Activity>()
+            openActivity<StickyTop1Activity>(it)
         })
         list.add(MainCell("悬浮置顶2") {
-            openActivity<StickyTop2Activity>()
+            openActivity<StickyTop2Activity>(it)
         })
         list.add(MainCell("测试") {
-            openActivity<TestActivity>()
+            openActivity<TestActivity>(it)
         })
         list.add(MainCell("IP") {
             Log.i("测试TAG", SysUtil.getLocalIpAddress())

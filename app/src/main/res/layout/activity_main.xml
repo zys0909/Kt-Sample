@@ -26,7 +26,11 @@
         android:id="@+id/bottom_nav_view"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        app:itemTextColor="#ff0000"
+        app:itemHorizontalTranslationEnabled="false"
+        app:itemIconTint="@drawable/main_bottom_navigation"
+        app:itemRippleColor="@null"
+        app:itemTextColor="@drawable/main_bottom_navigation"
+        app:labelVisibilityMode="labeled"
         app:menu="@menu/menu" />
 
 </LinearLayout>
