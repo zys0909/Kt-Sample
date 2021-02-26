@@ -8,11 +8,14 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.*
+import android.webkit.WebChromeClient
+import android.webkit.WebSettings
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.appcompat.app.AlertDialog
-import com.group.dev.R
-import com.group.common.core.ExtraConst
 import com.group.common.base.BaseActivity
+import com.group.common.core.ExtraConst
+import com.group.dev.R
 import kotlinx.android.synthetic.main.activity_web.*
 import java.util.*
 
@@ -36,6 +39,8 @@ class WebActivity : BaseActivity() {
             domStorageEnabled = true
             allowContentAccess = true
             setAppCacheEnabled(true)
+            javaScriptEnabled = true
+            allowUniversalAccessFromFileURLs = true
         }
 
         webView.apply {
@@ -99,6 +104,7 @@ class WebActivity : BaseActivity() {
         }
         super.onDestroy()
     }
+
     private fun dial(phone: String?) {
         when {
             phone.isNullOrEmpty() -> {

@@ -276,10 +276,10 @@ class FishDrawable : Drawable() {
     }
 
     override fun getIntrinsicHeight(): Int {
-        return (size * 8.38).toInt()
+        return (size * 8.4).toInt()
     }
 
     override fun getIntrinsicWidth(): Int {
-        return (size * 8.38).toInt()
+        return (size * 8.4).toInt()
     }
 }

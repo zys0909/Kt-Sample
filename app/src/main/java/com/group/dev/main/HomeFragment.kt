@@ -1,13 +1,16 @@
 package com.group.dev.main
 
+import android.content.Intent
 import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.group.common.adapter.ItemCell
 import com.group.common.base.BaseSampleFragment
+import com.group.common.core.ExtraConst
 import com.group.common.ext.openActivity
 import com.group.common.ext.toast
+import com.group.dev.ui.WebActivity
 import com.group.dev.ui.decoration_sticky.DecorationStickyActivity
 import com.group.dev.ui.fish.FishActivity
 import com.group.dev.ui.flextag.FlexActivity
@@ -85,6 +88,15 @@ class HomeFragment : BaseSampleFragment() {
         })
         list.add(MainCell("灵动的锦鲤") {
             openActivity<FishActivity>(it)
+        })
+        list.add(MainCell("在线PDF") {
+            val url = "http://zjj.sz.gov.cn/attachment/0/749/749839/8545777.pdf"
+            val pdfUrl = "file:///android_asset/pdf/web/viewer.html?file=$url"
+            startActivity(
+                Intent(requireContext(), WebActivity::class.java)
+                    .putExtra(ExtraConst.WEB_URL, pdfUrl)
+                    .putExtra(ExtraConst.ACTIVITY_TITLE, "在线PDF")
+            )
         })
         return list
     }
