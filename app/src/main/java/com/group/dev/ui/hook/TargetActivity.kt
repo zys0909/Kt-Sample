@@ -1,9 +1,6 @@
 package com.group.dev.ui.hook
 
-import android.os.Bundle
 import android.widget.FrameLayout
-import com.group.dev.R
-import com.group.common.base.BaseActivity
 import com.group.common.base.SimpleViewActivity
 
 /**
@@ -16,10 +13,10 @@ class TargetActivity : SimpleViewActivity<FrameLayout>() {
 
 
     override fun generateRootView(): FrameLayout {
-        TODO("Not yet implemented")
+        return FrameLayout(this)
     }
 
     override fun init(view: FrameLayout) {
-        TODO("Not yet implemented")
+
     }
 }

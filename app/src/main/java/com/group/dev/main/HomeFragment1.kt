@@ -10,7 +10,6 @@ import com.group.dev.ui.clock.ClockActivity
 import com.group.dev.ui.decoration_sticky.DecorationStickyActivity
 import com.group.dev.ui.fish.FishActivity
 import com.group.dev.ui.flextag.FlexActivity
-import com.group.dev.ui.hook.HookActivity
 import com.group.dev.ui.other.*
 import com.group.dev.ui.qmhome.StickyTop2Activity
 import com.group.dev.ui.sticky.StickyTop1Activity
@@ -66,7 +65,7 @@ class HomeFragment1 : BaseSampleFragment() {
             openActivity<FlexActivity>(it)
         })
         list.add(MainCell("HookActivity") {
-            openActivity<HookActivity>(it)
+//            openActivity<HookActivity>(it)
         })
         list.add(MainCell("分组-悬浮") {
             openActivity<DecorationStickyActivity>(it)
