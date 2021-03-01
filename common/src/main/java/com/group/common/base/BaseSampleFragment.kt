@@ -52,7 +52,7 @@ abstract class BaseSampleFragment : Fragment() {
     open val support: RecyclerSupport = RecyclerSupport()
 
     open val recyclerManager: RecyclerView.LayoutManager
-        get() = GridLayoutManager(context, 3)
+        get() = GridLayoutManager(context, 2)
 
     abstract fun initList(): List<ItemCell>
 

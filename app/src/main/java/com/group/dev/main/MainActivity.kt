@@ -1,7 +1,9 @@
 package com.group.dev.main
 
 import android.os.Bundle
-import android.view.View
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.group.dev.R
 import com.group.common.base.BaseActivity
 
@@ -13,13 +15,16 @@ import com.group.common.base.BaseActivity
  */
 class MainActivity : BaseActivity() {
 
-    private val flContent: View by lazy { findViewById<View>(R.id.fl_content) }
+
+    private val bottomNavView: BottomNavigationView by lazy { findViewById(R.id.bottom_nav_view) }
+
 
     override fun layoutId(): Int = R.layout.activity_main
 
     override fun init(savedInstanceState: Bundle?) {
-        val fm = supportFragmentManager.beginTransaction()
-        fm.replace(R.id.fl_content, HomeFragment())
-        fm.commit()
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
+        NavigationUI.setupWithNavController(bottomNavView, navController)
     }
 }

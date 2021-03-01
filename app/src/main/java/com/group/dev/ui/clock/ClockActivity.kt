@@ -1,11 +1,11 @@
-package com.group.dev.ui.other
+package com.group.dev.ui.clock
 
 import android.graphics.Color
-import android.os.Bundle
-import com.group.dev.R
+import android.view.Gravity
+import android.widget.FrameLayout
 import com.group.dev.Value
-import com.group.common.base.BaseActivity
-import kotlinx.android.synthetic.main.activity_clock.*
+import com.group.common.base.SimpleViewActivity
+import com.group.common.core.ColorR
 import java.util.*
 
 /**
@@ -14,19 +14,23 @@ import java.util.*
  * author zys
  * create by 2019-12-20
  */
-class ClockActivity : BaseActivity() {
+class ClockActivity : SimpleViewActivity<FrameLayout>() {
 
+    private val clock by lazy { ClockView(this) }
     private val r = Random()
     private val p: Int
         get() {
             return r.nextInt(1000)
         }
 
-    override fun layoutId(): Int = R.layout.activity_clock
+    override fun generateRootView(): FrameLayout = FrameLayout(this)
 
-    override fun init(savedInstanceState: Bundle?) {
-        initToolbar("Clock")
-        clock.setBackgroundColor(Color.parseColor("#eeeeee"))
+    override fun init(view: FrameLayout) {
+        val layoutParams = FrameLayout.LayoutParams(-1, -1)
+        layoutParams.gravity = Gravity.CENTER
+        view.addView(clock, layoutParams)
+
+        clock.setBackgroundColor(ColorR.EEEEEE)
         clock.onDrawPoint = {
             it.color = Color.parseColor(Value.color[p % 12])
         }
@@ -48,5 +52,6 @@ class ClockActivity : BaseActivity() {
         clock.onDrawNeedle3 = {
             it.color = Color.parseColor(Value.color[p % 12])
         }
+
     }
 }

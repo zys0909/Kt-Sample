@@ -7,8 +7,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 
 /**
  * 描述:
@@ -21,6 +23,13 @@ var RecyclerView.orientation: Int
         this.layoutManager = LinearLayoutManager(this.context, value, false)
     }
     get() = (this.layoutManager as LinearLayoutManager).orientation
+
+val RecyclerView.LayoutManager.spanCount: Int
+    get() = when (this) {
+        is GridLayoutManager -> this.spanCount
+        is StaggeredGridLayoutManager -> this.spanCount
+        else -> throw IllegalArgumentException("layoutManager must be GridLayoutManager or StaggeredGridLayoutManager")
+    }
 
 inline fun <reified T> AppCompatActivity.openActivity(bundle: Bundle = bundleOf()) {
     this.startActivity(Intent(this, T::class.java).putExtras(bundle))

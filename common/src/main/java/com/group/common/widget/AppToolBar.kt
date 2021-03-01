@@ -51,8 +51,8 @@ class AppToolBar @JvmOverloads constructor(context: Context, attrs: AttributeSet
         }
     }
 
-    fun setTitle(titleChar: CharSequence, homeAsUp: Boolean = true) {
-        toolBar.isVisible = homeAsUp
+    fun setTitle(titleChar: CharSequence, showBack: Boolean = true) {
+        backView.isVisible = showBack
         toolBar.title = titleChar
         requestLayout()
     }

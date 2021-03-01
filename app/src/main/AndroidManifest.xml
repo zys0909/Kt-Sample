@@ -42,9 +42,8 @@
         <activity android:name="com.group.dev.ui.other.UCHomeActivity" />
         <activity android:name="com.group.dev.ui.sticky.StickyTop1Activity" />
         <activity android:name="com.group.dev.ui.other.ClipImageActivity" />
-        <activity android:name="com.group.dev.ui.other.ViewPager2Activity" />
         <activity android:name="com.group.dev.ui.other.RulerActivity" />
-        <activity android:name="com.group.dev.ui.other.ClockActivity" />
+        <activity android:name="com.group.dev.ui.clock.ClockActivity" />
         <activity android:name="com.group.dev.ui.other.TestActivity" />
         <activity android:name="com.group.dev.ui.flextag.FlexActivity" />
         <activity android:name="com.group.dev.ui.hook.TargetActivity" />
