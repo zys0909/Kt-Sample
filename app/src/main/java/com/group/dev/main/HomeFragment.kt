@@ -91,7 +91,7 @@ class HomeFragment : BaseSampleFragment() {
         })
         list.add(MainCell("在线PDF") {
             val url = "http://zjj.sz.gov.cn/attachment/0/749/749839/8545777.pdf"
-            val pdfUrl = "file:///android_asset/pdf/web/viewer.html?file=$url"
+            val pdfUrl = PDF_PREFIX + url
             startActivity(
                 Intent(requireContext(), WebActivity::class.java)
                     .putExtra(ExtraConst.WEB_URL, pdfUrl)
@@ -100,4 +100,10 @@ class HomeFragment : BaseSampleFragment() {
         })
         return list
     }
+
+    companion object {
+
+        const val PDF_PREFIX = "file:///android_asset/pdf/web/viewer.html?file="
+    }
+
 }
