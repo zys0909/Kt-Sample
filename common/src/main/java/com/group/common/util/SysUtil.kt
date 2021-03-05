@@ -1,7 +1,6 @@
-package com.group.dev.utils
+package com.group.common.util
 
 import android.content.Context
-import android.net.ConnectivityManager
 import android.net.wifi.WifiManager
 import android.util.Log
 import com.group.common.core.App
@@ -19,12 +18,6 @@ import java.util.*
 object SysUtil {
 
     fun getIP() {
-        val cm = App.instance.getSystemService(Context.CONNECTIVITY_SERVICE)
-        if (cm is ConnectivityManager) {
-            cm.activeNetworkInfo.subtype
-
-
-        }
 
     }
 

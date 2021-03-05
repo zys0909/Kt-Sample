@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'walle'
+//apply plugin: 'walle'
 
 android {
     compileSdkVersion rootProject.ext.compileSdk
@@ -46,14 +46,7 @@ android {
             resValue("bool", "debug_mode", "true")
         }
     }
-    walle {
-        // 指定渠道包的输出路径
-        apkOutputFolder = new File("${project.buildDir}/outputs/channels")
-        // 定制渠道包的APK的文件名称
-        apkFileNameFormat = '${appName}-${channel}-v${versionName}-${buildTime}.apk'
-        // 渠道配置文件
-        channelFile = new File("${project.getProjectDir()}/channel")
-    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

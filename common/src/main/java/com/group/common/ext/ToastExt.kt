@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 
 /**
- * 描述:
+ * 描述:Toast。扩展
  *
  * author zys
  * create by 2021/2/15

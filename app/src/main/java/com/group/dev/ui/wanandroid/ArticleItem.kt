@@ -2,12 +2,12 @@ package com.group.dev.ui.wanandroid
 
 import android.annotation.SuppressLint
 import android.view.View
-import com.group.dev.R
-import com.group.dev.data.response.ArticleData
-import com.group.dev.utils.TimeUtil
 import com.group.common.adapter.ItemCell
 import com.group.common.adapter.RecyclerSupport
 import com.group.common.adapter.RecyclerVH
+import com.group.common.util.TimeUtil
+import com.group.dev.R
+import com.group.dev.data.response.ArticleData
 import kotlinx.android.synthetic.main.item_home_article.view.*
 
 /**

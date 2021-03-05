@@ -19,7 +19,7 @@ import com.group.dev.ui.other.*
 import com.group.dev.ui.qmhome.StickyTop2Activity
 import com.group.dev.ui.sticky.StickyTop1Activity
 import com.group.dev.ui.tantan.TanTanActivity
-import com.group.dev.utils.SysUtil
+import com.group.common.util.SysUtil
 
 /**
  * 描述:

@@ -1,19 +1,27 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">#008577</item>
-        <item name="colorPrimaryDark">#008577</item>
-        <item name="colorAccent">#008577</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="android:windowBackground">@android:color/white</item>
-        <item name="android:statusBarColor">@android:color/white</item>
-        <item name="android:windowLightStatusBar" tools:targetApi="M">true</item>
-        <item name="android:navigationBarColor">@android:color/white</item>
-        <item name="android:windowLightNavigationBar" tools:targetApi="O_MR1">true</item>
-                <item name="android:windowContentTransitions">true</item>
-        <item name="android:screenOrientation">portrait</item>
+
+    <style name="snackBarButtonStyle">
+        <item name="android:layout_weight">1</item>
+        <item name="paddingStart">@dimen/design_snackbar_padding_horizontal</item>
+        <item name="paddingEnd">@dimen/design_snackbar_padding_horizontal</item>
+        <item name="android:paddingTop">@dimen/design_snackbar_padding_vertical</item>
+        <item name="android:paddingBottom">@dimen/design_snackbar_padding_vertical</item>
+        <item name="android:layout_gravity">center_vertical|left|start</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">@integer/design_snackbar_text_max_lines</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="snackBarTextViewStyle">
+        <item name="android:layout_marginStart">@dimen/design_snackbar_extra_spacing_horizontal
+        </item>
+        <item name="android:layout_gravity">center_vertical|right|end</item>
+        <item name="minWidth">48dp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:visibility">gone</item>
     </style>
 
 </resources>

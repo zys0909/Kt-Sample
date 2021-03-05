@@ -40,6 +40,8 @@ class WebActivity : BaseActivity() {
             allowContentAccess = true
             setAppCacheEnabled(true)
             javaScriptEnabled = true
+            allowFileAccess = true
+            allowFileAccessFromFileURLs = true
             allowUniversalAccessFromFileURLs = true
         }
 
