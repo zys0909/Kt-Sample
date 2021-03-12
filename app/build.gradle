@@ -1,3 +1,5 @@
+import com.group.dep.Lib
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -5,8 +7,8 @@ apply plugin: 'kotlin-kapt'
 //apply plugin: 'walle'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdk
-    buildToolsVersion rootProject.ext.buildTools
+    compileSdkVersion Lib.AndroidConfig.compileSdkVersion
+
     signingConfigs {
         debug {
             keyAlias 'androiddebugkey'
@@ -17,8 +19,8 @@ android {
     }
     defaultConfig {
         applicationId "com.group.dev"
-        minSdkVersion rootProject.ext.minSdk
-        targetSdkVersion rootProject.ext.targetSdk
+        minSdkVersion Lib.AndroidConfig.minSdkVersion
+        targetSdkVersion Lib.AndroidConfig.targetSdkVersion
         versionCode 1
         versionName "1.0"
         resValue("bool", "debug_mode", "false")

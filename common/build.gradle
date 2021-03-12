@@ -1,3 +1,5 @@
+import com.group.dep.Lib
+
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -7,12 +9,11 @@ apply from: '../config.gradle'
 apply from: 'upload_nexus.gradle'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdk
-    buildToolsVersion rootProject.ext.buildTools
+    compileSdkVersion Lib.AndroidConfig.compileSdkVersion
 
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdk
-        targetSdkVersion rootProject.ext.targetSdk
+        minSdkVersion Lib.AndroidConfig.minSdkVersion
+        targetSdkVersion Lib.AndroidConfig.targetSdkVersion
         versionCode 1
         versionName "1.0"
 

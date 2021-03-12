@@ -21,6 +21,7 @@ class DecorationStickyActivity : RecyclerViewActivity() {
         view.layoutManager = LinearLayoutManager(this)
         view.adapter = recyclerAdapter
         view.addItemDecoration(StickyDecoration(ColorR.BBBBBB))
+        ItemDeleteHelper().attachToRecyclerView(view)
         val temp = mutableListOf<DateCell>()
         for (y in 2018..2021) {
             for (m in 1..12 step 2) {
