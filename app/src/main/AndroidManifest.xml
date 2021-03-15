@@ -51,6 +51,7 @@
         <activity android:name="com.group.dev.ui.decoration_sticky.DecorationStickyActivity" />
         <activity android:name="com.group.dev.ui.tantan.TanTanActivity" />
         <activity android:name="com.group.dev.ui.fish.FishActivity" />
+        <activity android:name=".ui.item_swipe.ItemSwipeActivity" />
     </application>
 
 </manifest>

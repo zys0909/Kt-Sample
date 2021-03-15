@@ -1,9 +1,8 @@
 package com.group.dev.ui.decoration_sticky
 
-import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
-import com.group.dev.R
 
 /**
  * 描述:
@@ -11,7 +10,7 @@ import com.group.dev.R
  * author zys
  * create by 2021/2/16
  */
-class DecorationAdapter : RecyclerView.Adapter<DateVH>(), ISticky,IViewHolderDelete {
+class DecorationAdapter : RecyclerView.Adapter<DateVH>(), ISticky {
 
     private val dataList = mutableListOf<DateCell>()
 
@@ -23,7 +22,7 @@ class DecorationAdapter : RecyclerView.Adapter<DateVH>(), ISticky,IViewHolderDel
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DateVH {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_date_cell,parent,false)
+        val view = AppCompatTextView(parent.context)
         return DateVH(view)
     }
 
@@ -39,13 +38,5 @@ class DecorationAdapter : RecyclerView.Adapter<DateVH>(), ISticky,IViewHolderDel
 
 
     override fun getGroupName(position: Int): String = dataList[position].month
-
-    override fun onItemDelete(position: Int) {
-        val removeAt = dataList.removeAt(position)
-        dataList.add(removeAt)
-        notifyItemRemoved(position)
-    }
-
-
 }
 

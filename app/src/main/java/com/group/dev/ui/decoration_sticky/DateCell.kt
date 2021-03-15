@@ -1,9 +1,11 @@
 package com.group.dev.ui.decoration_sticky
 
-import android.view.View
+import android.graphics.Color
+import android.view.Gravity
+import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.group.dev.R
+import com.group.common.ext.dp
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -23,9 +25,16 @@ class DateCell(val text: String) {
 
 }
 
-class DateVH(val itemView: View) : RecyclerView.ViewHolder(itemView) {
+class DateVH(private val dateView: TextView) : RecyclerView.ViewHolder(dateView) {
 
-    private val dateView = itemView.findViewById<TextView>(R.id.tv_date)
+    init {
+        with(dateView) {
+            layoutParams = ViewGroup.LayoutParams(-1, 50.dp)
+            textSize = 20f
+            setTextColor(Color.BLACK)
+            gravity = Gravity.CENTER
+        }
+    }
 
     fun bind(dateCell: DateCell) {
         dateView.text = dateCell.text

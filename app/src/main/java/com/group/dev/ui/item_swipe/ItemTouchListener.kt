@@ -1,47 +1,17 @@
-package com.group.common.ext
+package com.group.dev.ui.item_swipe
 
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
-import androidx.recyclerview.widget.*
+import androidx.recyclerview.widget.RecyclerView
 
 /**
- * 描述:  RecyclerView 扩展
+ * 描述: 处理 RecyclerView.OnItemTouchListener
  *
  * author zys
- * create by 2021/3/5
+ * create by 2021/3/15
  */
-var RecyclerView.orientation: Int
-    set(value) {
-        this.layoutManager = LinearLayoutManager(this.context, value, false)
-    }
-    get() = (this.layoutManager as LinearLayoutManager).orientation
-
-val RecyclerView.LayoutManager.spanCount: Int
-    get() = when (this) {
-        is GridLayoutManager -> this.spanCount
-        is StaggeredGridLayoutManager -> this.spanCount
-        else -> throw IllegalArgumentException("layoutManager must be GridLayoutManager or StaggeredGridLayoutManager")
-    }
-
-fun RecyclerView.closeAnim() {
-    this.itemAnimator?.apply {
-        changeDuration = 0
-        addDuration = 0
-        removeDuration = 0
-        moveDuration = 0
-        (this as? SimpleItemAnimator)?.supportsChangeAnimations = false
-    }
-}
-
-/**
- * 为RecyclerView增加Item点击回调
- */
-fun RecyclerView.setOnItemClickListener(listener: (View, Int) -> Unit) {
-    this.addOnItemTouchListener(CustomerItemTouchListener(this, listener))
-}
-
-class CustomerItemTouchListener(
+internal class ItemTouchListener(
     val recyclerView: RecyclerView,
     val listener: (View, Int) -> Unit
 ) : RecyclerView.OnItemTouchListener {
@@ -94,4 +64,3 @@ class CustomerItemTouchListener(
         ): Boolean = false
     }
 }
-

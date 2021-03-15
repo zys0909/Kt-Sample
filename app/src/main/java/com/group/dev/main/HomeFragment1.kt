@@ -8,18 +8,17 @@ import com.group.common.base.BaseSampleFragment
 import com.group.common.core.ExtraConst
 import com.group.common.ext.openActivity
 import com.group.common.ext.toast
+import com.group.common.util.SysUtil
 import com.group.dev.ui.WebActivity
-
 import com.group.dev.ui.clock.ClockActivity
-
 import com.group.dev.ui.decoration_sticky.DecorationStickyActivity
 import com.group.dev.ui.fish.FishActivity
 import com.group.dev.ui.flextag.FlexActivity
+import com.group.dev.ui.item_swipe.ItemSwipeActivity
 import com.group.dev.ui.other.*
 import com.group.dev.ui.qmhome.StickyTop2Activity
 import com.group.dev.ui.sticky.StickyTop1Activity
 import com.group.dev.ui.tantan.TanTanActivity
-import com.group.common.util.SysUtil
 
 /**
  * 描述:
@@ -89,6 +88,9 @@ class HomeFragment1 : BaseSampleFragment() {
                     .putExtra(ExtraConst.WEB_URL, pdfUrl)
                     .putExtra(ExtraConst.ACTIVITY_TITLE, "在线PDF")
             )
+        })
+        list.add(MainCell("侧滑删除") {
+            openActivity<ItemSwipeActivity>(it)
         })
         return list
     }
