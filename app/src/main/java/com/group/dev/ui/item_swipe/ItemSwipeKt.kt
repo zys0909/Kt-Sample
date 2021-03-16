@@ -1,6 +1,5 @@
 package com.group.dev.ui.item_swipe
 
-import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
 /**
@@ -18,11 +17,5 @@ fun RecyclerView.setSwipeHelper(maxSwipeWidth: Int) {
     ItemSwipeHelper(maxSwipeWidth).attachToRecyclerView(this)
 }
 
-/**
- * 点击
- */
-fun RecyclerView.setOnItemClickListener(listener: (View, Int) -> Unit) {
-    this.addOnItemTouchListener(ItemTouchListener(this, listener))
-}
 
 

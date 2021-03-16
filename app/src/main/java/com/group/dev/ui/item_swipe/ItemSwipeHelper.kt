@@ -1,8 +1,11 @@
 package com.group.dev.ui.item_swipe
 
+import android.animation.ObjectAnimator
 import android.graphics.Canvas
+import android.view.View
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
 
@@ -15,30 +18,28 @@ import kotlin.math.min
 internal class ItemSwipeHelper(maxSwipeWidth: Int) : ItemTouchHelper(SwipeCallback(maxSwipeWidth)) {
 
     private class SwipeCallback(private val maxSwipeWidth: Int) : ItemTouchHelper.Callback() {
-        private var curPosition = -1
-        private var currentScrollX = 0f
-        private var flag = false
 
-        private fun reset(recyclerView: RecyclerView, position: Int) {
-            if (position != -1) {
-                recyclerView.findViewHolderForAdapterPosition(position)?.itemView?.scrollX = 0
-            }
-        }
+        private var curRecyclerView: RecyclerView? = null
+        private var curPosition = -1
+        private var currentScrollX = 0
+        private var flag = false
 
         override fun getMovementFlags(
             recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder
         ): Int {
-            if (!flag) {
-                flag = true
-                recyclerView.setOnItemClickListener { _, _ ->
-                    reset(recyclerView, curPosition)
+            setupRecyclerView(recyclerView)
+            return when {
+                curPosition == -1 -> {
+                    curPosition = viewHolder.layoutPosition
+                    makeMovementFlags(0, 12)
                 }
+                viewHolder.layoutPosition != curPosition -> {
+                    reset()
+                    curPosition = viewHolder.layoutPosition
+                    makeMovementFlags(0, 0)
+                }
+                else -> makeMovementFlags(0, 12)
             }
-            if (viewHolder.adapterPosition != curPosition) {
-                reset(recyclerView, curPosition)
-                curPosition = viewHolder.adapterPosition
-            }
-            return makeMovementFlags(0, 12)
         }
 
         override fun onMove(
@@ -69,7 +70,7 @@ internal class ItemSwipeHelper(maxSwipeWidth: Int) : ItemTouchHelper(SwipeCallba
             }
             val view = viewHolder.itemView
             if (dX == 0f) {
-                currentScrollX = view.scrollX.toFloat()
+                currentScrollX = view.scrollX
             }
             if (isCurrentlyActive) {//手指滑动
                 if (dX < 0) {
@@ -79,10 +80,9 @@ internal class ItemSwipeHelper(maxSwipeWidth: Int) : ItemTouchHelper(SwipeCallba
                 }
             } else {    //手指离开后
                 if (dX < 0) {
-                    view.scrollX = maxSwipeWidth
+                    scrollItemView(view, false, view.scrollX, maxSwipeWidth)
                 } else if (dX > 0) {
-                    view.scrollX = 0
-                    curPosition = -1
+                    scrollItemView(view, true, view.scrollX, 0)
                 }
             }
         }
@@ -106,5 +106,44 @@ internal class ItemSwipeHelper(maxSwipeWidth: Int) : ItemTouchHelper(SwipeCallba
             return Float.MAX_VALUE
         }
 
+        private fun setupRecyclerView(recyclerView: RecyclerView) {
+            if (this.curRecyclerView == null) {
+                this.curRecyclerView = recyclerView
+            }
+            if (flag) {
+                return
+            }
+            flag = true
+            curRecyclerView?.addOnItemTouchListener(
+                ItemTouchListener(recyclerView) { _: View, _: Int -> reset() }
+            )
+            curRecyclerView?.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                    reset()
+                }
+            })
+        }
+
+        private fun scrollItemView(view: View, isReset: Boolean = true, start: Int, end: Int) {
+            val duration = abs(currentScrollX - end) * 1f / maxSwipeWidth * 200
+            if (isReset) {
+                curPosition = -1
+            }
+            ObjectAnimator.ofInt(view, "ScrollX", start, end)
+                .setDuration(duration.toLong())
+                .start()
+        }
+
+        /**
+         * 重置到初始状态
+         */
+        private fun reset() {
+            val view = this.curRecyclerView?.findViewHolderForLayoutPosition(curPosition)?.itemView
+            view ?: return
+            curPosition = -1
+            ObjectAnimator.ofInt(view, "ScrollX", currentScrollX, 0)
+                .setDuration(200)
+                .start()
+        }
     }
 }
