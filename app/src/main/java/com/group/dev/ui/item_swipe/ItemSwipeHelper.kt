@@ -28,18 +28,15 @@ internal class ItemSwipeHelper(maxSwipeWidth: Int) : ItemTouchHelper(SwipeCallba
             recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder
         ): Int {
             setupRecyclerView(recyclerView)
-            return when {
-                curPosition == -1 -> {
+            val supportSwipe = (viewHolder as? ItemSwipe)?.enable() == true
+            val swipeFlag = if (supportSwipe) 12 else 0
+            if (viewHolder.layoutPosition != curPosition) {
+                reset()
+                if (supportSwipe) {
                     curPosition = viewHolder.layoutPosition
-                    makeMovementFlags(0, 12)
                 }
-                viewHolder.layoutPosition != curPosition -> {
-                    reset()
-                    curPosition = viewHolder.layoutPosition
-                    makeMovementFlags(0, 0)
-                }
-                else -> makeMovementFlags(0, 12)
             }
+            return makeMovementFlags(0, swipeFlag)
         }
 
         override fun onMove(

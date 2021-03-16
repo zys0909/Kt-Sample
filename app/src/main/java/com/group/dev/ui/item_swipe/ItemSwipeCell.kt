@@ -31,7 +31,7 @@ class SwipeCell(val text: String) : ItemCell {
 }
 
 class SwipeCellVH(itemView: View, support: RecyclerSupport) :
-    RecyclerVH(itemView, support) {
+    RecyclerVH(itemView, support), ItemSwipe {
 
     private val dateView = itemView.findViewById<TextView>(R.id.tv_date)
     private val tvDelete = itemView.findViewById<TextView>(R.id.tv_delete)
@@ -49,6 +49,10 @@ class SwipeCellVH(itemView: View, support: RecyclerSupport) :
     @SuppressLint("SetTextI18n")
     override fun bind(itemCell: ItemCell, payloads: MutableList<Any>) {
         dateView.text = "$adapterPosition - ${itemCell.itemContent()}"
+    }
+
+    override fun enable(): Boolean {
+        return adapterPosition % 2 == 0
     }
 
 }
