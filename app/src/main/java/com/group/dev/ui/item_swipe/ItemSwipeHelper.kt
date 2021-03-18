@@ -15,9 +15,11 @@ import kotlin.math.min
  * author zys
  * create by 2021/3/15
  */
-internal class ItemSwipeHelper(maxSwipeWidth: Int) : ItemTouchHelper(SwipeCallback(maxSwipeWidth)) {
+internal class ItemSwipeHelper(maxSwipeWidth: Int, duration: Int = 200) :
+    ItemTouchHelper(SwipeCallback(maxSwipeWidth, duration)) {
 
-    private class SwipeCallback(private val maxSwipeWidth: Int) : ItemTouchHelper.Callback() {
+    private class SwipeCallback(private val maxSwipeWidth: Int, val duration: Int) :
+        ItemTouchHelper.Callback() {
 
         private var curRecyclerView: RecyclerView? = null
         private var curPosition = -1
@@ -28,7 +30,10 @@ internal class ItemSwipeHelper(maxSwipeWidth: Int) : ItemTouchHelper(SwipeCallba
             recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder
         ): Int {
             setupRecyclerView(recyclerView)
-            val supportSwipe = (viewHolder as? ItemSwipe)?.enable() == true
+            val supportSwipe = when (viewHolder) {
+                is ItemSwipe -> viewHolder.enable()
+                else -> true
+            }
             val swipeFlag = if (supportSwipe) 12 else 0
             if (viewHolder.layoutPosition != curPosition) {
                 reset()
@@ -122,7 +127,7 @@ internal class ItemSwipeHelper(maxSwipeWidth: Int) : ItemTouchHelper(SwipeCallba
         }
 
         private fun scrollItemView(view: View, isReset: Boolean = true, start: Int, end: Int) {
-            val duration = abs(currentScrollX - end) * 1f / maxSwipeWidth * 200
+            val duration = abs(currentScrollX - end) * 1f / maxSwipeWidth * duration
             if (isReset) {
                 curPosition = -1
             }
@@ -139,7 +144,7 @@ internal class ItemSwipeHelper(maxSwipeWidth: Int) : ItemTouchHelper(SwipeCallba
             view ?: return
             curPosition = -1
             ObjectAnimator.ofInt(view, "ScrollX", currentScrollX, 0)
-                .setDuration(200)
+                .setDuration(duration.toLong())
                 .start()
         }
     }

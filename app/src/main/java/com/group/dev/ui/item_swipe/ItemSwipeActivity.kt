@@ -36,7 +36,7 @@ class ItemSwipeActivity : RecyclerViewActivity() {
         view.layoutManager = LinearLayoutManager(this)
         view.adapter = recyclerAdapter
         view.addItemDecoration(DividerItemDecoration(this, RecyclerView.VERTICAL))
-        view.setSwipeHelper(88.dp)
+        view.setSwipeHelper(88.dp, 150)
         val temp = mutableListOf<SwipeCell>()
         for (y in 2018..2021) {
             for (m in 1..12 step 2) {

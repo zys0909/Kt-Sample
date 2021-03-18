@@ -52,7 +52,7 @@ class SwipeCellVH(itemView: View, support: RecyclerSupport) :
     }
 
     override fun enable(): Boolean {
-        return adapterPosition % 2 == 0
+        return adapterPosition >= 0
     }
 
 }
