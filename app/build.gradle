@@ -88,6 +88,7 @@ dependencies {
     implementation constraintlayout
     implementation room_ktx
     implementation lifecycle_viewmodel_ktx
+    implementation lifecycle_livedata_ktx
     implementation work_runtime_ktx
     implementation retrofit_moshi
     implementation logging_interceptor
@@ -97,6 +98,9 @@ dependencies {
     implementation arouter_api
     implementation smart_refresh
     implementation lottie
+
+
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 
     def nav_version = "2.3.3"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
