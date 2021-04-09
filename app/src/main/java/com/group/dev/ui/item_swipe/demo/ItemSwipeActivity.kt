@@ -11,7 +11,6 @@ import com.group.common.ext.openActivity
 import com.group.dev.R
 import com.group.dev.ui.fish.FishActivity
 import com.group.dev.ui.item_swipe.ItemSwipeHelper
-import com.group.dev.ui.item_swipe.SwipeCell
 
 /**
  * 描述:RecyclerView. 侧滑删除

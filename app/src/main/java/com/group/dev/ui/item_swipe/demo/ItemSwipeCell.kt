@@ -1,4 +1,4 @@
-package com.group.dev.ui.item_swipe
+package com.group.dev.ui.item_swipe.demo
 
 import android.annotation.SuppressLint
 import android.view.View
@@ -9,6 +9,7 @@ import com.group.common.adapter.RecyclerVH
 import com.group.common.ext.debounceClick
 import com.group.common.ext.dp
 import com.group.dev.R
+import com.group.dev.ui.item_swipe.ItemSwipe
 
 /**
  * 描述:
