@@ -3,9 +3,7 @@ package com.group.dev.api
 import android.util.Log
 import com.group.common.core.AppConst
 import com.group.common.core.App
-import okhttp3.Cache
-import okhttp3.Dns
-import okhttp3.OkHttpClient
+import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -21,13 +19,15 @@ object ApiService {
 
     private val retrofit: Retrofit by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
         val clientBuild = OkHttpClient.Builder()
-            .connectTimeout(AppConst.HTTP_TIMEOUT, TimeUnit.SECONDS)
-            .readTimeout(AppConst.HTTP_TIMEOUT, TimeUnit.SECONDS)
-            .writeTimeout(AppConst.HTTP_TIMEOUT, TimeUnit.SECONDS)
-            .callTimeout(AppConst.HTTP_TIMEOUT, TimeUnit.SECONDS)
-            .cache(Cache(App.instance.cacheDir, AppConst.HTTP_Cache))
-            .dns(Dns.SYSTEM)
-            .addInterceptor(HostInterceptor())
+                .connectTimeout(AppConst.HTTP_TIMEOUT, TimeUnit.SECONDS)
+                .readTimeout(AppConst.HTTP_TIMEOUT, TimeUnit.SECONDS)
+                .writeTimeout(AppConst.HTTP_TIMEOUT, TimeUnit.SECONDS)
+                .callTimeout(AppConst.HTTP_TIMEOUT, TimeUnit.SECONDS)
+                .cache(Cache(App.instance.cacheDir, AppConst.HTTP_Cache))
+                .proxyAuthenticator(ApiAuthenticator())
+                .cookieJar(ApiCookieJar())
+                .dns(Dns.SYSTEM)
+                .addInterceptor(HostInterceptor())
 
         if (App.debug) {
             val httpLog = HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
@@ -40,10 +40,10 @@ object ApiService {
         }
 
         Retrofit.Builder()
-            .baseUrl(AppConst.BASE_URL)
-            .addConverterFactory(MoshiConverterFactory.create())
-            .client(clientBuild.build())
-            .build()
+                .baseUrl(AppConst.BASE_URL)
+                .addConverterFactory(MoshiConverterFactory.create())
+                .client(clientBuild.build())
+                .build()
     }
 
     @get:JvmName("testApi")
