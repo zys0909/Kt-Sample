@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:orientation="horizontal"
+    tools:ignore="HardcodedText,SpUsage">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_date"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#EEEEEE"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="20dp"
+        tools:text="2021-03-12" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_set_top"
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:background="#888888"
+        android:gravity="center"
+        android:text="置顶"
+        android:textColor="@android:color/black"
+        android:textSize="16dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_status"
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:background="#FFC20D"
+        android:gravity="center"
+        android:text="标记未读"
+        android:textColor="@android:color/black"
+        android:textSize="16dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_delete"
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:background="#f73343"
+        android:gravity="center"
+        android:text="删除"
+        android:textColor="@android:color/black"
+        android:textSize="16dp" />
+
+</LinearLayout>

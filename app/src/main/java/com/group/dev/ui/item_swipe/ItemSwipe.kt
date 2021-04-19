@@ -12,4 +12,6 @@ interface ItemSwipe {
      * 该ViewHolder 是否支持侧滑
      */
     fun enable(): Boolean
+
+    fun maxSwipeWidth(): Int
 }

@@ -8,7 +8,6 @@ import android.graphics.Color
 import android.graphics.Rect
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
@@ -80,14 +79,12 @@ val Activity.statusBarHeight: Int
         val rect = Rect()
         this.window?.decorView?.getWindowVisibleDisplayFrame(rect)
         result = rect.top
-        Log.i("测试TAG", "display: $result")
         if (result > 0) {
             return result
         }
         val resourceId = resources.getIdentifier("status_bar_height", "dimen", "android")
         return if (resourceId > 0) {
             val offset = resources.getDimensionPixelOffset(resourceId)
-            Log.i("测试TAG", "statusBar: $offset")
             offset
         } else 0
     }
