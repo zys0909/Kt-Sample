@@ -14,11 +14,16 @@ import com.group.dev.ui.clock.ClockActivity
 import com.group.dev.ui.decoration_sticky.DecorationStickyActivity
 import com.group.dev.ui.fish.FishActivity
 import com.group.dev.ui.flextag.FlexActivity
+import com.group.dev.ui.google_scan.GoogleScanActivity
 import com.group.dev.ui.item_swipe.demo.ItemSwipeActivity
 import com.group.dev.ui.other.*
 import com.group.dev.ui.qmhome.StickyTop2Activity
 import com.group.dev.ui.sticky.StickyTop1Activity
 import com.group.dev.ui.tantan.TanTanActivity
+import com.group.dev.ui.toast.WinUtil
+import com.group.dev.util.EncryptUtil
+import com.group.dev.util.JsonUtil
+import timber.log.Timber
 
 /**
  * 描述:
@@ -26,6 +31,7 @@ import com.group.dev.ui.tantan.TanTanActivity
  * author zys
  * create by 2021/2/14
  */
+@Suppress("SpellCheckingInspection")
 class HomeFragment1 : BaseSampleFragment() {
 
 
@@ -92,8 +98,21 @@ class HomeFragment1 : BaseSampleFragment() {
         list.add(MainCell("侧滑删除") {
             openActivity<ItemSwipeActivity>(it)
         })
+        list.add(MainCell("扫码") {
+            openActivity<GoogleScanActivity>()
+        })
+        list.add(MainCell("悬浮框") {
+            WinUtil.tryShow(requireActivity())
+        })
+
+        list.add(MainCell("PKCS7") {
+            val encode = EncryptUtil.encodePkcs7("123456")
+            Timber.tag("测试TAG").i("PKCS7加密 123456 -> %s", encode)
+            Timber.tag("测试TAG").i("Moshi转Json -> %s", JsonUtil.toJson(mapOf("password" to encode)))
+        })
         return list
     }
+
 
     companion object {
 
