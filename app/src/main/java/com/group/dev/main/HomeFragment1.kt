@@ -12,6 +12,7 @@ import com.group.common.util.SysUtil
 import com.group.dev.ui.WebActivity
 import com.group.dev.ui.clock.ClockActivity
 import com.group.dev.ui.decoration_sticky.DecorationStickyActivity
+import com.group.dev.ui.decoration_sticky2.StickyTitleActivity
 import com.group.dev.ui.fish.FishActivity
 import com.group.dev.ui.flextag.FlexActivity
 import com.group.dev.ui.google_scan.GoogleScanActivity
@@ -79,6 +80,9 @@ class HomeFragment1 : BaseSampleFragment() {
         })
         list.add(MainCell("分组-悬浮") {
             openActivity<DecorationStickyActivity>(it)
+        })
+        list.add(MainCell("粘性标题实现") {
+            openActivity<StickyTitleActivity>(it)
         })
         list.add(MainCell("仿探探卡片") {
             openActivity<TanTanActivity>(it)

@@ -1,4 +1,3 @@
-import com.group.dep.Lib
 
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
@@ -9,11 +8,11 @@ apply from: '../config.gradle'
 apply from: 'upload_nexus.gradle'
 
 android {
-    compileSdkVersion Lib.AndroidConfig.compileSdkVersion
+    compileSdkVersion 29
 
     defaultConfig {
-        minSdkVersion Lib.AndroidConfig.minSdkVersion
-        targetSdkVersion Lib.AndroidConfig.targetSdkVersion
+        minSdkVersion 21
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 

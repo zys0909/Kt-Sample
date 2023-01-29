@@ -41,7 +41,8 @@
             android:targetActivity=".main.MainActivity" />
 
         <activity android:name=".ui.qmhome.StickyTop2Activity" />
-        <activity android:name=".ui.wanandroid.WanMainActivity" />
+        <activity android:name=".ui.wanandroid.WanMainActivity"
+            android:screenOrientation="fullSensor"/>
         <activity android:name=".ui.wanandroid.ArticleListActivity" />
         <activity android:name=".ui.WebActivity" />
         <activity android:name=".ui.other.UCHomeActivity" />
@@ -58,6 +59,7 @@
         <activity android:name=".ui.fish.FishActivity" />
         <activity android:name=".ui.item_swipe.demo.ItemSwipeActivity" />
         <activity android:name=".ui.google_scan.GoogleScanActivity" />
+        <activity android:name=".ui.decoration_sticky2.StickyTitleActivity"/>
     </application>
 
 </manifest>
